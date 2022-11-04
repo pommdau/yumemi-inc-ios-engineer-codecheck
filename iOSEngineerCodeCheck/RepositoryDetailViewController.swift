@@ -1,5 +1,5 @@
 //
-//  ViewController2.swift
+//  RepositoryDetailViewController.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by 史 翔新 on 2020/04/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController2: UIViewController {
+class RepositoryDetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
 
@@ -21,7 +21,7 @@ class ViewController2: UIViewController {
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var issuesLabel: UILabel!
 
-    var vc1: ViewController!
+    var vc1: RepositoryListViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
