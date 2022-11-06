@@ -19,7 +19,7 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         // 検索フィールドの初期化
         // TODO: Placeholderへの置き換え
-        searchBar.text = "GitHubのリポジトリを検索できるよー"
+        searchBar.text = "github"
         searchBar.delegate = self
     }
 
@@ -79,12 +79,17 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let rp = repositories[indexPath.row]
-        cell.textLabel?.text = rp["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = rp["language"] as? String ?? ""
+        let repository = repositories[indexPath.row]
+        guard let fullName = repository["full_name"] as? String else {
+            fatalError("JSONパースエラー")
+        }
+        cell.textLabel?.text = fullName
+        // languageの情報はオプショナル
+        if let language = repository["language"] as? String {
+            cell.detailTextLabel?.text = language
+        }
         cell.tag = indexPath.row
         return cell
-
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,5 +97,4 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
         selectedRow = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
     }
-    
 }
