@@ -13,9 +13,7 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet private weak var searchBar: UISearchBar!
     var repositories: [[String: Any]] = []
     var task: URLSessionTask?
-    var searchingWord: String!
-    var searchingUrlString: String!
-    var selectedRow: Int!
+    var selectedRow: Int = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,26 +35,33 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchingWord = searchBar.text!
-        if !searchingWord.isEmpty {
-            searchingUrlString = "https://api.github.com/search/repositories?q=\(searchingWord!)"
-            task = URLSession.shared.dataTask(with: URL(string: searchingUrlString)!) { data, _, _ in
-                do {
-                    if let obj = try JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                        if let items = obj["items"] as? [[String: Any]] {
-                            self.repositories = items
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
-                        }
-                    }
-                } catch {
-                    // TODO: Add error handling
-                }
-            }
-            // 通信の開始
-            task?.resume()
+        guard
+            let searchingWord = searchBar.text,
+            !searchingWord.isEmpty,
+            let searchingUrl = URL(string: "https://api.github.com/search/repositories?q=\(searchingWord)")
+        else {
+            return
         }
+
+        task = URLSession.shared.dataTask(with: searchingUrl) { data, _, _ in
+            do {
+                guard
+                    let data = data,
+                    let response = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                    let items = response["items"] as? [[String: Any]]
+                else {
+                    return
+                }
+                self.repositories = items
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch {
+                // TODO: Add Error Handling
+            }
+        }
+        // 通信の開始
+        task?.resume()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
