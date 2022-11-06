@@ -23,11 +23,20 @@ class RepositoryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let repo = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
-        languageLabel.text = "Written in \(repo["language"] as? String ?? "")"
-        starsLabel.text = "\(repo["stargazers_count"] as? Int ?? 0) stars"
-        watchersLabel.text = "\(repo["wachers_count"] as? Int ?? 0) watchers"
-        forksLabel.text = "\(repo["forks_count"] as? Int ?? 0) forks"
-        issuesLabel.text = "\(repo["open_issues_count"] as? Int ?? 0) open issues"
+        // TODO: Repositoryの情報をModelに切り出し、JSONEncoderでデコード処理を行う
+        guard let language = repo["language"] as? String,
+              let starsCount = repo["stargazers_count"] as? Int,
+              let watchersCount = repo["watchers_count"] as? Int,
+              let forksCount = repo["forks_count"] as? Int,
+              let issuesCount = repo["open_issues_count"] as? Int
+        else {
+            fatalError("JSONパースエラー")
+        }
+        languageLabel.text = "Written in \(language)"
+        starsLabel.text = "\(starsCount) stars"
+        watchersLabel.text = "\(watchersCount) watchers"
+        forksLabel.text = "\(forksCount) forks"
+        issuesLabel.text = "\(issuesCount) open issues"
         getImage()
     }
 
