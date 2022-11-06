@@ -33,16 +33,26 @@ class RepositoryDetailViewController: UIViewController {
 
     func getImage() {
         let repo = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
-        titleLabel.text = repo["full_name"] as? String
-        if let owner = repo["owner"] as? [String: Any] {
-            if let imgURL = owner["avatar_url"] as? String {
-                URLSession.shared.dataTask(with: URL(string: imgURL)!) { data, _, _ in
-                    let img = UIImage(data: data!)!
-                    DispatchQueue.main.async {
-                        self.imageView.image = img
-                    }
-                }.resume()
+        if let title = repo["full_name"] as? String {
+            titleLabel.text = title
+        }
+
+        guard let owner = repo["owner"] as? [String: Any],
+              let avatarImagePath = owner["avatar_url"] as? String,
+              let avatarImageURL = URL(string: avatarImagePath)
+        else {
+            return
+        }        
+        URLSession.shared.dataTask(with: avatarImageURL) { data, _, _ in
+            guard let data = data,
+                  let avatarImage = UIImage(data: data)
+            else {
+                return
+            }
+            DispatchQueue.main.async {
+                self.imageView.image = avatarImage
             }
         }
+        .resume()
     }
 }
