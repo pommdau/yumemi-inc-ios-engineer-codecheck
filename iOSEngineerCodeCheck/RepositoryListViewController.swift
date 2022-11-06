@@ -35,9 +35,7 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-
         searchingWord = searchBar.text!
-
         if !searchingWord.isEmpty {
             searchingUrlString = "https://api.github.com/search/repositories?q=\(searchingWord!)"
             task = URLSession.shared.dataTask(with: URL(string: searchingUrlString)!) { data, _, _ in
@@ -57,18 +55,15 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
             // これ呼ばなきゃリストが更新されません
             task?.resume()
         }
-
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         if segue.identifier == "Detail"{
             guard let dtl = segue.destination as? RepositoryDetailViewController else {
                 return
             }
             dtl.repositoryListViewController = self
         }
-
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +71,6 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = UITableViewCell()
         let rp = repositories[indexPath.row]
         cell.textLabel?.text = rp["full_name"] as? String ?? ""
@@ -90,7 +84,6 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
         // 画面遷移時に呼ばれる
         selectedRow = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
-
     }
-
+    
 }
