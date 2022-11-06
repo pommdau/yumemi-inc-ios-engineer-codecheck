@@ -19,13 +19,15 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // 検索フィールドの初期化
+        // TODO: Placeholderへの置き換え
         searchBar.text = "GitHubのリポジトリを検索できるよー"
         searchBar.delegate = self
     }
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // ↓こうすれば初期のテキストを消せる
+        // フォーカス時にテキストをクリアする
+        // TODO: Placeholderへの置き換え
         searchBar.text = ""
         return true
     }
@@ -52,7 +54,7 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
                     // TODO: Add error handling
                 }
             }
-            // これ呼ばなきゃリストが更新されません
+            // 通信の開始
             task?.resume()
         }
     }
