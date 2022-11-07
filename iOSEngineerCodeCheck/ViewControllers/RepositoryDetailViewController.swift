@@ -22,39 +22,23 @@ class RepositoryDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let repo = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
-        // TODO: Repositoryの情報をModelに切り出し、JSONEncoderでデコード処理を行う
-        guard let starsCount = repo["stargazers_count"] as? Int,
-              let watchersCount = repo["watchers_count"] as? Int,
-              let forksCount = repo["forks_count"] as? Int,
-              let issuesCount = repo["open_issues_count"] as? Int
-        else {
-            fatalError("JSONパースエラー")
-        }
-        starsLabel.text = "\(starsCount) stars"
-        watchersLabel.text = "\(watchersCount) watchers"
-        forksLabel.text = "\(forksCount) forks"
-        issuesLabel.text = "\(issuesCount) open issues"
-
-        if let language = repo["language"] as? String {
+        let repository = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
+        starsLabel.text = "\(repository.starsCount) stars"
+        watchersLabel.text = "\(repository.watchersCount) watchers"
+        forksLabel.text = "\(repository.forksCount) forks"
+        issuesLabel.text = "\(repository.openIssuesCount) open issues"
+        if let language = repository.language {
             languageLabel.text = "Written in \(language)"
         } else {
             languageLabel.text = "(not specified language)"
         }
-
         getImage()
     }
 
     func getImage() {
-        let repo = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
-        if let title = repo["full_name"] as? String {
-            titleLabel.text = title
-        }
-
-        guard let owner = repo["owner"] as? [String: Any],
-              let avatarImagePath = owner["avatar_url"] as? String,
-              let avatarImageURL = URL(string: avatarImagePath)
-        else {
+        let repository = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
+        titleLabel.text = repository.fullName
+        guard let avatarImageURL = URL(string: repository.owner.avatarImagePath) else {
             return
         }
         URLSession.shared.dataTask(with: avatarImageURL) { data, _, _ in
