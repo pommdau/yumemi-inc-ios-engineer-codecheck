@@ -24,19 +24,24 @@ class RepositoryDetailViewController: UIViewController {
         super.viewDidLoad()
         let repo = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
         // TODO: Repositoryの情報をModelに切り出し、JSONEncoderでデコード処理を行う
-        guard let language = repo["language"] as? String,
-              let starsCount = repo["stargazers_count"] as? Int,
+        guard let starsCount = repo["stargazers_count"] as? Int,
               let watchersCount = repo["watchers_count"] as? Int,
               let forksCount = repo["forks_count"] as? Int,
               let issuesCount = repo["open_issues_count"] as? Int
         else {
             fatalError("JSONパースエラー")
         }
-        languageLabel.text = "Written in \(language)"
         starsLabel.text = "\(starsCount) stars"
         watchersLabel.text = "\(watchersCount) watchers"
         forksLabel.text = "\(forksCount) forks"
         issuesLabel.text = "\(issuesCount) open issues"
+
+        if let language = repo["language"] as? String {
+            languageLabel.text = "Written in \(language)"
+        } else {
+            languageLabel.text = "(not specified language)"
+        }
+
         getImage()
     }
 
@@ -51,14 +56,17 @@ class RepositoryDetailViewController: UIViewController {
               let avatarImageURL = URL(string: avatarImagePath)
         else {
             return
-        }        
+        }
         URLSession.shared.dataTask(with: avatarImageURL) { data, _, _ in
             guard let data = data,
                   let avatarImage = UIImage(data: data)
             else {
                 return
             }
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let `self` = self else {
+                    return
+                }
                 self.imageView.image = avatarImage
             }
         }

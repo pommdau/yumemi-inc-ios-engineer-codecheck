@@ -53,7 +53,10 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
                     return
                 }
                 self.repositories = items
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self else {
+                        return
+                    }
                     self.tableView.reloadData()
                 }
             } catch {
@@ -78,7 +81,7 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Repository") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Repository")
         let repository = repositories[indexPath.row]
         guard let fullName = repository["full_name"] as? String else {
             fatalError("JSONパースエラー")
