@@ -78,7 +78,7 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Repository") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Repository")
         let repository = repositories[indexPath.row]
         guard let fullName = repository["full_name"] as? String else {
             fatalError("JSONパースエラー")
