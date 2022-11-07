@@ -10,6 +10,8 @@ import UIKit
 
 class RepositoryDetailViewController: UIViewController {
 
+    // MARK: - IBOutlet
+
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var languageLabel: UILabel!
@@ -18,11 +20,24 @@ class RepositoryDetailViewController: UIViewController {
     @IBOutlet private weak var forksLabel: UILabel!
     @IBOutlet private weak var issuesLabel: UILabel!
 
-    var repositoryListViewController: RepositoryListViewController!
+    // MARK: - Properties
+
+    var repository: Repository?
+
+    // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let repository = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
+        configureUI()
+    }
+
+    // MARK: - Helpers
+
+    private func configureUI() {
+        guard let repository = repository else {
+            assertionFailure()
+            return
+        }
         starsLabel.text = "\(repository.starsCount) stars"
         watchersLabel.text = "\(repository.watchersCount) watchers"
         forksLabel.text = "\(repository.forksCount) forks"
@@ -36,7 +51,10 @@ class RepositoryDetailViewController: UIViewController {
     }
 
     func getImage() {
-        let repository = repositoryListViewController.repositories[repositoryListViewController.selectedRow]
+        guard let repository = repository else {
+            assertionFailure()
+            return
+        }
         titleLabel.text = repository.fullName
         guard let avatarImageURL = URL(string: repository.owner.avatarImagePath) else {
             return
