@@ -63,7 +63,10 @@ class RepositoryDetailViewController: UIViewController {
             else {
                 return
             }
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let `self` = self else {
+                    return
+                }
                 self.imageView.image = avatarImage
             }
         }

@@ -53,7 +53,10 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
                     return
                 }
                 self.repositories = items
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self else {
+                        return
+                    }
                     self.tableView.reloadData()
                 }
             } catch {
