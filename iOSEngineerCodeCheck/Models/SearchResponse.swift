@@ -8,10 +8,9 @@
 
 import Foundation
 
-// TODO: itemsの型のジェネリクス化
-struct SearchResponse: Decodable {
+struct SearchResponse<Item: Decodable>: Decodable {
     let totalCount: Int
-    let items: [Repository]
+    let items: [Item]
 
     private enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
