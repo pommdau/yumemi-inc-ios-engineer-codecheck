@@ -34,7 +34,8 @@ extension RepositoryListViewModel {
     }
 
     func createCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Repository") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Repository")
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCellIdentifier.RepositoryListViewCell) ??
+            UITableViewCell(style: .subtitle, reuseIdentifier: ReusableCellIdentifier.RepositoryListViewCell)
         let repository = repositories[indexPath.row]
         cell.textLabel?.text = repository.fullName
         cell.detailTextLabel?.text = repository.language ?? ""

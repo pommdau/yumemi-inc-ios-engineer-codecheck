@@ -26,7 +26,7 @@ class RepositoryListViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Detail"{
+        if segue.identifier == SegueIdentifier.showDetailView {
             guard let detailViewController = segue.destination as? RepositoryDetailViewController,
                   let repository = viewModel.selectedRepository
             else {
@@ -52,7 +52,7 @@ extension RepositoryListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 画面遷移時に呼ばれる
         viewModel.tableViewDidSelectedRowAt(indexPath: indexPath)
-        performSegue(withIdentifier: "Detail", sender: self)
+        performSegue(withIdentifier: SegueIdentifier.showDetailView, sender: self)
     }
 }
 
