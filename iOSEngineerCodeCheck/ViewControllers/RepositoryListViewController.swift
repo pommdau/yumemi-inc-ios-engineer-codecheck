@@ -10,10 +10,12 @@ import UIKit
 
 class RepositoryListViewController: UITableViewController {
 
+    // MARK: - Properties
+
     @IBOutlet private weak var searchBar: UISearchBar!
-    var repositories: [Repository] = []
-    var task: URLSessionTask?
-    var selectedRow: Int = -1
+    private var viewModel: RepositoryListViewModel = .init()
+
+    // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +28,12 @@ class RepositoryListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Detail"{
             guard let detailViewController = segue.destination as? RepositoryDetailViewController,
-                  selectedRow >= 0
+                  let repository = viewModel.selectedRepository
             else {
                 assertionFailure()
                 return
             }
-            detailViewController.viewModel = RepositoryDetailViewModel(repository: repositories[selectedRow])
+            detailViewController.viewModel = RepositoryDetailViewModel(repository: repository)
         }
     }
 }
@@ -40,22 +42,16 @@ class RepositoryListViewController: UITableViewController {
 
 extension RepositoryListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        repositories.count
+        viewModel.repositories.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Repository") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Repository")
-        let repository = repositories[indexPath.row]
-        cell.textLabel?.text = repository.fullName
-        cell.detailTextLabel?.text = repository.language ?? ""
-        cell.tag = indexPath.row
-
-        return cell
+        viewModel.createCell(tableView, cellForRowAt: indexPath)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 画面遷移時に呼ばれる
-        selectedRow = indexPath.row
+        viewModel.tableViewDidSelectedRowAt(indexPath: indexPath)
         performSegue(withIdentifier: "Detail", sender: self)
     }
 }
@@ -64,33 +60,22 @@ extension RepositoryListViewController {
 
 extension RepositoryListViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // フォーカス時にテキストをクリアする
-        // TODO: Placeholderへの置き換え
-        //        searchBar.text = ""
-        return true
+        true
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        task?.cancel()
+        viewModel.searchBarTextDidChange()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let keyword = searchBar.text,
-              !keyword.isEmpty
-        else {
-            return
-        }
-
-        Task {
+        Task.detached {
             do {
-                let response = try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
-                self.repositories = response.items
+                try await self.viewModel.searchBarSearchButtonClicked(keyword: searchBar.text)
                 Task { @MainActor in
                     self.tableView.reloadData()
                 }
             } catch {
-                // TODO: add error handling
-                assertionFailure(error.localizedDescription)
+                await UIAlertController.showAlert(viewController: self, title: "検索エラー", message: error.localizedDescription)
                 return
             }
         }
