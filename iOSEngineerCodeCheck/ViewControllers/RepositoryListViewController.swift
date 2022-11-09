@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
+class RepositoryListViewController: UITableViewController {
 
     @IBOutlet private weak var searchBar: UISearchBar!
     var repositories: [Repository] = []
@@ -23,6 +23,46 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Detail"{
+            guard let detailViewController = segue.destination as? RepositoryDetailViewController,
+                  selectedRow >= 0
+            else {
+                assertionFailure()
+                return
+            }
+            detailViewController.viewModel = RepositoryDetailViewModel(repository: repositories[selectedRow])
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate/DataSource
+
+extension RepositoryListViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        repositories.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Repository") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Repository")
+        let repository = repositories[indexPath.row]
+        cell.textLabel?.text = repository.fullName
+        cell.detailTextLabel?.text = repository.language ?? ""
+        cell.tag = indexPath.row
+
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 画面遷移時に呼ばれる
+        selectedRow = indexPath.row
+        performSegue(withIdentifier: "Detail", sender: self)
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension RepositoryListViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         // フォーカス時にテキストをクリアする
         // TODO: Placeholderへの置き換え
@@ -54,37 +94,5 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
                 return
             }
         }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Detail"{
-            guard let detailViewController = segue.destination as? RepositoryDetailViewController,
-                  selectedRow >= 0
-            else {
-                assertionFailure()
-                return
-            }
-            detailViewController.viewModel = RepositoryDetailViewModel(repository: repositories[selectedRow])
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        repositories.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Repository") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Repository")
-        let repository = repositories[indexPath.row]
-        cell.textLabel?.text = repository.fullName
-        cell.detailTextLabel?.text = repository.language ?? ""
-        cell.tag = indexPath.row
-
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 画面遷移時に呼ばれる
-        selectedRow = indexPath.row
-        performSegue(withIdentifier: "Detail", sender: self)
     }
 }
