@@ -140,7 +140,6 @@
 				DAE8D9D0291B84F400931C32 /* Extensions */,
 				DAE8D9CB291AA36C00931C32 /* ViewModels */,
 				DAE8D9AF2919F2ED00931C32 /* Service */,
-				DAE8D9A1291909D800931C32 /* Models */,
 				DACA2BD22917BDCE002989E0 /* ViewControllers */,
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
 				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
@@ -179,20 +178,10 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		DAE8D9A1291909D800931C32 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				DAE8D9A62919538000931C32 /* SearchResponse.swift */,
-				DAE8D9A229191D0600931C32 /* Repository.swift */,
-				DAE8D9A82919574700931C32 /* User.swift */,
-				DAE8D9C4291A3AB500931C32 /* GitHubAPIError.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		DAE8D9AF2919F2ED00931C32 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DAE8D9D3291B8E8700931C32 /* Models */,
 				DAE8D9BD2919FC4A00931C32 /* GitHubAPIService */,
 				DAE8D9B42919F32000931C32 /* GitHubAPIRequest */,
 			);
@@ -236,6 +225,17 @@
 				DAE8D9D1291B84FF00931C32 /* UIAlertController+showAlert.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DAE8D9D3291B8E8700931C32 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DAE8D9C4291A3AB500931C32 /* GitHubAPIError.swift */,
+				DAE8D9A62919538000931C32 /* SearchResponse.swift */,
+				DAE8D9A229191D0600931C32 /* Repository.swift */,
+				DAE8D9A82919574700931C32 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
