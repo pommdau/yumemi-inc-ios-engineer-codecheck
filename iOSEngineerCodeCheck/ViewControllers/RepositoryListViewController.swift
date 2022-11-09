@@ -11,7 +11,7 @@ import UIKit
 class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet private weak var searchBar: UISearchBar!
-    var repositories: [[String: Any]] = []
+    var repositories: [Repository] = []
     var task: URLSessionTask?
     var selectedRow: Int = -1
 
@@ -26,7 +26,7 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         // フォーカス時にテキストをクリアする
         // TODO: Placeholderへの置き換え
-        searchBar.text = ""
+        //        searchBar.text = ""
         return true
     }
 
@@ -35,44 +35,36 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard
-            let searchingWord = searchBar.text,
-            !searchingWord.isEmpty,
-            let searchingUrl = URL(string: "https://api.github.com/search/repositories?q=\(searchingWord)")
+        guard let keyword = searchBar.text,
+              !keyword.isEmpty
         else {
             return
         }
 
-        task = URLSession.shared.dataTask(with: searchingUrl) { data, _, _ in
+        Task {
             do {
-                guard
-                    let data = data,
-                    let response = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                    let items = response["items"] as? [[String: Any]]
-                else {
-                    return
-                }
-                self.repositories = items
-                DispatchQueue.main.async { [weak self] in
-                    guard let `self` = self else {
-                        return
-                    }
+                let response = try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
+                self.repositories = response.items
+                Task { @MainActor in
                     self.tableView.reloadData()
                 }
             } catch {
-                // TODO: Add Error Handling
+                // TODO: add error handling
+                assertionFailure(error.localizedDescription)
+                return
             }
         }
-        // 通信の開始
-        task?.resume()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Detail"{
-            guard let dtl = segue.destination as? RepositoryDetailViewController else {
+            guard let detailViewController = segue.destination as? RepositoryDetailViewController,
+                  selectedRow >= 0
+            else {
+                assertionFailure()
                 return
             }
-            dtl.repositoryListViewController = self
+            detailViewController.viewModel = RepositoryDetailViewModel(repository: repositories[selectedRow])
         }
     }
 
@@ -83,15 +75,10 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Repository") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Repository")
         let repository = repositories[indexPath.row]
-        guard let fullName = repository["full_name"] as? String else {
-            fatalError("JSONパースエラー")
-        }
-        cell.textLabel?.text = fullName
-        // languageの情報はオプショナル
-        if let language = repository["language"] as? String {
-            cell.detailTextLabel?.text = language
-        }
+        cell.textLabel?.text = repository.fullName
+        cell.detailTextLabel?.text = repository.language ?? ""
         cell.tag = indexPath.row
+
         return cell
     }
 
