@@ -25,7 +25,7 @@ extension GitHubAPIRequest {
         }
 
         public var queryItems: [URLQueryItem] {
-            [URLQueryItem(name: "qqq", value: keyword)]
+            [URLQueryItem(name: "q", value: keyword)]
         }
 
         public var header: [String: String] {

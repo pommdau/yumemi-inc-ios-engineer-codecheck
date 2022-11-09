@@ -28,6 +28,7 @@
 		DAE8D9C12919FC8800931C32 /* GitHubAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9C02919FC8800931C32 /* GitHubAPIServiceProtocol.swift */; };
 		DAE8D9C32919FCB000931C32 /* GitHubAPIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9C22919FCB000931C32 /* GitHubAPIServiceError.swift */; };
 		DAE8D9C5291A3AB500931C32 /* GitHubAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9C4291A3AB500931C32 /* GitHubAPIError.swift */; };
+		DAE8D9CD291B32A700931C32 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9CC291B32A700931C32 /* RepositoryDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		DAE8D9C02919FC8800931C32 /* GitHubAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		DAE8D9C22919FCB000931C32 /* GitHubAPIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIServiceError.swift; sourceTree = "<group>"; };
 		DAE8D9C4291A3AB500931C32 /* GitHubAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIError.swift; sourceTree = "<group>"; };
+		DAE8D9CC291B32A700931C32 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		BFD945DD244DC5E80012785A /* iOSEngineerCodeCheck */ = {
 			isa = PBXGroup;
 			children = (
+				DAE8D9CB291AA36C00931C32 /* ViewModels */,
 				DAE8D9AF2919F2ED00931C32 /* Service */,
 				DAE8D9A1291909D800931C32 /* Models */,
 				DACA2BD22917BDCE002989E0 /* ViewControllers */,
@@ -211,6 +214,14 @@
 				DAE8D9BE2919FC6B00931C32 /* GitHubAPIService+SearchRepositories.swift */,
 			);
 			path = GitHubAPIService;
+			sourceTree = "<group>";
+		};
+		DAE8D9CB291AA36C00931C32 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DAE8D9CC291B32A700931C32 /* RepositoryDetailViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +378,7 @@
 			files = (
 				DAE8D9C32919FCB000931C32 /* GitHubAPIServiceError.swift in Sources */,
 				BFD945E3244DC5E80012785A /* RepositoryListViewController.swift in Sources */,
+				DAE8D9CD291B32A700931C32 /* RepositoryDetailViewModel.swift in Sources */,
 				DAE8D9B62919F33B00931C32 /* GitHubAPIRequest.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */,
 				DAE8D9C12919FC8800931C32 /* GitHubAPIServiceProtocol.swift in Sources */,

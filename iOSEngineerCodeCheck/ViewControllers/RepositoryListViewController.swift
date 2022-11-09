@@ -64,7 +64,7 @@ class RepositoryListViewController: UITableViewController, UISearchBarDelegate {
                 assertionFailure()
                 return
             }
-            detailViewController.repository = repositories[selectedRow]
+            detailViewController.viewModel = RepositoryDetailViewModel(repository: repositories[selectedRow])
         }
     }
 

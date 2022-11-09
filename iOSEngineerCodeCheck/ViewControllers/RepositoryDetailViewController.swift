@@ -22,7 +22,7 @@ class RepositoryDetailViewController: UIViewController {
 
     // MARK: - Properties
 
-    var repository: Repository?
+    var viewModel: RepositoryDetailViewModel?
 
     // MARK: - LifeCycle
 
@@ -34,44 +34,25 @@ class RepositoryDetailViewController: UIViewController {
     // MARK: - Helpers
 
     private func configureUI() {
-        guard let repository = repository else {
+        guard let viewModel else {
             assertionFailure()
             return
         }
-        starsLabel.text = "\(repository.starsCount) stars"
-        watchersLabel.text = "\(repository.watchersCount) watchers"
-        forksLabel.text = "\(repository.forksCount) forks"
-        issuesLabel.text = "\(repository.openIssuesCount) open issues"
-        if let language = repository.language {
-            languageLabel.text = "Written in \(language)"
-        } else {
-            languageLabel.text = "(not specified language)"
-        }
-        getImage()
-    }
+        starsLabel.text = viewModel.starsText
+        watchersLabel.text = viewModel.watchersText
+        forksLabel.text = viewModel.forksText
+        issuesLabel.text = viewModel.issuesText
+        languageLabel.text = viewModel.languageText
+        titleLabel.text = viewModel.titleText
 
-    func getImage() {
-        guard let repository = repository else {
-            assertionFailure()
-            return
-        }
-        titleLabel.text = repository.fullName
-        guard let avatarImageURL = URL(string: repository.owner.avatarImagePath) else {
-            return
-        }
-        URLSession.shared.dataTask(with: avatarImageURL) { data, _, _ in
-            guard let data = data,
-                  let avatarImage = UIImage(data: data)
-            else {
+        Task.detached { [weak self] in
+            guard let self else {
                 return
             }
-            DispatchQueue.main.async { [weak self] in
-                guard let `self` = self else {
-                    return
-                }
+            let avatarImage = try await viewModel.downloadAvatarImage()
+            Task { @MainActor in
                 self.imageView.image = avatarImage
             }
         }
-        .resume()
     }
 }
