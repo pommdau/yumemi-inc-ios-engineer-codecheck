@@ -19,9 +19,8 @@ class RepositoryListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 検索フィールドの初期化
-        // TODO: Placeholderへの置き換え
-        searchBar.text = "github"
+        // 検索フィールドの初期設定
+        searchBar.placeholder = viewModel.searchBarPlaceHolder
         searchBar.delegate = self
 
         // TableViewの初期設定

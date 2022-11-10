@@ -14,6 +14,7 @@ final class RepositoryListViewModel: ObservableObject {
     private(set) var repositories: [Repository] = []
     private var task: URLSessionTask?
     private var selectedRow: Int = -1
+    let searchBarPlaceHolder = "リポジトリ名を入力"
 
     var selectedRepository: Repository? {
         guard
