@@ -29,8 +29,8 @@ extension GitHubAPIServiceProtocol {
               (200..<300).contains(statusCode) else {
             // エラーレスポンス
             #if DEBUG
-            let errorString = String(data: data, encoding: .utf8) ?? ""
-            print(errorString)
+            //            let errorString = String(data: data, encoding: .utf8) ?? ""
+            //            print(errorString)
             #endif
 
             let gitHubAPIError: GitHubAPIError
@@ -44,8 +44,8 @@ extension GitHubAPIServiceProtocol {
 
         // 成功レスポンス
         #if DEBUG
-        let responseString = String(data: data, encoding: .utf8) ?? ""
-        print(responseString)
+        //        let responseString = String(data: data, encoding: .utf8) ?? ""
+        //        print(responseString)
         #endif
         do {
             let response = try JSONDecoder().decode(Request.Response.self, from: data)

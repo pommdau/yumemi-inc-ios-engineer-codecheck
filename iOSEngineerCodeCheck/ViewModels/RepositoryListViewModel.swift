@@ -14,6 +14,7 @@ final class RepositoryListViewModel: ObservableObject {
     private(set) var repositories: [Repository] = []
     private var task: URLSessionTask?
     private var selectedRow: Int = -1
+    let searchBarPlaceHolder = "リポジトリ名を入力"
 
     var selectedRepository: Repository? {
         guard
@@ -34,14 +35,17 @@ extension RepositoryListViewModel {
     }
 
     func createCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Repository") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Repository")
-        let repository = repositories[indexPath.row]
-        cell.textLabel?.text = repository.fullName
-        cell.detailTextLabel?.text = repository.language ?? ""
-        cell.tag = indexPath.row
+        guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ReusableCellIdentifier.RepositoryListCell,
+                for: indexPath) as? RepositoryListCell else {
+            assertionFailure()
+            return UITableViewCell()
+        }
+        cell.configure(for: repositories[indexPath.row])
 
         return cell
     }
+
 }
 
 // MARK: - UISearchBar Methods
