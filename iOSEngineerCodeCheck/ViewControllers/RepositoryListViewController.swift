@@ -54,7 +54,6 @@ extension RepositoryListViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 画面遷移時に呼ばれる
         viewModel.tableViewDidSelectedRowAt(indexPath: indexPath)
         performSegue(withIdentifier: SegueIdentifier.showDetailView, sender: self)
     }
@@ -79,7 +78,9 @@ extension RepositoryListViewController: UISearchBarDelegate {
                     self.tableView.reloadData()
                 }
             } catch {
-                await UIAlertController.showAlert(viewController: self, title: "検索エラー", message: error.localizedDescription)
+                await UIAlertController.showAlert(viewController: self,
+                                                  title: "検索時にエラーが発生しました",
+                                                  message: error.localizedDescription)
                 return
             }
         }

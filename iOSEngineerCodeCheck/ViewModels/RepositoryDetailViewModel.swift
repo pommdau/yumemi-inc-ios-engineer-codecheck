@@ -50,7 +50,7 @@ struct RepositoryDetailViewModel {
     // MARK: Functions
 
     func downloadAvatarImage() async throws -> UIImage? {
-        guard let avatarImageURL = avatarImageURL else {
+        guard let avatarImageURL else {
             assertionFailure()
             return nil
         }
