@@ -23,6 +23,11 @@ class RepositoryListViewController: UITableViewController {
         // TODO: Placeholderへの置き換え
         searchBar.text = "github"
         searchBar.delegate = self
+
+        // TableViewの初期設定
+        tableView.register(UINib(nibName: RepositoryListCell.typeName, bundle: nil),
+                           forCellReuseIdentifier: ReusableCellIdentifier.RepositoryListCell)
+        tableView.reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -9,5 +9,5 @@
 import Foundation
 
 enum ReusableCellIdentifier {
-    static let RepositoryListViewCell = "RepositoryListViewCell"
+    static let RepositoryListCell = "RepositoryListCell"
 }

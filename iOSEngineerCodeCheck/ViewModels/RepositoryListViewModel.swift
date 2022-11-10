@@ -34,15 +34,17 @@ extension RepositoryListViewModel {
     }
 
     func createCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCellIdentifier.RepositoryListViewCell) ??
-            UITableViewCell(style: .subtitle, reuseIdentifier: ReusableCellIdentifier.RepositoryListViewCell)
-        let repository = repositories[indexPath.row]
-        cell.textLabel?.text = repository.fullName
-        cell.detailTextLabel?.text = repository.language ?? ""
-        cell.tag = indexPath.row
+        guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ReusableCellIdentifier.RepositoryListCell,
+                for: indexPath) as? RepositoryListCell else {
+            assertionFailure()
+            return UITableViewCell()
+        }
+        cell.configure(for: repositories[indexPath.row])
 
         return cell
     }
+
 }
 
 // MARK: - UISearchBar Methods
