@@ -38,6 +38,7 @@
 		DAE8D9E2291C852100931C32 /* NameDescribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9E1291C852100931C32 /* NameDescribable.swift */; };
 		DAE8D9EA291F828F00931C32 /* EngineerCodeCheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9E9291F828F00931C32 /* EngineerCodeCheckApp.swift */; };
 		DAE8D9EC291F82A400931C32 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9EB291F82A400931C32 /* ContentView.swift */; };
+		DAE8D9F22920ABB300931C32 /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		DAE8D9E1291C852100931C32 /* NameDescribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDescribable.swift; sourceTree = "<group>"; };
 		DAE8D9E9291F828F00931C32 /* EngineerCodeCheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineerCodeCheckApp.swift; sourceTree = "<group>"; };
 		DAE8D9EB291F82A400931C32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 			children = (
 				DAE8D9DA291C81C300931C32 /* RepositoryListCell.swift */,
 				DAE8D9DE291C82F600931C32 /* RepositoryListCell.xib */,
+				DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */,
 				DAE8D9C12919FC8800931C32 /* GitHubAPIServiceProtocol.swift in Sources */,
 				DAE8D9D8291BF17600931C32 /* ReusableCellIdentifier.swift in Sources */,
+				DAE8D9F22920ABB300931C32 /* RepositoryListView.swift in Sources */,
 				DAE8D9CF291B7B4100931C32 /* RepositoryListViewModel.swift in Sources */,
 				DAE8D9D2291B84FF00931C32 /* UIAlertController+showAlert.swift in Sources */,
 				DAE8D9DB291C81C300931C32 /* RepositoryListCell.swift in Sources */,
