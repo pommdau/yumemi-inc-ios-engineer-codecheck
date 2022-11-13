@@ -10,20 +10,20 @@ import SwiftUI
 
 struct RepositoryListView: View {
 
-    @State private var repositories = ["repo1", "repo2", "repo3"]
     @State private var keyword = ""
+    @StateObject private var viewModel: RepositoryListViewModel = .init()
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(repositories, id: \.self) { repository in
+                ForEach(viewModel.repositories) { repository in
                     NavigationLink {
-                        Text(repository)
+                        RepositoryDetailView(repositoty: repository)
                     } label: {
                         HStack {
-                            Text("<user>/\(repository)")
+                            Text(repository.fullName)
                             Spacer()
-                            Text("<language>")
+                            Text(repository.language ?? "")
                         }
                     }
                 }
@@ -34,7 +34,13 @@ struct RepositoryListView: View {
                     prompt: "GitHubのリポジトリを検索") {
         }
         .onSubmit(of: .search) {
-            repositories.append("new result")
+            Task {
+                do {
+                    try await viewModel.searchButtonPressed(keyword: keyword)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 }
