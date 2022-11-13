@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RepositoryDetailView: View {
 
-    let repositoty: Repository
+    let repository: Repository
 
     var body: some View {
         HStack {
@@ -18,7 +18,7 @@ struct RepositoryDetailView: View {
                 HStack {
                     Image(systemName: "person.fill")
                         .font(.system(size: 40))
-                    Text(repositoty.fullName)
+                    Text(repository.fullName)
                 }
                 .padding(.bottom, 20)
 
@@ -31,19 +31,19 @@ struct RepositoryDetailView: View {
                     GridRow {
                         Image(systemName: "star")
                             .gridColumnAlignment(.center)
-                        Text("\(repositoty.starsCount)")
+                        Text("\(repository.starsCount)")
                             .gridColumnAlignment(.trailing)
                         Text("stars")
                             .gridColumnAlignment(.leading)
                     }
                     GridRow {
                         Image(systemName: "eye")
-                        Text("\(repositoty.watchersCount)")
+                        Text("\(repository.watchersCount)")
                         Text("watching")
                     }
                     GridRow {
                         Image(systemName: "arrow.triangle.branch")
-                        Text("\(repositoty.forksCount)")
+                        Text("\(repository.forksCount)")
                         Text("forks")
                     }
                 }
@@ -53,7 +53,7 @@ struct RepositoryDetailView: View {
 
                 Text("Languages")
                     .font(.title2)
-                Text(repositoty.language ?? "")
+                Text(repository.language ?? "")
 
                 Spacer()
             }
@@ -68,6 +68,6 @@ struct RepositoryDetailView_Previews: PreviewProvider {
     @State static var repository = Repository.sampleData[0]
 
     static var previews: some View {
-        RepositoryDetailView(repositoty: repository)
+        RepositoryDetailView(repository: repository)
     }
 }
