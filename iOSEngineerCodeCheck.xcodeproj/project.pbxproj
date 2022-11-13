@@ -34,6 +34,7 @@
 		DAE8D9EA291F828F00931C32 /* EngineerCodeCheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9E9291F828F00931C32 /* EngineerCodeCheckApp.swift */; };
 		DAE8D9EC291F82A400931C32 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9EB291F82A400931C32 /* ContentView.swift */; };
 		DAE8D9F22920ABB300931C32 /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */; };
+		DAEE4CC52920E5E200123CB9 /* Repository+sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEE4CC42920E5E200123CB9 /* Repository+sampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		DAE8D9E9291F828F00931C32 /* EngineerCodeCheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineerCodeCheckApp.swift; sourceTree = "<group>"; };
 		DAE8D9EB291F82A400931C32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
+		DAEE4CC42920E5E200123CB9 /* Repository+sampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repository+sampleData.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 				DAE8D9C4291A3AB500931C32 /* GitHubAPIError.swift */,
 				DAE8D9A62919538000931C32 /* SearchResponse.swift */,
 				DAE8D9A229191D0600931C32 /* Repository.swift */,
+				DAEE4CC42920E5E200123CB9 /* Repository+sampleData.swift */,
 				DAE8D9A82919574700931C32 /* User.swift */,
 			);
 			path = Models;
@@ -436,6 +439,7 @@
 				DAE8D9A92919574700931C32 /* User.swift in Sources */,
 				DAE8D9B82919F36000931C32 /* GitHubAPIRequest+SearchRepositories.swift in Sources */,
 				DAE8D9BC2919FC4500931C32 /* GitHubAPIService.swift in Sources */,
+				DAEE4CC52920E5E200123CB9 /* Repository+sampleData.swift in Sources */,
 				DAE8D9E2291C852100931C32 /* NameDescribable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,6 +627,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				EXCLUDED_SOURCE_FILE_NAMES = "*+sampleData.swift";
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
