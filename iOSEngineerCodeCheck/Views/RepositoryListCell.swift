@@ -55,8 +55,8 @@ struct RepositoryListCell: View {
     private func languageLabel() -> some View {
         HStack(spacing: 4) {
             Circle()
-                .frame(width: 12, height: 12)
-                .foregroundColor(.red)
+                .frame(width: 14, height: 14)
+                .foregroundColor(GitHubLanguageColor.shared.getColor(withName: repository.language))
             Text(repository.language ?? "")
                 .foregroundColor(.secondary)
         }

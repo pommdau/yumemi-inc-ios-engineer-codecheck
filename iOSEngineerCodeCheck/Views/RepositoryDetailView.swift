@@ -66,7 +66,7 @@ struct RepositoryDetailView: View {
                 HStack(spacing: 8) {
                     Circle()
                         .frame(width: 14, height: 14)
-                        .foregroundColor(.red)
+                        .foregroundColor(GitHubLanguageColor.shared.getColor(withName: repository.language))
                     Text(repository.language ?? "")
                 }
             }
