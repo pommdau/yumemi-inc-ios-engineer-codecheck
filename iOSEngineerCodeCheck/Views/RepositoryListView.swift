@@ -18,13 +18,9 @@ struct RepositoryListView: View {
             List {
                 ForEach(viewModel.repositories) { repository in
                     NavigationLink {
-                        RepositoryDetailView(repositoty: repository)
+                        RepositoryDetailView(repository: repository)
                     } label: {
-                        HStack {
-                            Text(repository.fullName)
-                            Spacer()
-                            Text(repository.language ?? "")
-                        }
+                        RepositoryListCell(repository: repository)
                     }
                 }
             }
