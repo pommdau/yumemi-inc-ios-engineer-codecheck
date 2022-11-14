@@ -186,13 +186,6 @@
 			path = iOSEngineerCodeCheckUITests;
 			sourceTree = "<group>";
 		};
-		DA2505B229221B9D00C31B70 /* RepositoryListView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RepositoryListView;
-			sourceTree = "<group>";
-		};
 		DAE8D9AF2919F2ED00931C32 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,7 +258,6 @@
 		DAE8D9D9291C815100931C32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DA2505B229221B9D00C31B70 /* RepositoryListView */,
 				DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */,
 				DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */,
 				DAEE4CC629211D2E00123CB9 /* RepositoryDetailView.swift */,

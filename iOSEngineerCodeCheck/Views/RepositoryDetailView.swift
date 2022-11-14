@@ -27,8 +27,6 @@ struct RepositoryDetailView: View {
                 .bold()
                 .padding(.vertical, 2)
 
-            Text("<description>")
-
             Grid {
                 GridRow {
                     Image(systemName: "star")
