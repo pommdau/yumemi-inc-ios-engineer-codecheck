@@ -10,53 +10,69 @@ import SwiftUI
 
 struct RepositoryDetailView: View {
 
-    let repositoty: Repository
+    let repository: Repository
 
     var body: some View {
-        HStack {
+
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: "person.fill")
+                    .font(.system(size: 28))
+                Text(repository.fullName)
+                    .foregroundColor(.secondary)
+            }
+
+            Text(repository.name)
+                .font(.title2)
+                .bold()
+                .padding(.vertical, 2)
+
+            Text("<description>")
+
+            Grid {
+                GridRow {
+                    Image(systemName: "star")
+                        .foregroundColor(.secondary)
+                        .gridColumnAlignment(.center)
+                    Text("\(repository.starsCount)")
+                        .bold()
+                        .gridColumnAlignment(.trailing)
+                    Text("stars")
+                        .foregroundColor(.secondary)
+                        .gridColumnAlignment(.leading)
+                }
+                GridRow {
+                    Image(systemName: "eye")
+                        .foregroundColor(.secondary)
+                    Text("\(repository.watchersCount)")
+                        .bold()
+                    Text("watching")
+                        .foregroundColor(.secondary)
+                }
+                GridRow {
+                    Image(systemName: "arrow.triangle.branch")
+                        .foregroundColor(.secondary)
+                    Text("\(repository.forksCount)")
+                        .bold()
+                    Text("forks")
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding(.vertical)
+
+            Divider()
+
             VStack(alignment: .leading) {
-                HStack {
-                    Image(systemName: "person.fill")
-                        .font(.system(size: 40))
-                    Text(repositoty.fullName)
-                }
-                .padding(.bottom, 20)
-
-                Text("About")
-                    .font(.title2)
-
-                Text("<description>")
-
-                Grid {
-                    GridRow {
-                        Image(systemName: "star")
-                            .gridColumnAlignment(.center)
-                        Text("\(repositoty.starsCount)")
-                            .gridColumnAlignment(.trailing)
-                        Text("stars")
-                            .gridColumnAlignment(.leading)
-                    }
-                    GridRow {
-                        Image(systemName: "eye")
-                        Text("\(repositoty.watchersCount)")
-                        Text("watching")
-                    }
-                    GridRow {
-                        Image(systemName: "arrow.triangle.branch")
-                        Text("\(repositoty.forksCount)")
-                        Text("forks")
-                    }
-                }
-                .padding(.vertical)
-
-                Divider()
-
                 Text("Languages")
                     .font(.title2)
-                Text(repositoty.language ?? "")
-
-                Spacer()
+                HStack(spacing: 8) {
+                    Circle()
+                        .frame(width: 14, height: 14)
+                        .foregroundColor(.red)
+                    Text(repository.language ?? "")
+                }
             }
+
             Spacer()
         }
         .padding()
@@ -68,6 +84,6 @@ struct RepositoryDetailView_Previews: PreviewProvider {
     @State static var repository = Repository.sampleData[0]
 
     static var previews: some View {
-        RepositoryDetailView(repositoty: repository)
+        RepositoryDetailView(repository: repository)
     }
 }
