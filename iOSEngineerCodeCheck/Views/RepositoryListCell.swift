@@ -52,7 +52,7 @@ struct RepositoryListCell_Previews: PreviewProvider {
         RepositoryListCell(repository: Repository.sampleData[0])
             .previewLayout(.fixed(width: 400, height: 400))
             .padding()
-        
+
         RepositoryListCell(repository: Repository.sampleData[1])
             .previewLayout(.fixed(width: 400, height: 400))
             .padding()

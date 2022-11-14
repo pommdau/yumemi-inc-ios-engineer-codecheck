@@ -15,16 +15,19 @@ struct RepositoryListView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(viewModel.repositories) { repository in
-                    NavigationLink {
-                        RepositoryDetailView(repository: repository)
-                    } label: {
-                        RepositoryListCell(repository: repository)
-                    }
+            Group {
+                switch viewModel.repositories {
+                case .idle:
+                    idledView()
+                case .loading:
+                    ProgressView("検索しています…")
+                case .failed(let error):
+                    failedView(error: error)
+                case let .loaded(repositories):
+                    loadedView(repositories: repositories)
                 }
             }
-            .navigationTitle("GitHubリポジトリの検索")
+            .navigationTitle("GitHubリポジトリ検索")
             .navigationBarTitleDisplayMode(.inline)
         }
         .searchable(text: $keyword,
@@ -37,6 +40,46 @@ struct RepositoryListView: View {
                     try await viewModel.searchButtonPressed(keyword: keyword)
                 } catch {
                     print(error.localizedDescription)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func idledView() -> some View {
+        VStack {
+            Text("検索してみましょう")
+                .font(.title)
+                .bold()
+                .padding()
+            Text("GitHub内のリポジトリが検索できます")
+                .foregroundColor(.secondary)
+        }
+    }
+
+    @ViewBuilder
+    private func failedView(error: Error) -> some View {
+        VStack {
+            Group {
+                Text("リポジトリの検索中にエラーが発生しました")
+                    .padding(.bottom, 8)
+                Text(error.localizedDescription)
+            }
+            .foregroundColor(.secondary)
+        }
+    }
+
+    @ViewBuilder
+    private func loadedView(repositories: [Repository]) -> some View {
+        if repositories.isEmpty {
+            Text("該当するリポジトリが見つかりませんでした")
+                .fontWeight(.bold)
+        } else {
+            List(repositories) { repository in
+                NavigationLink {
+                    RepositoryDetailView(repository: repository)
+                } label: {
+                    RepositoryListCell(repository: repository)
                 }
             }
         }

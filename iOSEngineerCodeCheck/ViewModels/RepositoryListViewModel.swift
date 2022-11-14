@@ -10,7 +10,7 @@ import UIKit
 
 @MainActor
 final class RepositoryListViewModel: ObservableObject {
-    @Published private(set) var repositories: [Repository] = Repository.sampleData
+    @Published private(set) var repositories: Stateful<[Repository]> = .idle
     private var task: URLSessionTask?
 }
 
@@ -26,8 +26,12 @@ extension RepositoryListViewModel {
         guard !keyword.isEmpty else {
             return
         }
-        let response = try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
-        repositories = response.items
+        repositories = .loading
+        do {
+            let response = try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
+            repositories = .loaded(response.items)
+        } catch {
+            repositories = .failed(error)
+        }
     }
-
 }
