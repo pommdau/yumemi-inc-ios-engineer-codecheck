@@ -24,10 +24,12 @@ struct RepositoryListView: View {
                     }
                 }
             }
+            .navigationTitle("GitHubリポジトリの検索")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .searchable(text: $keyword,
                     placement: .automatic,
-                    prompt: "GitHubのリポジトリを検索") {
+                    prompt: "検索") {
         }
         .onSubmit(of: .search) {
             Task {
