@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct RepositoryDetailView: View {
 
@@ -16,18 +17,21 @@ struct RepositoryDetailView: View {
 
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: "person.fill")
-                    .font(.system(size: 28))
-                Text(repository.fullName)
+                WebImage(url: URL(string: repository.owner.avatarImagePath))
+                    .resizable()
+                    .placeholder(Image(systemName: "person.fill"))
+                    .frame(maxWidth: 60, maxHeight: 60)
+                Text(repository.owner.name)
+                    .font(.title2)
                     .foregroundColor(.secondary)
             }
 
             Text(repository.name)
-                .font(.title2)
+                .font(.title)
                 .bold()
                 .padding(.vertical, 2)
 
-            Grid {
+            Grid(verticalSpacing: 8) {
                 GridRow {
                     Image(systemName: "star")
                         .foregroundColor(.secondary)
