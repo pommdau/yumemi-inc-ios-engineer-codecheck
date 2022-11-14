@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct RepositoryListCell: View {
 
@@ -35,8 +36,10 @@ struct RepositoryListCell: View {
     @ViewBuilder
     private func userLabel() -> some View {
         HStack {
-            Image(systemName: "person.fill")
-                .font(.system(size: 24))
+            WebImage(url: URL(string: repository.owner.avatarImagePath))
+                .resizable()
+                .placeholder(Image(systemName: "person.fill"))
+                .frame(width: 24, height: 24)
             Text(repository.owner.name)
                 .foregroundColor(.secondary)
         }
