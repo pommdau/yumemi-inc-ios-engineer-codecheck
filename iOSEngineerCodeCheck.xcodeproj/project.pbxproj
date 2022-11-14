@@ -14,6 +14,8 @@
 		BFD945F6244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945F5244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift */; };
 		BFD94601244DC5EC0012785A /* IOSEngineerCodeCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD94600244DC5EC0012785A /* IOSEngineerCodeCheckUITests.swift */; };
 		DA1F8B9629213ED9002B286C /* RepositoryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */; };
+		DA2505AB2922136000C31B70 /* Stateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2505AA2922136000C31B70 /* Stateful.swift */; };
+		DA2505B42922235200C31B70 /* MessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2505B32922235200C31B70 /* MessageError.swift */; };
 		DAE8D9A329191D0600931C32 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A229191D0600931C32 /* Repository.swift */; };
 		DAE8D9A72919538000931C32 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A62919538000931C32 /* SearchResponse.swift */; };
 		DAE8D9A92919574700931C32 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A82919574700931C32 /* User.swift */; };
@@ -69,6 +71,8 @@
 		BFD94600244DC5EC0012785A /* IOSEngineerCodeCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSEngineerCodeCheckUITests.swift; sourceTree = "<group>"; };
 		BFD94602244DC5EC0012785A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListCell.swift; sourceTree = "<group>"; };
+		DA2505AA2922136000C31B70 /* Stateful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stateful.swift; sourceTree = "<group>"; };
+		DA2505B32922235200C31B70 /* MessageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageError.swift; sourceTree = "<group>"; };
 		DAA00AEA2914FABD00EB1481 /* README_Git.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_Git.md; sourceTree = "<group>"; };
 		DAA00AEB2915009100EB1481 /* README_SwiftLint.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_SwiftLint.md; sourceTree = "<group>"; };
 		DAA00AED291500F700EB1481 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -254,8 +258,8 @@
 		DAE8D9D9291C815100931C32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */,
 				DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */,
+				DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */,
 				DAEE4CC629211D2E00123CB9 /* RepositoryDetailView.swift */,
 			);
 			path = Views;
@@ -265,6 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				DAE8D9E1291C852100931C32 /* NameDescribable.swift */,
+				DA2505AA2922136000C31B70 /* Stateful.swift */,
+				DA2505B32922235200C31B70 /* MessageError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -423,6 +429,7 @@
 				DAE8D9C32919FCB000931C32 /* GitHubAPIServiceError.swift in Sources */,
 				DAE8D9EC291F82A400931C32 /* ContentView.swift in Sources */,
 				DAE8D9B62919F33B00931C32 /* GitHubAPIRequest.swift in Sources */,
+				DA2505AB2922136000C31B70 /* Stateful.swift in Sources */,
 				DAEE4CC729211D2E00123CB9 /* RepositoryDetailView.swift in Sources */,
 				DAE8D9C12919FC8800931C32 /* GitHubAPIServiceProtocol.swift in Sources */,
 				DAE8D9D8291BF17600931C32 /* ReusableCellIdentifier.swift in Sources */,
@@ -430,6 +437,7 @@
 				DAE8D9CF291B7B4100931C32 /* RepositoryListViewModel.swift in Sources */,
 				DAE8D9D2291B84FF00931C32 /* UIAlertController+showAlert.swift in Sources */,
 				DAE8D9A72919538000931C32 /* SearchResponse.swift in Sources */,
+				DA2505B42922235200C31B70 /* MessageError.swift in Sources */,
 				DAE8D9C5291A3AB500931C32 /* GitHubAPIError.swift in Sources */,
 				DAE8D9A329191D0600931C32 /* Repository.swift in Sources */,
 				DAE8D9B12919F2F500931C32 /* HTTPMethod.swift in Sources */,

@@ -14,35 +14,51 @@ struct RepositoryListCell: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: "person.fill")
-                    .font(.system(size: 24))
-                Text(repository.owner.name)
-                    .foregroundColor(.secondary)
-            }
+            userLabel()
 
             Text(repository.name)
                 .font(.title2)
                 .bold()
                 .padding(.vertical, 2)
 
-            Text("<description>")
-
-            HStack {
-                HStack(spacing: 4) {
-                    Image(systemName: "star")
-                    Text("\(repository.starsCount)")
-                }
-                .foregroundColor(.secondary)
-
-                HStack(spacing: 4) {
-                    Circle()
-                        .frame(width: 18, height: 18)
-                        .foregroundColor(.red)
-                    Text(repository.language ?? "")
-                        .foregroundColor(.secondary)
+            HStack(spacing: 18) {
+                starsLabel()
+                if (repository.language?.isEmpty) != nil {
+                    languageLabel()
                 }
             }
+        }
+    }
+
+    // MARK: - ViewBuilder
+
+    @ViewBuilder
+    private func userLabel() -> some View {
+        HStack {
+            Image(systemName: "person.fill")
+                .font(.system(size: 24))
+            Text(repository.owner.name)
+                .foregroundColor(.secondary)
+        }
+    }
+
+    @ViewBuilder
+    private func starsLabel() -> some View {
+        HStack(spacing: 2) {
+            Image(systemName: "star")
+            Text("\(repository.starsCount)")
+        }
+        .foregroundColor(.secondary)
+    }
+
+    @ViewBuilder
+    private func languageLabel() -> some View {
+        HStack(spacing: 4) {
+            Circle()
+                .frame(width: 12, height: 12)
+                .foregroundColor(.red)
+            Text(repository.language ?? "")
+                .foregroundColor(.secondary)
         }
     }
 }
@@ -52,7 +68,7 @@ struct RepositoryListCell_Previews: PreviewProvider {
         RepositoryListCell(repository: Repository.sampleData[0])
             .previewLayout(.fixed(width: 400, height: 400))
             .padding()
-        
+
         RepositoryListCell(repository: Repository.sampleData[1])
             .previewLayout(.fixed(width: 400, height: 400))
             .padding()
