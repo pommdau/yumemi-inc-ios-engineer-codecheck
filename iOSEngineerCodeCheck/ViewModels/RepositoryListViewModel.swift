@@ -27,11 +27,17 @@ extension RepositoryListViewModel {
             return
         }
         repositories = .loading
+
         do {
-            let response = try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
-            repositories = .loaded(response.items)
+            let repositories = try await searchRepositories(keyword: keyword)
+            self.repositories = .loaded(repositories)
         } catch {
-            repositories = .failed(error)
+            self.repositories = .failed(error)
         }
+    }
+
+    // サブスレッドで実行させるためnoisolatedを使用する
+    nonisolated private func searchRepositories(keyword: String) async throws -> [Repository] {
+        try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
     }
 }
