@@ -16,6 +16,7 @@
 		DA1F8B9629213ED9002B286C /* RepositoryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */; };
 		DA2505AB2922136000C31B70 /* Stateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2505AA2922136000C31B70 /* Stateful.swift */; };
 		DA2505B42922235200C31B70 /* MessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2505B32922235200C31B70 /* MessageError.swift */; };
+		DA29F69D2923DDA300EBC58C /* RepositoryListSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29F69C2923DDA300EBC58C /* RepositoryListSearchResultView.swift */; };
 		DA34B641292229D400C052BD /* github-lang-colors.json in Resources */ = {isa = PBXBuildFile; fileRef = DA34B640292229D400C052BD /* github-lang-colors.json */; };
 		DA34B6622922492A00C052BD /* GitHubLanguageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B6612922492A00C052BD /* GitHubLanguageColor.swift */; };
 		DA34B6642922495000C052BD /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B6632922495000C052BD /* Color+hex.swift */; };
@@ -77,6 +78,7 @@
 		DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListCell.swift; sourceTree = "<group>"; };
 		DA2505AA2922136000C31B70 /* Stateful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stateful.swift; sourceTree = "<group>"; };
 		DA2505B32922235200C31B70 /* MessageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageError.swift; sourceTree = "<group>"; };
+		DA29F69C2923DDA300EBC58C /* RepositoryListSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListSearchResultView.swift; sourceTree = "<group>"; };
 		DA34B640292229D400C052BD /* github-lang-colors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "github-lang-colors.json"; sourceTree = "<group>"; };
 		DA34B6612922492A00C052BD /* GitHubLanguageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLanguageColor.swift; sourceTree = "<group>"; };
 		DA34B6632922495000C052BD /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */,
 				DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */,
+				DA29F69C2923DDA300EBC58C /* RepositoryListSearchResultView.swift */,
 				DAEE4CC629211D2E00123CB9 /* RepositoryDetailView.swift */,
 			);
 			path = Views;
@@ -443,7 +446,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint autocorrect --format\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null [ \\\"$ENABLE_PREVIEWS\\\" == \\\"NO\\\" ]; then\n  # swiftlint autocorrect --format\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -459,6 +462,7 @@
 				DAEE4CC729211D2E00123CB9 /* RepositoryDetailView.swift in Sources */,
 				DAE8D9C12919FC8800931C32 /* GitHubAPIServiceProtocol.swift in Sources */,
 				DAE8D9D8291BF17600931C32 /* ReusableCellIdentifier.swift in Sources */,
+				DA29F69D2923DDA300EBC58C /* RepositoryListSearchResultView.swift in Sources */,
 				DAE8D9F22920ABB300931C32 /* RepositoryListView.swift in Sources */,
 				DAE8D9CF291B7B4100931C32 /* RepositoryListViewModel.swift in Sources */,
 				DAE8D9D2291B84FF00931C32 /* UIAlertController+showAlert.swift in Sources */,

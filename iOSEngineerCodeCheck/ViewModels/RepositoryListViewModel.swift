@@ -11,33 +11,43 @@ import UIKit
 @MainActor
 final class RepositoryListViewModel: ObservableObject {
     @Published private(set) var repositories: Stateful<[Repository]> = .idle
-    private var task: URLSessionTask?
+    @Published var keyword = ""
+    private var task: Task<(), Never>? = nil
 }
 
 // MARK: - Handle Searching Methods
 
 extension RepositoryListViewModel {
+    
+    func cancelSearching() {
+        task?.cancel()
+        task = nil
+    }
 
-    //    func searchBarTextDidChange() {
-    //        task?.cancel()
-    //    }
-
-    func searchButtonPressed(keyword: String) async throws {
+    func searchButtonPressed() async throws {
         guard !keyword.isEmpty else {
             return
         }
         repositories = .loading
-
-        do {
-            let repositories = try await searchRepositories(keyword: keyword)
-            self.repositories = .loaded(repositories)
-        } catch {
-            self.repositories = .failed(error)
+        task = Task {
+            do {
+                let repositories = try await searchRepositories(keyword: keyword)
+                self.repositories = .loaded(repositories)
+            } catch {
+                if Task.isCancelled {
+                    repositories = .idle
+                } else {
+                    self.repositories = .failed(error)
+                }
+            }
         }
     }
 
     // サブスレッドで実行させるためnoisolatedを使用する
     nonisolated private func searchRepositories(keyword: String) async throws -> [Repository] {
-        try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
+        #if DEBUG
+        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理のデバッグ用。
+        #endif
+        return try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
     }
 }
