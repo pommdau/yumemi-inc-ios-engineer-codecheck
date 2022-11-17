@@ -29,7 +29,7 @@ extension GitHubAPIRequest {
         }
 
         public var header: [String: String] {
-            .init()
+            ["Accept": "application/vnd.github.v3+json"]
         }
 
         public var body: Data? {

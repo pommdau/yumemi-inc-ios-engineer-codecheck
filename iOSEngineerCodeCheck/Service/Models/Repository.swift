@@ -19,9 +19,11 @@ struct Repository: Identifiable, Codable {
     let forksCount: Int
     let openIssuesCount: Int
     let language: String?
+    let htmlPath: String  // リポジトリのURL
+    let website: String?  // 設定したホームページ
+    let description: String?
     
     // その他補完されて取得される情報
-    var description: String?
     var subscribersCount: Int?
 
     private enum CodingKeys: String, CodingKey {
@@ -34,10 +36,12 @@ struct Repository: Identifiable, Codable {
         case forksCount = "forks_count"
         case openIssuesCount = "open_issues_count"
         case language
+        case htmlPath = "html_url"
+        case website = "homepage"
+        case description
     }
     
     mutating func update(withRepositoryDetail detail: RepositoryDetail) {
-        self.description = detail.description
         self.subscribersCount = detail.subscribersCount
     }
 }

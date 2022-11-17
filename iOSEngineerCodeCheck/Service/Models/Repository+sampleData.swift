@@ -17,26 +17,33 @@ extension Repository {
               owner:
                 User(id: 10639145,
                      name: "apple",
-                     avatarImagePath: "https://avatars.githubusercontent.com/u/10639145?v=4"),
+                     avatarImagePath: "https://avatars.githubusercontent.com/u/10639145?v=4",
+                     htmlPath: "https://github.com/apple"),
               starsCount: 61080,
               watchersCount: 2100,
               forksCount: 9815,
               openIssuesCount: 6175,
               language: "C++",
+              htmlPath: "https://github.com/apple/swift",
+              website: "https://www.swift.org/",
               description: "The Swift Programming Language",
               subscribersCount: 2508),
         .init(id: 20682114,
-              name: "SwiftLanguageWeather",
+              name: "SwiftLanguageWeather_longlonglonglonglonglonglonglong",
               fullName: "JakeLin/SwiftLanguageWeather",
               owner:
                 User(id: 573856,
-                     name: "JakeLin",
-                     avatarImagePath: "https://avatars.githubusercontent.com/u/573856?v=4"),
+                     name: "JakeLin_longlonglonglonglonglonglonglong",
+                     avatarImagePath: "https://avatars.githubusercontent.com/u/573856?v=4",
+                     htmlPath: "https://github.com/apple"),
               starsCount: 5202,
               watchersCount: 300,
               forksCount: 1220,
               openIssuesCount: 9,
-              language: "Swift")
+              language: "Swift",
+              htmlPath: "https://github.com/JakeLin/SwiftLanguageWeather",
+              website: nil,
+              description: nil)
     ]
 
 }
