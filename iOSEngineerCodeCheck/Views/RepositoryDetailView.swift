@@ -34,7 +34,6 @@ struct RepositoryDetailView: View {
                 .placeholder(Image(systemName: "person.fill"))
                 .frame(maxWidth: 40, maxHeight: 40)
                 .cornerRadius(20)
-            
             Button {
                 guard let url = URL(string: repository.owner.htmlPath) else {
                     return
@@ -77,7 +76,7 @@ struct RepositoryDetailView: View {
                     Image(systemName: "star")
                         .foregroundColor(.secondary)
                         .gridColumnAlignment(.center)
-                    Text("\(repository.starsCount)")
+                    Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repository.starsCount))")
                         .bold()
                         .gridColumnAlignment(.trailing)
                     Text("stars")
@@ -97,7 +96,7 @@ struct RepositoryDetailView: View {
                 GridRow {
                     Image(systemName: "arrow.triangle.branch")
                         .foregroundColor(.secondary)
-                    Text("\(repository.forksCount)")
+                    Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repository.forksCount))")
                         .bold()
                     Text("forks")
                         .foregroundColor(.secondary)
@@ -105,7 +104,7 @@ struct RepositoryDetailView: View {
                 GridRow {
                     Image(systemName: "circle.circle")
                         .foregroundColor(.secondary)
-                    Text("\(repository.openIssuesCount)")
+                    Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repository.openIssuesCount))")
                         .bold()
                     Text("issues")
                         .foregroundColor(.secondary)

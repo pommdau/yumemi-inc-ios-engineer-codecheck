@@ -18,6 +18,7 @@ struct RepositoryListCell: View {
             userLabel(userName: repository.owner.name,
                       avatarImagePath: repository.owner.avatarImagePath)
             Text(repository.name)
+                .lineLimit(1)
                 .font(.title2)
                 .bold()
                 .padding(.vertical, 2)
@@ -57,7 +58,7 @@ struct RepositoryListCell: View {
     private func starsLabel(starsCount: Int) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "star")
-            Text("\(starsCount)")
+            Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(starsCount))")
         }
         .foregroundColor(.secondary)
     }
