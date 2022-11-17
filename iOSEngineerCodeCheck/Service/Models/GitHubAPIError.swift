@@ -8,6 +8,7 @@
 
 import Foundation
 
+// ref: https://docs.github.com/en/rest/overview/resources-in-the-rest-api#client-errors
 public struct GitHubAPIError: Decodable, Error {
     public struct Error: Decodable {
         public var resource: String
@@ -16,5 +17,5 @@ public struct GitHubAPIError: Decodable, Error {
     }
 
     public var message: String  // レスポンスのJSONに必ず含まれる
-    public var errors: [Error]
+    public var errors: [Error?]?
 }

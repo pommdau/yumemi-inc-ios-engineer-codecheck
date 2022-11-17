@@ -11,10 +11,10 @@ import Foundation
 extension GitHubAPIRequest {
 
     public struct SearchRepositories: GitHubAPIRequestProtocol {
-        public let keyword: String
+        
         public typealias Response = SearchResponse<Repository>
-
-        // MARK: - Properties
+        
+        public let keyword: String
 
         public var method: HTTPMethod {
             .get

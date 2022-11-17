@@ -51,8 +51,19 @@ struct RepositoryListSearchResultView: View {
         VStack {
             Group {
                 Text("リポジトリの検索中にエラーが発生しました")
-                    .padding(.bottom, 8)
-                Text(error.localizedDescription)
+                    .padding(.bottom, 8)                
+                if let serviceError = error as? GitHubAPIServiceError {
+                    switch serviceError {
+                    case .connectionError(let error):
+                        Text(error.localizedDescription)
+                    case .responseParseError(let error):
+                        Text(error.localizedDescription)
+                    case .apiError(let gitHubAPIError):
+                        Text(gitHubAPIError.message)
+                    }
+                } else {
+                    Text(error.localizedDescription)
+                }
             }
             .foregroundColor(.secondary)
         }

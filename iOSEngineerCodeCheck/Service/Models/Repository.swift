@@ -9,6 +9,7 @@
 import Foundation
 
 struct Repository: Identifiable, Codable {
+    // GitHubAPIService.SearchRepositoriesで取得される情報
     let id: Int
     let name: String  // e.g. "Tetris"
     let fullName: String  // e.g. "dtrupenn/Tetris"
@@ -18,6 +19,10 @@ struct Repository: Identifiable, Codable {
     let forksCount: Int
     let openIssuesCount: Int
     let language: String?
+    
+    // その他補完されて取得される情報
+    var description: String?
+    var subscribersCount: Int?
 
     private enum CodingKeys: String, CodingKey {
         case id
@@ -29,5 +34,10 @@ struct Repository: Identifiable, Codable {
         case forksCount = "forks_count"
         case openIssuesCount = "open_issues_count"
         case language
+    }
+    
+    mutating func update(withRepositoryDetail detail: RepositoryDetail) {
+        self.description = detail.description
+        self.subscribersCount = detail.subscribersCount
     }
 }
