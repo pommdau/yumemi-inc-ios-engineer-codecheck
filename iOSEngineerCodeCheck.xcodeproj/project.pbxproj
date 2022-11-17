@@ -24,6 +24,7 @@
 		DA34B6622922492A00C052BD /* GitHubLanguageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B6612922492A00C052BD /* GitHubLanguageColor.swift */; };
 		DA34B6642922495000C052BD /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B6632922495000C052BD /* Color+hex.swift */; };
 		DA34B66729224EE100C052BD /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA34B66629224EE100C052BD /* SDWebImageSwiftUI */; };
+		DA66ED152925E6EB007D5F99 /* GitHubAPIError+sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */; };
 		DAE8D9A329191D0600931C32 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A229191D0600931C32 /* Repository.swift */; };
 		DAE8D9A72919538000931C32 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A62919538000931C32 /* SearchResponse.swift */; };
 		DAE8D9A92919574700931C32 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A82919574700931C32 /* User.swift */; };
@@ -88,6 +89,7 @@
 		DA34B640292229D400C052BD /* github-lang-colors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "github-lang-colors.json"; sourceTree = "<group>"; };
 		DA34B6612922492A00C052BD /* GitHubLanguageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLanguageColor.swift; sourceTree = "<group>"; };
 		DA34B6632922495000C052BD /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
+		DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIError+sampleData.swift"; sourceTree = "<group>"; };
 		DAA00AEA2914FABD00EB1481 /* README_Git.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_Git.md; sourceTree = "<group>"; };
 		DAA00AEB2915009100EB1481 /* README_SwiftLint.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_SwiftLint.md; sourceTree = "<group>"; };
 		DAA00AED291500F700EB1481 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				DAE8D9C4291A3AB500931C32 /* GitHubAPIError.swift */,
+				DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */,
 				DAE8D9A62919538000931C32 /* SearchResponse.swift */,
 				DAE8D9A229191D0600931C32 /* Repository.swift */,
 				DAEE4CC42920E5E200123CB9 /* Repository+sampleData.swift */,
@@ -476,6 +479,7 @@
 				DA29F69D2923DDA300EBC58C /* RepositoryListSearchResultView.swift in Sources */,
 				DAE8D9F22920ABB300931C32 /* RepositoryListView.swift in Sources */,
 				DAE8D9CF291B7B4100931C32 /* RepositoryListViewModel.swift in Sources */,
+				DA66ED152925E6EB007D5F99 /* GitHubAPIError+sampleData.swift in Sources */,
 				DAE8D9D2291B84FF00931C32 /* UIAlertController+showAlert.swift in Sources */,
 				DAE8D9A72919538000931C32 /* SearchResponse.swift in Sources */,
 				DA2505B42922235200C31B70 /* MessageError.swift in Sources */,

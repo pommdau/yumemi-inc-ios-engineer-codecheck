@@ -18,11 +18,13 @@ extension GitHubAPIService {
             let response = try await request(with: GitHubAPIRequest.SearchRepositories(keyword: keyword))
             var repositories = response.items
             
+            /* TODO: API制限に引っかかってしまうため、別の方法で代替すること
             // リポジトリの詳細情報を取得して情報を追加する
             let details = try await GitHubAPIService.FetchRepositoryDetail.shared.fetchRepositoryDetails(withRepositories: repositories)
             for (index, _) in details.enumerated() {
                 repositories[index].update(withRepositoryDetail: details[index])
             }
+             */
             
             return repositories
         }
