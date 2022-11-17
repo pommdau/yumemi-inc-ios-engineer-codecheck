@@ -1,8 +1,8 @@
 //
-//  GitHubAPIRequest+SearchRepositories.swift
+//  GitHubAPIRequest+GetRepositoryDetail.swift
 //  iOSEngineerCodeCheck
 //
-//  Created by HIROKI IKEUCHI on 2022/11/08.
+//  Created by HIROKI IKEUCHI on 2022/11/17.
 //  Copyright © 2022 YUMEMI Inc. All rights reserved.
 //
 
@@ -10,26 +10,26 @@ import Foundation
 
 extension GitHubAPIRequest {
 
-    public struct SearchRepositories: GitHubAPIRequestProtocol {
+    public struct GetRepositoryDetail: GitHubAPIRequestProtocol {
         
-        public typealias Response = SearchResponse<Repository>
-        
-        public let keyword: String
+        public typealias Response = RepositoryDetail
+        public let userName: String
+        public let repositoryName: String
 
         public var method: HTTPMethod {
             .get
         }
 
         public var path: String {
-            "/search/repositories"
+            "/repos/\(userName)/\(repositoryName)"
         }
 
         public var queryItems: [URLQueryItem] {
-            [URLQueryItem(name: "q", value: keyword)]
+            []
         }
 
         public var header: [String: String] {
-            .init()
+            ["Accept": "application/vnd.github.v3+json"]
         }
 
         public var body: Data? {
