@@ -14,9 +14,9 @@ extension GitHubAPIService {
 
         static let shared: SearchRepositories = .init()
 
-        func searchRepositories(keyword: String) async throws -> GitHubAPIRequest.SearchRepositories.Response {
+        func searchRepositories(keyword: String) async throws -> [Repository] {
             let response = try await request(with: GitHubAPIRequest.SearchRepositories(keyword: keyword))
-            return response
+            return response.items
         }
     }
 }
