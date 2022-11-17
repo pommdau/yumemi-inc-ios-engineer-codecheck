@@ -16,7 +16,15 @@ extension GitHubAPIService {
 
         func searchRepositories(keyword: String) async throws -> [Repository] {
             let response = try await request(with: GitHubAPIRequest.SearchRepositories(keyword: keyword))
-            return response.items
+            var repositories = response.items
+            
+            // リポジトリの詳細情報を取得して情報を追加する
+            let details = try await GitHubAPIService.FetchRepositoryDetail.shared.fetchRepositoryDetails(withRepositories: repositories)
+            for (index, _) in details.enumerated() {
+                repositories[index].update(withRepositoryDetail: details[index])
+            }
+            
+            return repositories
         }
     }
 }
