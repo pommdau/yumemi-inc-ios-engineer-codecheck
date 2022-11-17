@@ -110,6 +110,23 @@ struct RepositoryDetailView: View {
                     Text("issues")
                         .foregroundColor(.secondary)
                 }
+                
+                if let website = repository.website {
+                    GridRow {
+                        Image(systemName: "link")
+                            .foregroundColor(.secondary)
+                        Button {
+                            guard let url = URL(string: website) else {
+                                return
+                            }
+                            UIApplication.shared.open(url)
+                        } label: {
+                            Text("\(website)")
+                                .bold()
+                        }
+                        .gridCellColumns(3)
+                    }
+                }
             }
         }
     }
@@ -136,8 +153,8 @@ struct RepositoryDetailView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            RepositoryDetailView(repository: Repository.sampleData[1])
             RepositoryDetailView(repository: Repository.sampleData[0])
+            RepositoryDetailView(repository: Repository.sampleData[1])
         }
     }
 }

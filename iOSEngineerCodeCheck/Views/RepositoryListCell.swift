@@ -38,8 +38,10 @@ struct RepositoryListCell: View {
                 .resizable()
                 .placeholder(Image(systemName: "person.fill"))
                 .frame(width: 24, height: 24)
+                .cornerRadius(12)
             Text(userName)
                 .foregroundColor(.secondary)
+                .lineLimit(1)
         }
     }
     
@@ -77,12 +79,15 @@ struct RepositoryListCell: View {
 
 struct RepositoryListCell_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryListCell(repository: Repository.sampleData[0])
-            .previewLayout(.fixed(width: 400, height: 400))
-            .padding()
-
-        RepositoryListCell(repository: Repository.sampleData[1])
-            .previewLayout(.fixed(width: 400, height: 400))
-            .padding()
+        
+        Group {
+            RepositoryListCell(repository: Repository.sampleData[0])
+                .previewLayout(.fixed(width: 200, height: 400))
+                .padding()
+            
+            RepositoryListCell(repository: Repository.sampleData[1])
+                .previewLayout(.fixed(width: 200, height: 400))
+                .padding()
+        }
     }
 }
