@@ -16,21 +16,62 @@ struct RepositoryDetailView: View {
     var body: some View {
 
         VStack(alignment: .leading) {
-            HStack {
-                WebImage(url: URL(string: repository.owner.avatarImagePath))
-                    .resizable()
-                    .placeholder(Image(systemName: "person.fill"))
-                    .frame(maxWidth: 60, maxHeight: 60)
+            titleSection(repository: repository)
+            Divider()
+            aboutSection(repository: repository)
+            Divider()
+            languageSection(language: repository.language)
+            Spacer()
+        }
+        .padding(.horizontal, 20)
+    }
+        
+    @ViewBuilder
+    private func titleSection(repository: Repository) -> some View {
+        HStack(spacing: 8) {
+            WebImage(url: URL(string: repository.owner.avatarImagePath))
+                .resizable()
+                .placeholder(Image(systemName: "person.fill"))
+                .frame(maxWidth: 40, maxHeight: 40)
+                .cornerRadius(20)
+            
+            Button {
+                guard let url = URL(string: repository.owner.htmlPath) else {
+                    return
+                }
+                UIApplication.shared.open(url)
+            } label: {
                 Text(repository.owner.name)
+                    .lineLimit(1)
                     .font(.title2)
-                    .foregroundColor(.secondary)
             }
-
-            Text(repository.name)
-                .font(.title)
+            Text("/")
+            Button {
+                guard let url = URL(string: repository.htmlPath) else {
+                    return
+                }
+                UIApplication.shared.open(url)
+            } label: {
+                Text(repository.name)
+                    .lineLimit(1)
+                    .font(.title2)
+                    .bold()
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func aboutSection(repository: Repository) -> some View {
+        VStack(alignment: .leading) {
+            Text("About")
+                .font(.title2)
                 .bold()
-                .padding(.vertical, 2)
-
+                .padding(.vertical)
+            if let description = repository.description,
+               !description.isEmpty {
+                Text(repository.description ?? "(description)")
+                    .padding(.bottom, 8)
+            }
             Grid(verticalSpacing: 8) {
                 GridRow {
                     Image(systemName: "star")
@@ -43,6 +84,7 @@ struct RepositoryDetailView: View {
                         .foregroundColor(.secondary)
                         .gridColumnAlignment(.leading)
                 }
+                /*
                 GridRow {
                     Image(systemName: "eye")
                         .foregroundColor(.secondary)
@@ -51,6 +93,7 @@ struct RepositoryDetailView: View {
                     Text("watching")
                         .foregroundColor(.secondary)
                 }
+                 */
                 GridRow {
                     Image(systemName: "arrow.triangle.branch")
                         .foregroundColor(.secondary)
@@ -59,33 +102,59 @@ struct RepositoryDetailView: View {
                     Text("forks")
                         .foregroundColor(.secondary)
                 }
+                GridRow {
+                    Image(systemName: "circle.circle")
+                        .foregroundColor(.secondary)
+                    Text("\(repository.openIssuesCount)")
+                        .bold()
+                    Text("issues")
+                        .foregroundColor(.secondary)
+                }
+                
+                if let website = repository.website {
+                    GridRow {
+                        Image(systemName: "link")
+                            .foregroundColor(.secondary)
+                        Button {
+                            guard let url = URL(string: website) else {
+                                return
+                            }
+                            UIApplication.shared.open(url)
+                        } label: {
+                            Text("\(website)")
+                                .bold()
+                        }
+                        .gridCellColumns(3)
+                    }
+                }
             }
-            .padding(.vertical)
-
-            Divider()
-
+        }
+    }
+    
+    @ViewBuilder
+    private func languageSection(language: String?) -> some View {
+        if let language, !language.isEmpty {
             VStack(alignment: .leading) {
-                Text("Languages")
+                Text("Language")
                     .font(.title2)
+                    .bold()
                 HStack(spacing: 8) {
                     Circle()
                         .frame(width: 14, height: 14)
-                        .foregroundColor(GitHubLanguageColor.shared.getColor(withName: repository.language))
+                        .foregroundColor(GitHubLanguageColor.shared.getColor(withName: language))
                     Text(repository.language ?? "")
                 }
             }
-
-            Spacer()
         }
-        .padding()
     }
 }
 
 struct RepositoryDetailView_Previews: PreviewProvider {
 
-    @State static var repository = Repository.sampleData[0]
-
     static var previews: some View {
-        RepositoryDetailView(repository: repository)
+        Group {
+            RepositoryDetailView(repository: Repository.sampleData[0])
+            RepositoryDetailView(repository: Repository.sampleData[1])
+        }
     }
 }
