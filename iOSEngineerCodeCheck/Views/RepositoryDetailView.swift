@@ -17,9 +17,7 @@ struct RepositoryDetailView: View {
 
         VStack(alignment: .leading) {
             titleSection(repository: repository)
-            Divider()
             aboutSection(repository: repository)
-            Divider()
             languageSection(language: repository.language)
             Spacer()
         }
@@ -61,6 +59,7 @@ struct RepositoryDetailView: View {
     
     @ViewBuilder
     private func aboutSection(repository: Repository) -> some View {
+        Divider()
         VStack(alignment: .leading) {
             Text("About")
                 .font(.title2)
@@ -133,6 +132,7 @@ struct RepositoryDetailView: View {
     @ViewBuilder
     private func languageSection(language: String?) -> some View {
         if let language, !language.isEmpty {
+            Divider()
             VStack(alignment: .leading) {
                 Text("Language")
                     .font(.title2)
