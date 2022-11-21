@@ -67,9 +67,10 @@ struct RepositoryDetailView: View {
                 .padding(.vertical)
             if let description = repository.description,
                !description.isEmpty {
-                Text(repository.description ?? "(description)")
+                Text(description)
                     .padding(.bottom, 8)
             }
+            
             Grid(verticalSpacing: 8) {
                 GridRow {
                     Image(systemName: "star")
@@ -109,7 +110,8 @@ struct RepositoryDetailView: View {
                         .foregroundColor(.secondary)
                 }
                 
-                if let website = repository.website {
+                if let website = repository.website,
+                   !website.isEmpty {
                     GridRow {
                         Image(systemName: "link")
                             .foregroundColor(.secondary)
@@ -131,7 +133,8 @@ struct RepositoryDetailView: View {
     
     @ViewBuilder
     private func languageSection(language: String?) -> some View {
-        if let language, !language.isEmpty {
+        if let language,
+           !language.isEmpty {
             Divider()
             VStack(alignment: .leading) {
                 Text("Language")
