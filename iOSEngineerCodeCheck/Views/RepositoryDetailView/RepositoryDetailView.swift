@@ -39,8 +39,8 @@ struct RepositoryDetailView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            RepositoryDetailView(repository: Repository.sampleData[1])
             RepositoryDetailView(repository: Repository.sampleData[0])
+            RepositoryDetailView(repository: Repository.sampleData[1])
         }
     }
 }

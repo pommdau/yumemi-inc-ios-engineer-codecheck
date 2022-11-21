@@ -215,8 +215,22 @@
 		DA95570E292B33CA00DED60D /* RepositoryDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				DAEE4CC629211D2E00123CB9 /* RepositoryDetailView.swift */,
+				DA95570A292B312900DED60D /* TitleSection.swift */,
+				DA955708292B2FA400DED60D /* AboutSection.swift */,
+				DA95570C292B318100DED60D /* LanguageSection.swift */,
 			);
 			path = RepositoryDetailView;
+			sourceTree = "<group>";
+		};
+		DA95570F292B340B00DED60D /* RepositoryListView */ = {
+			isa = PBXGroup;
+			children = (
+				DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */,
+				DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */,
+				DA29F69C2923DDA300EBC58C /* RepositoryListSearchResultView.swift */,
+			);
+			path = RepositoryListView;
 			sourceTree = "<group>";
 		};
 		DAE8D9AF2919F2ED00931C32 /* Service */ = {
@@ -278,14 +292,8 @@
 		DAE8D9D9291C815100931C32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DA1F8B9529213ED9002B286C /* RepositoryListCell.swift */,
-				DAE8D9F12920ABB300931C32 /* RepositoryListView.swift */,
-				DA29F69C2923DDA300EBC58C /* RepositoryListSearchResultView.swift */,
+				DA95570F292B340B00DED60D /* RepositoryListView */,
 				DA95570E292B33CA00DED60D /* RepositoryDetailView */,
-				DAEE4CC629211D2E00123CB9 /* RepositoryDetailView.swift */,
-				DA95570A292B312900DED60D /* TitleSection.swift */,
-				DA955708292B2FA400DED60D /* AboutSection.swift */,
-				DA95570C292B318100DED60D /* LanguageSection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
