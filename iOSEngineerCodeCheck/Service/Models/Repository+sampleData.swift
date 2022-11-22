@@ -12,11 +12,11 @@ extension Repository {
 
     static let sampleData: [Repository] = [
         .init(id: 44838949,
-              name: "swift",
+              name: "swiftapple_apple_apple_apple_apple_apple_apple_apple_apple_apple_apple_apple_apple_",
               fullName: "apple/swift",
               owner:
                 User(id: 10639145,
-                     name: "apple",
+                     name: "appleapple_apple_apple_apple_apple_apple_apple_apple_apple_",
                      avatarImagePath: "https://avatars.githubusercontent.com/u/10639145?v=4",
                      htmlPath: "https://github.com/apple"),
               starsCount: 61080,
@@ -40,7 +40,7 @@ extension Repository {
               watchersCount: 300,
               forksCount: 1220,
               openIssuesCount: 9,
-              language: "Swift",
+              language: nil,
               htmlPath: "https://github.com/JakeLin/SwiftLanguageWeather",
               website: nil,
               description: nil)
