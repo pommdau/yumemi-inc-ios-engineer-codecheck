@@ -49,5 +49,6 @@ struct TitleSection: View {
 struct TitleSection_Previews: PreviewProvider {
     static var previews: some View {
         TitleSection(repository: Repository.sampleData[0])
+            .previewLayout(.fixed(width: 600, height: 200))
     }
 }

@@ -31,5 +31,7 @@ struct LanguageSection: View {
 struct LanguageSection_Previews: PreviewProvider {
     static var previews: some View {
         LanguageSection(language: "Swift")
+            .previewLayout(.fixed(width: 400, height: 200))
     }
+    
 }

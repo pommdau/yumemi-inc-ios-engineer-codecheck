@@ -17,11 +17,7 @@ struct RepositoryListCell: View {
         VStack(alignment: .leading) {
             userLabel(userName: repository.owner.name,
                       avatarImagePath: repository.owner.avatarImagePath)
-            Text(repository.name)
-                .lineLimit(1)
-                .font(.title2)
-                .bold()
-                .padding(.vertical, 2)
+            repositoryNameLabel(name: repository.name)
             descriptionLabel(repository: repository)
             HStack(spacing: 18) {
                 starsLabel(starsCount: repository.starsCount)
@@ -44,6 +40,15 @@ struct RepositoryListCell: View {
                 .foregroundColor(.secondary)
                 .lineLimit(1)
         }
+    }
+    
+    @ViewBuilder
+    private func repositoryNameLabel(name: String) -> some View {
+        Text(name)
+            .lineLimit(1)
+            .font(.title2)
+            .bold()
+            .padding(.vertical, 2)
     }
     
     @ViewBuilder
