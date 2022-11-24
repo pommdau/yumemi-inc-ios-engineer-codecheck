@@ -12,12 +12,6 @@ import XCTest
 
 final class RepositoryTests: XCTestCase {
 
-    override func setUpWithError() throws {
-    }
-
-    override func tearDownWithError() throws {
-    }
-
     func testDecode() throws {
         let jsonDecoder = JSONDecoder()
         let data = Repository.sampleJSON.data(using: .utf8)!
@@ -42,5 +36,5 @@ final class RepositoryTests: XCTestCase {
         XCTAssertEqual(user.avatarImagePath, "https://avatars.githubusercontent.com/u/15658638?v=4")
         XCTAssertEqual(user.htmlPath, "https://github.com/tensorflow")
     }
-
+    
 }
