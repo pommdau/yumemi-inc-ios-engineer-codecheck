@@ -28,6 +28,8 @@
 		DA955709292B2FA400DED60D /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955708292B2FA400DED60D /* AboutSection.swift */; };
 		DA95570B292B312900DED60D /* TitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570A292B312900DED60D /* TitleSection.swift */; };
 		DA95570D292B318100DED60D /* LanguageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570C292B318100DED60D /* LanguageSection.swift */; };
+		DA955711292C625400DED60D /* Repository+sampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955710292C625400DED60D /* Repository+sampleJSON.swift */; };
+		DA955719292EFDCB00DED60D /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955718292EFDCB00DED60D /* RepositoryTests.swift */; };
 		DAE8D9A329191D0600931C32 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A229191D0600931C32 /* Repository.swift */; };
 		DAE8D9A72919538000931C32 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A62919538000931C32 /* SearchResponse.swift */; };
 		DAE8D9A92919574700931C32 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A82919574700931C32 /* User.swift */; };
@@ -93,6 +95,8 @@
 		DA955708292B2FA400DED60D /* AboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = "<group>"; };
 		DA95570A292B312900DED60D /* TitleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSection.swift; sourceTree = "<group>"; };
 		DA95570C292B318100DED60D /* LanguageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSection.swift; sourceTree = "<group>"; };
+		DA955710292C625400DED60D /* Repository+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repository+sampleJSON.swift"; sourceTree = "<group>"; };
+		DA955718292EFDCB00DED60D /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
 		DAA00AEA2914FABD00EB1481 /* README_Git.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_Git.md; sourceTree = "<group>"; };
 		DAA00AEB2915009100EB1481 /* README_SwiftLint.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_SwiftLint.md; sourceTree = "<group>"; };
 		DAA00AED291500F700EB1481 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 		BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */ = {
 			isa = PBXGroup;
 			children = (
+				DA955716292EFDB200DED60D /* Service */,
 				BFD945F5244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
@@ -231,6 +236,23 @@
 				DA29F69C2923DDA300EBC58C /* RepositoryListSearchResultView.swift */,
 			);
 			path = RepositoryListView;
+			sourceTree = "<group>";
+		};
+		DA955716292EFDB200DED60D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DA955717292EFDB700DED60D /* Models */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		DA955717292EFDB700DED60D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA955718292EFDCB00DED60D /* RepositoryTests.swift */,
+				DA955710292C625400DED60D /* Repository+sampleJSON.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DAE8D9AF2919F2ED00931C32 /* Service */ = {
@@ -458,7 +480,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null [ \\\"$ENABLE_PREVIEWS\\\" == \\\"NO\\\" ]; then\n  # swiftlint autocorrect --format\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null [ \\\"$ENABLE_PREVIEWS\\\" == \\\"NO\\\" ]; then\n  # swiftlint autocorrect --format\n  # swiftlint\n  echo \"debug\"\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -509,6 +531,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD945F6244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift in Sources */,
+				DA955711292C625400DED60D /* Repository+sampleJSON.swift in Sources */,
+				DA955719292EFDCB00DED60D /* RepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,7 +694,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -688,9 +712,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				EXCLUDED_SOURCE_FILE_NAMES = "*+sampleData.swift";
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"*+sampleData.swift",
+					"*+sampleJSON.swift",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -708,8 +735,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7G9J68NLX;
+				DEVELOPMENT_TEAM = BWMJMJK727;
 				INFOPLIST_FILE = iOSEngineerCodeCheckTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -729,8 +757,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7G9J68NLX;
+				DEVELOPMENT_TEAM = BWMJMJK727;
 				INFOPLIST_FILE = iOSEngineerCodeCheckTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -749,8 +778,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7G9J68NLX;
+				DEVELOPMENT_TEAM = BWMJMJK727;
 				INFOPLIST_FILE = iOSEngineerCodeCheckUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -769,8 +799,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7G9J68NLX;
+				DEVELOPMENT_TEAM = BWMJMJK727;
 				INFOPLIST_FILE = iOSEngineerCodeCheckUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
