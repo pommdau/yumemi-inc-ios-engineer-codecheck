@@ -25,6 +25,10 @@
 		DA34B6642922495000C052BD /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B6632922495000C052BD /* Color+hex.swift */; };
 		DA34B66729224EE100C052BD /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA34B66629224EE100C052BD /* SDWebImageSwiftUI */; };
 		DA66ED152925E6EB007D5F99 /* GitHubAPIError+sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */; };
+		DA6BA6A5292F275200B1B98C /* SearchResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6A4292F275200B1B98C /* SearchResponseTests.swift */; };
+		DA6BA6A7292F277700B1B98C /* SearchResponse+sampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */; };
+		DA6BA6A92930B1B000B1B98C /* GitHubAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */; };
+		DA6BA6AB2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */; };
 		DA955709292B2FA400DED60D /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955708292B2FA400DED60D /* AboutSection.swift */; };
 		DA95570B292B312900DED60D /* TitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570A292B312900DED60D /* TitleSection.swift */; };
 		DA95570D292B318100DED60D /* LanguageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570C292B318100DED60D /* LanguageSection.swift */; };
@@ -96,6 +100,10 @@
 		DA34B6612922492A00C052BD /* GitHubLanguageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLanguageColor.swift; sourceTree = "<group>"; };
 		DA34B6632922495000C052BD /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 		DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIError+sampleData.swift"; sourceTree = "<group>"; };
+		DA6BA6A4292F275200B1B98C /* SearchResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseTests.swift; sourceTree = "<group>"; };
+		DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResponse+sampleJSON.swift"; sourceTree = "<group>"; };
+		DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIErrorTests.swift; sourceTree = "<group>"; };
+		DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIError+sampleJSON.swift"; sourceTree = "<group>"; };
 		DA955708292B2FA400DED60D /* AboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = "<group>"; };
 		DA95570A292B312900DED60D /* TitleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSection.swift; sourceTree = "<group>"; };
 		DA95570C292B318100DED60D /* LanguageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSection.swift; sourceTree = "<group>"; };
@@ -257,10 +265,14 @@
 		DA955717292EFDB700DED60D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */,
+				DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */,
 				DA955718292EFDCB00DED60D /* RepositoryTests.swift */,
 				DA955710292C625400DED60D /* Repository+sampleJSON.swift */,
 				DA95571B292F0EE500DED60D /* UserTests.swift */,
 				DA95571E292F0F0100DED60D /* User+sampleJSON.swift */,
+				DA6BA6A4292F275200B1B98C /* SearchResponseTests.swift */,
+				DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -502,7 +514,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null [ \\\"$ENABLE_PREVIEWS\\\" == \\\"NO\\\" ]; then\n  # swiftlint autocorrect --format\n  # swiftlint\n  echo \"debug\"\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null [ \\\"$ENABLE_PREVIEWS\\\" == \\\"NO\\\" ]; then\n  # swiftlint autocorrect --format\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -552,11 +564,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA6BA6A5292F275200B1B98C /* SearchResponseTests.swift in Sources */,
 				DA95571C292F0EE500DED60D /* UserTests.swift in Sources */,
+				DA6BA6AB2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift in Sources */,
 				BFD945F6244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift in Sources */,
 				DA955711292C625400DED60D /* Repository+sampleJSON.swift in Sources */,
 				DA955719292EFDCB00DED60D /* RepositoryTests.swift in Sources */,
 				DA95571F292F0F0100DED60D /* User+sampleJSON.swift in Sources */,
+				DA6BA6A92930B1B000B1B98C /* GitHubAPIErrorTests.swift in Sources */,
+				DA6BA6A7292F277700B1B98C /* SearchResponse+sampleJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
