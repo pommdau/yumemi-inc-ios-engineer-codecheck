@@ -207,7 +207,7 @@
 		BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */ = {
 			isa = PBXGroup;
 			children = (
-				DA955716292EFDB200DED60D /* Service */,
+				DA955717292EFDB700DED60D /* MappingTest */,
 				BFD945F5244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
@@ -254,15 +254,7 @@
 			path = RepositoryListView;
 			sourceTree = "<group>";
 		};
-		DA955716292EFDB200DED60D /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				DA955717292EFDB700DED60D /* Models */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		DA955717292EFDB700DED60D /* Models */ = {
+		DA955717292EFDB700DED60D /* MappingTest */ = {
 			isa = PBXGroup;
 			children = (
 				DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */,
@@ -274,7 +266,7 @@
 				DA6BA6A4292F275200B1B98C /* SearchResponseTests.swift */,
 				DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */,
 			);
-			path = Models;
+			path = MappingTest;
 			sourceTree = "<group>";
 		};
 		DA955721292F155E00DED60D /* Frameworks */ = {
