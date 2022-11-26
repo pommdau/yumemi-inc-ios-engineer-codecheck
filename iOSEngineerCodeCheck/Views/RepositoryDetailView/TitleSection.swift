@@ -15,11 +15,18 @@ struct TitleSection: View {
     
     var body: some View {
         HStack(spacing: 8) {
-            WebImage(url: URL(string: repository.owner.avatarImagePath))
-                .resizable()
-                .placeholder(Image(systemName: "person.fill"))
-                .frame(maxWidth: 40, maxHeight: 40)
-                .cornerRadius(20)
+            Button {
+                guard let url = URL(string: repository.owner.htmlPath) else {
+                    return
+                }
+                UIApplication.shared.open(url)
+            } label: {
+                WebImage(url: URL(string: repository.owner.avatarImagePath))
+                    .resizable()
+                    .placeholder(Image(systemName: "person.fill"))
+                    .frame(maxWidth: 40, maxHeight: 40)
+                    .cornerRadius(20)
+            }
             Button {
                 guard let url = URL(string: repository.owner.htmlPath) else {
                     return
