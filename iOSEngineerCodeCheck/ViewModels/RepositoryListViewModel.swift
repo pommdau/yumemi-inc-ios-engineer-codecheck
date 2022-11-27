@@ -9,7 +9,8 @@
 import UIKit
 
 @MainActor
-final class RepositoryListViewModel: ObservableObject {
+final class RepositoryListViewModel<SearchRepositories>: ObservableObject
+where SearchRepositories: SearchRepositoriesProtocol {
     @Published private(set) var repositories: Stateful<[Repository]> = .idle
     @Published var keyword = ""
     private var task: Task<(), Never>? = nil
@@ -28,6 +29,7 @@ extension RepositoryListViewModel {
         guard !keyword.isEmpty else {
             return
         }
+        
         repositories = .loading
         task = Task {
             do {
@@ -48,6 +50,6 @@ extension RepositoryListViewModel {
         #if DEBUG
         try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理のデバッグ用。
         #endif
-        return try await GitHubAPIService.SearchRepositories.shared.searchRepositories(keyword: keyword)
+        return try await SearchRepositories.shared.search(keyword: keyword)
     }
 }
