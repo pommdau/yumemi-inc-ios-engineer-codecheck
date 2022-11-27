@@ -24,11 +24,7 @@ struct RepositoryListView: View {
                             prompt: "検索") {
                 }.onSubmit(of: .search) {
                     Task {
-                        do {
-                            try await viewModel.searchButtonPressed()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
+                        await viewModel.searchButtonPressed()
                     }
                 }
         }

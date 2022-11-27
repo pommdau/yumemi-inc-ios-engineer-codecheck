@@ -13,7 +13,7 @@ final class RepositoryListViewModel<SearchRepositories>: ObservableObject
 where SearchRepositories: SearchRepositoriesProtocol {
     @Published private(set) var repositories: Stateful<[Repository]> = .idle
     @Published var keyword = ""
-    private var task: Task<(), Never>? = nil
+    private(set) var task: Task<(), Never>? = nil
 }
 
 // MARK: - Handle Searching Methods
@@ -25,17 +25,16 @@ extension RepositoryListViewModel {
         task = nil
     }
 
-    func searchButtonPressed() async throws {
-                        
+    func searchButtonPressed() async {
         if keyword.isEmpty {
             return
         }
-        
         repositories = .loading
         task = Task {
             do {
                 let repositories = try await searchRepositories(keyword: keyword)
                 self.repositories = .loaded(repositories)
+                print("stop")
             } catch {
                 if Task.isCancelled {
                     repositories = .idle
@@ -49,7 +48,7 @@ extension RepositoryListViewModel {
     // サブスレッドで実行させるためnoisolatedを使用する
     nonisolated private func searchRepositories(keyword: String) async throws -> [Repository] {
         #if DEBUG
-        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理のデバッグ用。
+//        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理のデバッグ用。
         #endif
         return try await SearchRepositories.shared.search(keyword: keyword)
     }
