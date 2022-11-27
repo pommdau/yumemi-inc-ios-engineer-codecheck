@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RepositoryListView: View {
     
-    @StateObject private var viewModel = RepositoryListViewModel()
+    @StateObject private var viewModel: RepositoryListViewModel<SearchRepositories> = .init()
     
     var body: some View {
         NavigationView {
