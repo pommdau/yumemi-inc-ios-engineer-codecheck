@@ -26,7 +26,8 @@ extension RepositoryListViewModel {
     }
 
     func searchButtonPressed() async throws {
-        guard !keyword.isEmpty else {
+                        
+        if keyword.isEmpty {
             return
         }
         

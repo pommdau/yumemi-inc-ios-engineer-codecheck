@@ -23,6 +23,7 @@ struct RepositoryListCell: View {
                 starsLabel(starsCount: repository.starsCount)
                 languageLabel(language: repository.language)
             }
+            .padding(.top, 2)
         }
     }
 
@@ -56,6 +57,7 @@ struct RepositoryListCell: View {
         if let description = repository.description,
            !description.isEmpty {
             Text(description)
+                .lineLimit(1)
         }
     }
 

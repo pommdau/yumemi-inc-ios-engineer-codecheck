@@ -9,13 +9,13 @@
 import Foundation
 
 // ref: https://docs.github.com/en/rest/overview/resources-in-the-rest-api#client-errors
-public struct GitHubAPIError: Decodable, Error {
-    public struct Error: Decodable {
-        public var resource: String
-        public var field: String
-        public var code: String
+struct GitHubAPIError: Decodable, Error {
+    struct Error: Decodable {
+        var resource: String
+        var field: String
+        var code: String
     }
 
-    public var message: String  // レスポンスのJSONに必ず含まれる
-    public var errors: [Error?]?
+    var message: String  // レスポンスのJSONに必ず含まれる
+    var errors: [Error?]?
 }

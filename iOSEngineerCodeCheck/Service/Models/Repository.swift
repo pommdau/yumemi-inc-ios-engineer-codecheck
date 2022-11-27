@@ -20,11 +20,22 @@ struct Repository: Identifiable, Codable {
     let openIssuesCount: Int
     let language: String?
     let htmlPath: String  // リポジトリのURL
-    let website: String?  // 設定したホームページ
+    let websitePath: String?  // 設定したホームページ
     let description: String?
     
     // その他補完されて取得される情報
     var subscribersCount: Int?
+    
+    var htmlURL: URL? {
+        URL(string: htmlPath)
+    }
+    
+    var websiteURL: URL? {
+        guard let websitePath else {
+            return nil
+        }
+        return URL(string: websitePath)
+    }
 
     private enum CodingKeys: String, CodingKey {
         case id
@@ -37,7 +48,7 @@ struct Repository: Identifiable, Codable {
         case openIssuesCount = "open_issues_count"
         case language
         case htmlPath = "html_url"
-        case website = "homepage"
+        case websitePath = "homepage"
         case description
     }
     

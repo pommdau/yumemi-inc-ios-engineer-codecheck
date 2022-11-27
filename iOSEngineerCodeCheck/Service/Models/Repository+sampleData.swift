@@ -25,7 +25,7 @@ extension Repository {
               openIssuesCount: 6175,
               language: "C++",
               htmlPath: "https://github.com/apple/swift",
-              website: "https://www.swift.org/",
+              websitePath: "https://www.swift.org/",
               description: "The Swift Programming Language",
               subscribersCount: 2508),
         .init(id: 20682114,
@@ -42,8 +42,8 @@ extension Repository {
               openIssuesCount: 9,
               language: nil,
               htmlPath: "https://github.com/JakeLin/SwiftLanguageWeather",
-              website: nil,
-              description: nil)
+              websitePath: nil,
+              description: "The Swift Programming Language")
     ]
 
 }

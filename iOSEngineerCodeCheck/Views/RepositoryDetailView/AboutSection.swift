@@ -28,7 +28,7 @@ struct AboutSection: View {
 //                wachersGridRow(watchersCount: repository.watchersCount)
                 forksGridRow(forksCount: repository.forksCount)
                 issuesGridRow(issuesCount: repository.openIssuesCount)
-                websiteGridRow(website: repository.website)
+                websiteGridRow(websiteURL: repository.websiteURL)
             }
         }
     }
@@ -87,19 +87,15 @@ struct AboutSection: View {
     }
     
     @ViewBuilder
-    private func websiteGridRow(website: String?) -> some View {
-        if let website,
-           !website.isEmpty {
+    private func websiteGridRow(websiteURL: URL?) -> some View {
+        if let websiteURL {
             GridRow {
                 Image(systemName: "link")
                     .foregroundColor(.secondary)
                 Button {
-                    guard let url = URL(string: website) else {
-                        return
-                    }
-                    UIApplication.shared.open(url)
+                    UIApplication.shared.open(websiteURL)
                 } label: {
-                    Text("\(website)")
+                    Text("\(websiteURL.absoluteString)")
                         .lineLimit(1)
                         .bold()
                 }

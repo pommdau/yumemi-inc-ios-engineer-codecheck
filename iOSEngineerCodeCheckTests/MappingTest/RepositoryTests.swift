@@ -27,7 +27,7 @@ final class RepositoryTests: XCTestCase {
         XCTAssertEqual(repository.openIssuesCount, 37)
         XCTAssertEqual(repository.language, "Jupyter Notebook")
         XCTAssertEqual(repository.htmlPath, "https://github.com/tensorflow/swift")
-        XCTAssertEqual(repository.website, "https://tensorflow.org/swift")
+        XCTAssertEqual(repository.websitePath, "https://tensorflow.org/swift")
         XCTAssertEqual(repository.description, "Swift for TensorFlow")
         
         // User情報のデコード
