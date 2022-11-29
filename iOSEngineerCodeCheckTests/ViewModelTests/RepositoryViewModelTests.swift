@@ -25,6 +25,7 @@ final class RepositoryViewModelTests: XCTestCase {
     }
     
     func testSearchRepositoriesSuccess() async {
+
         // given
         sut.keyword = "swift"
         
@@ -37,9 +38,7 @@ final class RepositoryViewModelTests: XCTestCase {
             .resume(returning: Repository.sampleData)
         StubSearchRepositories.shared.searchContinuation = nil
         await search
-        
-        // searchButtonPressed()内のTask内の処理を待つ
-        _ = await sut.task?.result
+        _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
    
         // then
         switch sut.repositories {

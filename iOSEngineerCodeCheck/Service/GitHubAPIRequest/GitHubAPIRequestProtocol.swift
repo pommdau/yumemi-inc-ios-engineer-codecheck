@@ -40,7 +40,7 @@ extension GitHubAPIRequestProtocol {
         }
 
         // ボディの設定
-        if let body = body {
+        if let body {
             urlRequest.httpBody = body
         }
 
