@@ -1,5 +1,5 @@
 //
-//  RepositoryListView.swift
+//  RepositoryListScreen.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/13.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RepositoryListView: View {
+struct RepositoryListScreen: View {
     
     @StateObject private var viewModel: RepositoryListViewModel<GitHubAPIService> = .init()
     
@@ -33,6 +33,6 @@ struct RepositoryListView: View {
 
 struct RepositoryListView_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryListView()
+        RepositoryListScreen()
     }
 }

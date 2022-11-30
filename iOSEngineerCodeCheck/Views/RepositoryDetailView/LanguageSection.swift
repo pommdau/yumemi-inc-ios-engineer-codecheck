@@ -21,7 +21,7 @@ struct LanguageSection: View {
             HStack(spacing: 8) {
                 Circle()
                     .frame(width: 14, height: 14)
-                    .foregroundColor(GitHubLanguageColor.shared.getColor(withName: language))
+                    .foregroundColor(GitHubLanguageColorManager.shared.getColor(withLanguageName: language))
                 Text(language)
             }
         }

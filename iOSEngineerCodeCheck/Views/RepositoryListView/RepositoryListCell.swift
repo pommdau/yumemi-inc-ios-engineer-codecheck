@@ -15,13 +15,12 @@ struct RepositoryListCell: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            userLabel(userName: repository.owner.name,
-                      avatarImagePath: repository.owner.avatarImagePath)
-            repositoryNameLabel(name: repository.name)
-            descriptionLabel(repository: repository)
+            userLabel()
+            repositoryNameLabel()
+            descriptionLabel()
             HStack(spacing: 18) {
-                starsLabel(starsCount: repository.starsCount)
-                languageLabel(language: repository.language)
+                starsLabel()
+                languageLabel()
             }
             .padding(.top, 2)
         }
@@ -30,22 +29,22 @@ struct RepositoryListCell: View {
     // MARK: - ViewBuilder
 
     @ViewBuilder
-    private func userLabel(userName: String, avatarImagePath: String) -> some View {
+    private func userLabel() -> some View {
         HStack {
-            WebImage(url: URL(string: avatarImagePath))
+            WebImage(url: URL(string: repository.owner.avatarImagePath))
                 .resizable()
                 .placeholder(Image(systemName: "person.fill"))
                 .frame(width: 24, height: 24)
                 .cornerRadius(12)
-            Text(userName)
+            Text(repository.owner.name)
                 .foregroundColor(.secondary)
                 .lineLimit(1)
         }
     }
     
     @ViewBuilder
-    private func repositoryNameLabel(name: String) -> some View {
-        Text(name)
+    private func repositoryNameLabel() -> some View {
+        Text(repository.name)
             .lineLimit(1)
             .font(.title2)
             .bold()
@@ -53,31 +52,31 @@ struct RepositoryListCell: View {
     }
     
     @ViewBuilder
-    private func descriptionLabel(repository: Repository) -> some View {
+    private func descriptionLabel() -> some View {
         if let description = repository.description,
            !description.isEmpty {
             Text(description)
-                .lineLimit(1)
+                .lineLimit(3)
         }
     }
 
     @ViewBuilder
-    private func starsLabel(starsCount: Int) -> some View {
+    private func starsLabel() -> some View {
         HStack(spacing: 2) {
             Image(systemName: "star")
-            Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(starsCount))")
+            Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repository.starsCount))")
         }
         .foregroundColor(.secondary)
     }
 
     @ViewBuilder
-    private func languageLabel(language: String?) -> some View {
-        if let language,
+    private func languageLabel() -> some View {
+        if let language = repository.language,
            !language.isEmpty {
             HStack(spacing: 4) {
                 Circle()
                     .frame(width: 14, height: 14)
-                    .foregroundColor(GitHubLanguageColor.shared.getColor(withName: language))
+                    .foregroundColor(GitHubLanguageColorManager.shared.getColor(withLanguageName: language))
                 Text(language)
                     .foregroundColor(.secondary)
             }

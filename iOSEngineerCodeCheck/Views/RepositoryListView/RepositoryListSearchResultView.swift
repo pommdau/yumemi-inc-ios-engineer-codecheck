@@ -77,7 +77,7 @@ struct RepositoryListSearchResultView: View {
         } else {
             List(repositories) { repository in
                 NavigationLink {
-                    RepositoryDetailView(repository: repository)
+                    RepositoryDetailScreen(repository: repository)
                 } label: {
                     RepositoryListCell(repository: repository)
                 }

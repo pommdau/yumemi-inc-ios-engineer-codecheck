@@ -1,5 +1,5 @@
 //
-//  GitHubLanguageColor.swift
+//  GitHubLanguageColorManager.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/14.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct GitHubLanguageColor {
+struct GitHubLanguageColorManager {
 
     // MARK: - Define
 
@@ -16,8 +16,11 @@ struct GitHubLanguageColor {
         let id = UUID()
         let name: String
         let color: Color
-
-        /// e.g. hex = "#00cafe"
+            
+        /// Initializer
+        /// - Parameters:
+        ///   - name: Language name
+        ///   - hex: e.g.  "#00cafe"
         init(name: String, hex: String) {
             self.name = name
             self.color = Color(hex: hex.replacingOccurrences(of: "#", with: ""))
@@ -26,7 +29,7 @@ struct GitHubLanguageColor {
 
     // MARK: - Properties
 
-    static let shared: GitHubLanguageColor = .init()
+    static let shared: GitHubLanguageColorManager = .init()
 
     private let languages: [Language]
 
@@ -52,7 +55,7 @@ struct GitHubLanguageColor {
 
     // MARK: - Public methods
 
-    func getColor(withName name: String?) -> Color? {
+    func getColor(withLanguageName name: String?) -> Color? {
         guard let name else {
             return nil
         }

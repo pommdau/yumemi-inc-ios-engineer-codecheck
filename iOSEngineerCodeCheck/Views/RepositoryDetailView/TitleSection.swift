@@ -15,40 +15,55 @@ struct TitleSection: View {
     
     var body: some View {
         HStack(spacing: 8) {
-            Button {
-                guard let url = repository.owner.htmlURL else {
-                    return
-                }
-                UIApplication.shared.open(url)
-            } label: {
-                WebImage(url: repository.owner.avatarImageURL)
-                    .resizable()
-                    .placeholder(Image(systemName: "person.fill"))
-                    .frame(maxWidth: 40, maxHeight: 40)
-                    .cornerRadius(20)
-            }
-            Button {
-                guard let url = repository.owner.htmlURL else {
-                    return
-                }
-                UIApplication.shared.open(url)
-            } label: {
-                Text(repository.owner.name)
-                    .lineLimit(1)
-                    .font(.title2)
-            }
+            userIcon()
+            userLink()
             Text("/")
-            Button {
-                guard let url = repository.htmlURL else {
-                    return
-                }
-                UIApplication.shared.open(url)
-            } label: {
-                Text(repository.name)
-                    .lineLimit(1)
-                    .font(.title2)
-                    .bold()
+            repositoryLink()
+        }
+    }
+    
+    @ViewBuilder
+    private func userIcon() -> some View {
+        Button {
+            guard let url = repository.owner.htmlURL else {
+                return
             }
+            UIApplication.shared.open(url)
+        } label: {
+            WebImage(url: repository.owner.avatarImageURL)
+                .resizable()
+                .placeholder(Image(systemName: "person.fill"))
+                .frame(maxWidth: 40, maxHeight: 40)
+                .cornerRadius(20)
+        }
+    }
+    
+    @ViewBuilder
+    private func userLink() -> some View {
+        Button {
+            guard let url = repository.owner.htmlURL else {
+                return
+            }
+            UIApplication.shared.open(url)
+        } label: {
+            Text(repository.owner.name)
+                .lineLimit(1)
+                .font(.title2)
+        }
+    }
+    
+    @ViewBuilder
+    private func repositoryLink() -> some View {
+        Button {
+            guard let url = repository.htmlURL else {
+                return
+            }
+            UIApplication.shared.open(url)
+        } label: {
+            Text(repository.name)
+                .lineLimit(1)
+                .font(.title2)
+                .bold()
         }
     }
 }

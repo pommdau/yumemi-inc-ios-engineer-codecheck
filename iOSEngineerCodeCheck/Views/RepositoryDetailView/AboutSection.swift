@@ -10,7 +10,11 @@ import SwiftUI
 
 struct AboutSection: View {
     
+    // MARK: - Properties
+        
     let repository: Repository
+        
+    // MARK: - View
     
     var body: some View {
         VStack(alignment: .leading) {
