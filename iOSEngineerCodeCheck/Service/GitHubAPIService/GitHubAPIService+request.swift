@@ -9,6 +9,7 @@
 import Foundation
 
 extension GitHubAPIService {
+        
     func request<Request>(with request: Request) async throws ->
     Request.Response where Request: GitHubAPIRequestProtocol {
 

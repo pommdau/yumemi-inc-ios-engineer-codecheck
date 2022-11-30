@@ -9,9 +9,9 @@
 import Foundation
 
 final actor GitHubAPIService: GitHubAPIServiceProtocol {
-
+   
     static let shared: GitHubAPIService = .init()
-
+        
     func searchRepositories(keyword: String) async throws -> [Repository] {
         let response = try await request(with: GitHubAPIRequest.SearchRepositories(keyword: keyword))
         let repositories = response.items
