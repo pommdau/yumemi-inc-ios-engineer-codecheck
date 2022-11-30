@@ -23,7 +23,7 @@
 		DA34B6622922492A00C052BD /* GitHubLanguageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B6612922492A00C052BD /* GitHubLanguageColor.swift */; };
 		DA34B6642922495000C052BD /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B6632922495000C052BD /* Color+hex.swift */; };
 		DA34B66729224EE100C052BD /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA34B66629224EE100C052BD /* SDWebImageSwiftUI */; };
-		DA5E40DF293351BE009471FF /* StubSearchRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E40DE293351BE009471FF /* StubSearchRepositories.swift */; };
+		DA5E40DF293351BE009471FF /* StubGitHubAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E40DE293351BE009471FF /* StubGitHubAPIService.swift */; };
 		DA66ED152925E6EB007D5F99 /* GitHubAPIError+sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */; };
 		DA6BA6A5292F275200B1B98C /* SearchResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6A4292F275200B1B98C /* SearchResponseTests.swift */; };
 		DA6BA6A7292F277700B1B98C /* SearchResponse+sampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */; };
@@ -98,7 +98,7 @@
 		DA34B640292229D400C052BD /* github-lang-colors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "github-lang-colors.json"; sourceTree = "<group>"; };
 		DA34B6612922492A00C052BD /* GitHubLanguageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLanguageColor.swift; sourceTree = "<group>"; };
 		DA34B6632922495000C052BD /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
-		DA5E40DE293351BE009471FF /* StubSearchRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSearchRepositories.swift; sourceTree = "<group>"; };
+		DA5E40DE293351BE009471FF /* StubGitHubAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubGitHubAPIService.swift; sourceTree = "<group>"; };
 		DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIError+sampleData.swift"; sourceTree = "<group>"; };
 		DA6BA6A4292F275200B1B98C /* SearchResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseTests.swift; sourceTree = "<group>"; };
 		DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResponse+sampleJSON.swift"; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				DAC6D78A29324EF9003BC645 /* RepositoryViewModelTests.swift */,
-				DA5E40DE293351BE009471FF /* StubSearchRepositories.swift */,
+				DA5E40DE293351BE009471FF /* StubGitHubAPIService.swift */,
 			);
 			path = ViewModelTests;
 			sourceTree = "<group>";
@@ -572,7 +572,7 @@
 				DA95571F292F0F0100DED60D /* User+sampleJSON.swift in Sources */,
 				DA6BA6A92930B1B000B1B98C /* GitHubAPIErrorTests.swift in Sources */,
 				DA6BA6A7292F277700B1B98C /* SearchResponse+sampleJSON.swift in Sources */,
-				DA5E40DF293351BE009471FF /* StubSearchRepositories.swift in Sources */,
+				DA5E40DF293351BE009471FF /* StubGitHubAPIService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

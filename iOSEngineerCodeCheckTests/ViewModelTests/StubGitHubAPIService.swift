@@ -9,9 +9,9 @@
 import Foundation
 @testable import iOSEngineerCodeCheck
 
-final class StubSearchRepositories: GitHubAPIServiceProtocol {
+final class StubGitHubAPIService: GitHubAPIServiceProtocol {
 
-    static let shared: StubSearchRepositories = .init()
+    static let shared: StubGitHubAPIService = .init()
     
     var searchContinuation: CheckedContinuation<[Repository], Error>?
     
