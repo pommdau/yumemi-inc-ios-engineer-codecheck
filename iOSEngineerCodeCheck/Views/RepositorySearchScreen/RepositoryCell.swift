@@ -1,5 +1,5 @@
 //
-//  RepositoryListCell.swift
+//  RepositoryCell.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/14.
@@ -9,7 +9,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct RepositoryListCell: View {
+struct RepositoryCell: View {
 
     let repository: Repository
 
@@ -88,11 +88,11 @@ struct RepositoryListCell_Previews: PreviewProvider {
     static var previews: some View {
         
         Group {
-            RepositoryListCell(repository: Repository.sampleData[0])
+            RepositoryCell(repository: Repository.sampleData[0])
                 .previewLayout(.fixed(width: 200, height: 400))
                 .padding()
             
-            RepositoryListCell(repository: Repository.sampleData[1])
+            RepositoryCell(repository: Repository.sampleData[1])
                 .previewLayout(.fixed(width: 200, height: 400))
                 .padding()
         }

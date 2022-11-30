@@ -1,5 +1,5 @@
 //
-//  RepositoryListSearchResultView.swift
+//  SearchResultView.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/15.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RepositoryListSearchResultView: View {
+struct SearchResultView: View {
 
     @Environment(\.isSearching) private var isSearching: Bool
     @StateObject var viewModel: RepositoryListViewModel<GitHubAPIService>
@@ -79,7 +79,7 @@ struct RepositoryListSearchResultView: View {
                 NavigationLink {
                     RepositoryDetailScreen(repository: repository)
                 } label: {
-                    RepositoryListCell(repository: repository)
+                    RepositoryCell(repository: repository)
                 }
             }
         }
@@ -88,6 +88,6 @@ struct RepositoryListSearchResultView: View {
 
 struct RepositoryListSearchResultView_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryListSearchResultView(viewModel: .init())
+        SearchResultView(viewModel: .init())
     }
 }
