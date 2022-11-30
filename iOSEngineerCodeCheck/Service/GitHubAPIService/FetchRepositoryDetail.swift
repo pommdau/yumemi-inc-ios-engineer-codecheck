@@ -6,6 +6,7 @@
 //  Copyright © 2022 YUMEMI Inc. All rights reserved.
 //
 
+// FIXME: GitHubAPIServiceへの統合
 //import Foundation
 //
 //final actor FetchRepositoryDetail: GitHubAPIServiceProtocol {

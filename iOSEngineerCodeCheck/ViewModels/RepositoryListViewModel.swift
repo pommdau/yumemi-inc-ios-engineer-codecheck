@@ -34,7 +34,6 @@ extension RepositoryListViewModel {
             do {
                 let repositories = try await searchRepositories(keyword: keyword)
                 self.repositories = .loaded(repositories)
-                print("stop")
             } catch {
                 if Task.isCancelled {
                     repositories = .idle
