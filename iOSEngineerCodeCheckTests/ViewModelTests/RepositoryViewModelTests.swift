@@ -10,29 +10,42 @@ import XCTest
 @testable import iOSEngineerCodeCheck
 
 @MainActor
-final class LoginViewModelTests: XCTestCase {
+final class RepositoryViewModelTests: XCTestCase {
+    
+    var sut: RepositoryListViewModel<StubSearchRepositories>!
     
     override func setUpWithError() throws {
+        try super.setUpWithError()
+        sut = RepositoryListViewModel<StubSearchRepositories>.init()
     }
 
     override func tearDownWithError() throws {
+        sut = nil
+        try super.tearDownWithError()
     }
     
-    @MainActor
-    func testHoge() async {
-        let viewModel: RepositoryListViewModel<StubSearchRepositories> = .init()
+    func testSearchRepositoriesSuccess() async {
+
+        // given
+        sut.keyword = "swift"
         
-        viewModel.keyword = "sample"
-        async let search: Void = viewModel.searchButtonPressed()
+        // when
+        async let search: Void = sut.searchButtonPressed()
         while StubSearchRepositories.shared.searchContinuation == nil {
             await Task.yield()
         }
-        viewModel.cancelSearching()
-        
         StubSearchRepositories.shared.searchContinuation?
-            .resume(throwing: GitHubAPIServiceError.connectionError(MessageError(description: "hoge")))
+            .resume(returning: Repository.sampleData)
         StubSearchRepositories.shared.searchContinuation = nil
-        try! await search
+        await search
+        _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
+   
+        // then
+        switch sut.repositories {
+        case let .loaded(repositories):
+            XCTAssertEqual(repositories.count, 2)
+        default:
+            XCTFail()
+        }
     }
-    
 }

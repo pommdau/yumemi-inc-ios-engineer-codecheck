@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RepositoryListView: View {
     
-    @StateObject private var viewModel: RepositoryListViewModel<SearchRepositories> = .init()
+    @StateObject private var viewModel: RepositoryListViewModel<GitHubAPIService> = .init()
     
     var body: some View {
         NavigationView {
@@ -24,11 +24,7 @@ struct RepositoryListView: View {
                             prompt: "検索") {
                 }.onSubmit(of: .search) {
                     Task {
-                        do {
-                            try await viewModel.searchButtonPressed()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
+                        await viewModel.searchButtonPressed()
                     }
                 }
         }

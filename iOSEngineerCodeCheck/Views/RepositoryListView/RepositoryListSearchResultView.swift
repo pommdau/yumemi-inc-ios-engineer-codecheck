@@ -11,7 +11,7 @@ import SwiftUI
 struct RepositoryListSearchResultView: View {
 
     @Environment(\.isSearching) private var isSearching: Bool
-    @StateObject var viewModel: RepositoryListViewModel<SearchRepositories>
+    @StateObject var viewModel: RepositoryListViewModel<GitHubAPIService>
 
     var body: some View {
         Group {

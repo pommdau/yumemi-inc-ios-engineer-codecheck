@@ -10,11 +10,9 @@ import Foundation
 
 // e.g. https://api.github.com/repos/apple/swift
 struct RepositoryDetail: Decodable {
-    let description: String
     let subscribersCount: Int
 
     private enum CodingKeys: String, CodingKey {
-        case description
         case subscribersCount = "subscribers_count"
     }
 }

@@ -16,19 +16,19 @@ struct TitleSection: View {
     var body: some View {
         HStack(spacing: 8) {
             Button {
-                guard let url = URL(string: repository.owner.htmlPath) else {
+                guard let url = repository.owner.htmlURL else {
                     return
                 }
                 UIApplication.shared.open(url)
             } label: {
-                WebImage(url: URL(string: repository.owner.avatarImagePath))
+                WebImage(url: repository.owner.avatarImageURL)
                     .resizable()
                     .placeholder(Image(systemName: "person.fill"))
                     .frame(maxWidth: 40, maxHeight: 40)
                     .cornerRadius(20)
             }
             Button {
-                guard let url = URL(string: repository.owner.htmlPath) else {
+                guard let url = repository.owner.htmlURL else {
                     return
                 }
                 UIApplication.shared.open(url)
@@ -39,7 +39,7 @@ struct TitleSection: View {
             }
             Text("/")
             Button {
-                guard let url = URL(string: repository.htmlPath) else {
+                guard let url = repository.htmlURL else {
                     return
                 }
                 UIApplication.shared.open(url)
