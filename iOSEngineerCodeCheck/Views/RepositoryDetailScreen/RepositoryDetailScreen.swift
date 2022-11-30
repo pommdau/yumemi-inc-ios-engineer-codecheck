@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailView.swift
+//  RepositoryDetailScreen.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/13.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RepositoryDetailView: View {
+struct RepositoryDetailScreen: View {
 
     let repository: Repository
 
@@ -17,21 +17,14 @@ struct RepositoryDetailView: View {
             TitleSection(repository: repository)
             Divider()
             AboutSection(repository: repository)
-            languageSection(language: repository.language)
+            if let language = repository.language,
+               !language.isEmpty {
+                Divider()
+                LanguageSection(language: language)
+            }
             Spacer()
         }
         .padding(.horizontal, 20)
-    }
-    
-    // MARK: Language Section
-    
-    @ViewBuilder
-    private func languageSection(language: String?) -> some View {
-        if let language,
-           !language.isEmpty {
-            Divider()
-            LanguageSection(language: language)
-        }
     }
 }
 
@@ -39,8 +32,8 @@ struct RepositoryDetailView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            RepositoryDetailView(repository: Repository.sampleData[0])
-            RepositoryDetailView(repository: Repository.sampleData[1])
+            RepositoryDetailScreen(repository: Repository.sampleData[0])
+            RepositoryDetailScreen(repository: Repository.sampleData[1])
         }
     }
 }

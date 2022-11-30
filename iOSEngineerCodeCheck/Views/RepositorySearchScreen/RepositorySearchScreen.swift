@@ -1,5 +1,5 @@
 //
-//  RepositoryListView.swift
+//  RepositorySearchScreen.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/13.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RepositoryListView: View {
+struct RepositorySearchScreen: View {
     
     @StateObject private var viewModel: RepositoryListViewModel<GitHubAPIService> = .init()
     
@@ -17,7 +17,7 @@ struct RepositoryListView: View {
             // @Environment(\.isSearching) private var isSearching: Bool
             // 上記が.searchableと同じクラスでは使えず子Viewでしか使えないためクラスを分割している
             // TODO: ViewModelを複数クラスで使用するのは行儀の良くない気がする…
-            RepositoryListSearchResultView(viewModel: viewModel)
+            SearchResultView(viewModel: viewModel)
                 .navigationBarTitleDisplayMode(.inline)
                 .searchable(text: $viewModel.keyword,
                             placement: .automatic,
@@ -31,8 +31,8 @@ struct RepositoryListView: View {
     }
 }
 
-struct RepositoryListView_Previews: PreviewProvider {
+struct RepositorySearchScreen_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryListView()
+        RepositorySearchScreen()
     }
 }

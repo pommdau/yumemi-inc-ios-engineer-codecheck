@@ -12,11 +12,11 @@ import XCTest
 @MainActor
 final class RepositoryViewModelTests: XCTestCase {
     
-    var sut: RepositoryListViewModel<StubSearchRepositories>!
+    var sut: RepositoryListViewModel<StubGitHubAPIService>!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = RepositoryListViewModel<StubSearchRepositories>.init()
+        sut = RepositoryListViewModel<StubGitHubAPIService>.init()
     }
 
     override func tearDownWithError() throws {
@@ -31,12 +31,12 @@ final class RepositoryViewModelTests: XCTestCase {
         
         // when
         async let search: Void = sut.searchButtonPressed()
-        while StubSearchRepositories.shared.searchContinuation == nil {
+        while StubGitHubAPIService.shared.searchContinuation == nil {
             await Task.yield()
         }
-        StubSearchRepositories.shared.searchContinuation?
+        StubGitHubAPIService.shared.searchContinuation?
             .resume(returning: Repository.sampleData)
-        StubSearchRepositories.shared.searchContinuation = nil
+        StubGitHubAPIService.shared.searchContinuation = nil
         await search
         _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
    
