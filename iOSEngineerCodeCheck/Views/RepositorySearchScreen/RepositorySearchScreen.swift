@@ -31,7 +31,7 @@ struct RepositorySearchScreen: View {
     }
 }
 
-struct RepositoryListView_Previews: PreviewProvider {
+struct RepositorySearchScreen_Previews: PreviewProvider {
     static var previews: some View {
         RepositorySearchScreen()
     }

@@ -84,7 +84,7 @@ struct RepositoryCell: View {
     }
 }
 
-struct RepositoryListCell_Previews: PreviewProvider {
+struct RepositoryCell_Previews: PreviewProvider {
     static var previews: some View {
         
         Group {

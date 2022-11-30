@@ -17,13 +17,13 @@ struct SearchResultView: View {
         Group {
             switch viewModel.repositories {
             case .idle:
-                idledView()
+                ReadyView()
             case .loading:
                 ProgressView("検索しています…")
             case .failed(let error):
-                failedView(error: error)
+                FailedView(error: error)
             case let .loaded(repositories):
-                loadedView(repositories: repositories)
+                RepositoryList(repositories: repositories)
             }
         }
         .onChange(of: isSearching) { newValue in            
@@ -33,60 +33,9 @@ struct SearchResultView: View {
             }
         }
     }
-
-    @ViewBuilder
-    private func idledView() -> some View {
-        VStack {
-            Text("検索してみましょう")
-                .font(.title)
-                .bold()
-                .padding()
-            Text("GitHub内のリポジトリが検索できます")
-                .foregroundColor(.secondary)
-        }
-    }
-
-    @ViewBuilder
-    private func failedView(error: Error) -> some View {
-        VStack {
-            Group {
-                Text("リポジトリの検索中にエラーが発生しました")
-                    .padding(.bottom, 8)                
-                if let serviceError = error as? GitHubAPIServiceError {
-                    switch serviceError {
-                    case .connectionError(let error):
-                        Text(error.localizedDescription)
-                    case .responseParseError(let error):
-                        Text(error.localizedDescription)
-                    case .apiError(let gitHubAPIError):
-                        Text(gitHubAPIError.message)
-                    }
-                } else {
-                    Text(error.localizedDescription)
-                }
-            }
-            .foregroundColor(.secondary)
-        }
-    }
-
-    @ViewBuilder
-    private func loadedView(repositories: [Repository]) -> some View {
-        if repositories.isEmpty {
-            Text("該当するリポジトリが見つかりませんでした")
-                .fontWeight(.bold)
-        } else {
-            List(repositories) { repository in
-                NavigationLink {
-                    RepositoryDetailScreen(repository: repository)
-                } label: {
-                    RepositoryCell(repository: repository)
-                }
-            }
-        }
-    }
 }
 
-struct RepositoryListSearchResultView_Previews: PreviewProvider {
+struct SearchResultView_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultView(viewModel: .init())
     }
