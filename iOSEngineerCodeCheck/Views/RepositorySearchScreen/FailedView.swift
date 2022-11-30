@@ -37,6 +37,30 @@ struct FailedView: View {
 
 struct FailedView_Previews: PreviewProvider {
     static var previews: some View {
-        FailedView(error: MessageError(description: "debug error"))
+        Group {
+            FailedView(error:
+                        GitHubAPIServiceError.connectionError(
+                            MessageError(description: "(Debug) connectionError")
+                        )
+            )
+            .previewDisplayName(".connectionError")
+            
+            FailedView(error:
+                        GitHubAPIServiceError.responseParseError(
+                            MessageError(description: "(Debug) responseParseError.")
+                        )
+            )
+            .previewDisplayName(".responseParseError")
+            
+            FailedView(error:
+                        GitHubAPIServiceError.apiError(
+                            GitHubAPIError.sampleData[0]
+                        )
+            )
+            .previewDisplayName(".apiError")
+            
+            FailedView(error: MessageError(description: "(Debug) other error"))
+                .previewDisplayName("other error")
+        }
     }
 }

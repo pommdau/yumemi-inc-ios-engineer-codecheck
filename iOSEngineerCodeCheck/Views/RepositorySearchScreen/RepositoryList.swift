@@ -30,8 +30,16 @@ struct RepositoryList: View {
 
 struct RepositoryList_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            RepositoryList(repositories: Repository.sampleData)
+        Group {
+            NavigationView {
+                RepositoryList(repositories: Repository.sampleData)
+            }
+            .previewDisplayName("regular")
+            
+            NavigationView {
+                RepositoryList(repositories: [])
+            }
+            .previewDisplayName("repositories.isEmpty")            
         }
     }
 }
