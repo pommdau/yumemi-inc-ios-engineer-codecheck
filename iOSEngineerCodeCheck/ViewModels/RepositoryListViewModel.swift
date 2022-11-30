@@ -10,7 +10,7 @@ import UIKit
 
 @MainActor
 final class RepositoryListViewModel<SearchRepositories>: ObservableObject
-where SearchRepositories: SearchRepositoriesProtocol {
+where SearchRepositories: GitHubAPIServiceProtocol {
     @Published private(set) var repositories: Stateful<[Repository]> = .idle
     @Published var keyword = ""
     private(set) var task: Task<(), Never>? = nil
@@ -50,6 +50,6 @@ extension RepositoryListViewModel {
         #if DEBUG
 //        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理のデバッグ用。
         #endif
-        return try await SearchRepositories.shared.search(keyword: keyword)
+        return try await SearchRepositories.shared.searchRepositories(keyword: keyword)
     }
 }

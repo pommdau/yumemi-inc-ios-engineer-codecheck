@@ -9,7 +9,7 @@
 import Foundation
 @testable import iOSEngineerCodeCheck
 
-final class StubSearchRepositories: GitHubAPIServiceProtocol, SearchRepositoriesProtocol {
+final class StubSearchRepositories: GitHubAPIServiceProtocol {
 
     static let shared: StubSearchRepositories = .init()
     
@@ -17,7 +17,7 @@ final class StubSearchRepositories: GitHubAPIServiceProtocol, SearchRepositories
     
     private init() {}
 
-    func search(keyword: String) async throws -> [Repository] {
+    func searchRepositories(keyword: String) async throws -> [Repository] {
         try await withCheckedThrowingContinuation { continuation in
             searchContinuation = continuation
         }

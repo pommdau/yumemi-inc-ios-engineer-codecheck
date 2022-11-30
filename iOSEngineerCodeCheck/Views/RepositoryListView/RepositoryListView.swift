@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RepositoryListView: View {
     
-    @StateObject private var viewModel: RepositoryListViewModel<SearchRepositories> = .init()
+    @StateObject private var viewModel: RepositoryListViewModel<GitHubAPIService> = .init()
     
     var body: some View {
         NavigationView {
