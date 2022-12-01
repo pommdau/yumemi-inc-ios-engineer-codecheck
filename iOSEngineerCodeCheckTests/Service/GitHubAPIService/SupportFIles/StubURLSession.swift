@@ -1,18 +1,15 @@
 //
-//  URLSessionStub.swift
-//  iOSEngineerCodeCheck
+//  StubURLSession.swift
+//  iOSEngineerCodeCheckTests
 //
 //  Created by HIROKI IKEUCHI on 2022/12/01.
 //  Copyright © 2022 YUMEMI Inc. All rights reserved.
 //
 
 import Foundation
+@testable import iOSEngineerCodeCheck
 
-protocol URLSessionProtocol {
-    func data(for request: URLRequest) async throws -> (Data, URLResponse)
-}
-
-class URLSessionStub: URLSessionProtocol {
+class StubURLSession: URLSessionProtocol {
     private let stubbedData: Data?
     private let stubbedResponse: URLResponse?
     private let stubbedError: Error?
@@ -30,11 +27,9 @@ class URLSessionStub: URLSessionProtocol {
         
         guard let stubbedData,
            let stubbedResponse else {
-               fatalError("Stubにはいずれかのパラメータを設定してください")
+               fatalError("(date, response)かerrorのどちらかのパラメータを設定してください")
         }
         
         return (stubbedData, stubbedResponse)
     }
 }
-
-extension URLSession: URLSessionProtocol { }

@@ -31,7 +31,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             XCTFail("Stubデータの作成に失敗しました")
             return
         }
-        let urlSessionStub = URLSessionStub(
+        let urlSessionStub = StubURLSession(
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         )
@@ -48,7 +48,7 @@ final class GitHubAPIServiceTests: XCTestCase {
     
     func testSearchRepositotiesFailByConnectionError() async throws {
         // given
-        let urlSessionStub = URLSessionStub(
+        let urlSessionStub = StubURLSession(
             error: URLError(.cannotConnectToHost)
         )
         await sut.setURLSession(urlSession: urlSessionStub)
@@ -82,7 +82,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             XCTFail("Stubデータの作成に失敗しました")
             return
         }
-        let urlSessionStub = URLSessionStub(
+        let urlSessionStub = StubURLSession(
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         )
@@ -117,7 +117,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             XCTFail("Stubデータの作成に失敗しました")
             return
         }
-        let urlSessionStub = URLSessionStub(
+        let urlSessionStub = StubURLSession(
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 400, httpVersion: nil, headerFields: nil)
         )
