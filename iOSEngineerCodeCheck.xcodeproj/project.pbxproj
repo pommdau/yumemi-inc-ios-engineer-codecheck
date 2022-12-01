@@ -261,6 +261,17 @@
 			path = SupportFIles;
 			sourceTree = "<group>";
 		};
+		DA3AB7A02938891600A62A6C /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */,
+				DA955710292C625400DED60D /* Repository+sampleJSON.swift */,
+				DA95571E292F0F0100DED60D /* User+sampleJSON.swift */,
+				DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
 		DA8FABB1293845EB005377BF /* GitHubAPIService */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,14 +317,11 @@
 		DA955717292EFDB700DED60D /* MappingTest */ = {
 			isa = PBXGroup;
 			children = (
+				DA3AB7A02938891600A62A6C /* SupportFiles */,
 				DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */,
-				DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */,
 				DA955718292EFDCB00DED60D /* RepositoryTests.swift */,
-				DA955710292C625400DED60D /* Repository+sampleJSON.swift */,
 				DA95571B292F0EE500DED60D /* UserTests.swift */,
-				DA95571E292F0F0100DED60D /* User+sampleJSON.swift */,
 				DA6BA6A4292F275200B1B98C /* SearchResponseTests.swift */,
-				DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */,
 			);
 			path = MappingTest;
 			sourceTree = "<group>";
