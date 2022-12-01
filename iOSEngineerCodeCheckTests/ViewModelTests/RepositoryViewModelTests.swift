@@ -12,7 +12,7 @@ import XCTest
 @MainActor
 final class RepositoryViewModelTests: XCTestCase {
 
-    var sut: RepositoryListViewModel<StubGitHubAPIService>!
+    private var sut: RepositoryListViewModel<StubGitHubAPIService>!
 
     override func setUpWithError() throws {
         try super.setUpWithError()

@@ -13,6 +13,7 @@ struct FailedView: View {
     let error: Error
 
     var body: some View {
+        // FIXME: エラーの文言を直接ユーザに見せたくないので修正
         VStack {
             Group {
                 Text("リポジトリの検索中にエラーが発生しました")

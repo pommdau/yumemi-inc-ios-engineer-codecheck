@@ -9,6 +9,22 @@
 import Foundation
 
 struct Repository: Identifiable, Codable {
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case fullName = "full_name"
+        case owner
+        case starsCount = "stargazers_count"
+        case watchersCount = "watchers_count"
+        case forksCount = "forks_count"
+        case openIssuesCount = "open_issues_count"
+        case language
+        case htmlPath = "html_url"
+        case websitePath = "homepage"
+        case description
+    }
+    
     // GitHubAPIService.SearchRepositoriesで取得される情報
     let id: Int
     let name: String  // e.g. "Tetris"
@@ -35,21 +51,6 @@ struct Repository: Identifiable, Codable {
             return nil
         }
         return URL(string: websitePath)
-    }
-
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case fullName = "full_name"
-        case owner
-        case starsCount = "stargazers_count"
-        case watchersCount = "watchers_count"
-        case forksCount = "forks_count"
-        case openIssuesCount = "open_issues_count"
-        case language
-        case htmlPath = "html_url"
-        case websitePath = "homepage"
-        case description
     }
 
     mutating func update(withRepositoryDetail detail: RepositoryDetail) {
