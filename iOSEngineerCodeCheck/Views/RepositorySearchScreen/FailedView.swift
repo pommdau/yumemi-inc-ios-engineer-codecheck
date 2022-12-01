@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct FailedView: View {
-    
+
     let error: Error
-    
+
     var body: some View {
+        // FIXME: エラーの文言を直接ユーザに見せたくないので修正
         VStack {
             Group {
                 Text("リポジトリの検索中にエラーが発生しました")
@@ -44,21 +45,21 @@ struct FailedView_Previews: PreviewProvider {
                         )
             )
             .previewDisplayName(".connectionError")
-            
+
             FailedView(error:
                         GitHubAPIServiceError.responseParseError(
                             MessageError(description: "(Debug) responseParseError.")
                         )
             )
             .previewDisplayName(".responseParseError")
-            
+
             FailedView(error:
                         GitHubAPIServiceError.apiError(
                             GitHubAPIError.sampleData[0]
                         )
             )
             .previewDisplayName(".apiError")
-            
+
             FailedView(error: MessageError(description: "(Debug) other error"))
                 .previewDisplayName("other error")
         }

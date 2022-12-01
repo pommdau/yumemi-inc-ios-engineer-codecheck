@@ -12,9 +12,9 @@ import Foundation
 final class StubGitHubAPIService: GitHubAPIServiceProtocol {
 
     static let shared: StubGitHubAPIService = .init()
-    
+
     var searchContinuation: CheckedContinuation<[Repository], Error>?
-    
+
     private init() {}
 
     func searchRepositories(keyword: String) async throws -> [Repository] {

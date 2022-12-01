@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct LanguageSection: View {
-    
+
     let language: String
-    
+
     @ViewBuilder
     var body: some View {
         VStack(alignment: .leading) {
@@ -33,5 +33,5 @@ struct LanguageSection_Previews: PreviewProvider {
         LanguageSection(language: "Swift")
             .previewLayout(.fixed(width: 400, height: 200))
     }
-    
+
 }

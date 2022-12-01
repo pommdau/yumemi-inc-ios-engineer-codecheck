@@ -9,34 +9,7 @@
 import Foundation
 
 struct Repository: Identifiable, Codable {
-    // GitHubAPIService.SearchRepositoriesで取得される情報
-    let id: Int
-    let name: String  // e.g. "Tetris"
-    let fullName: String  // e.g. "dtrupenn/Tetris"
-    let owner: User
-    let starsCount: Int
-    let watchersCount: Int
-    let forksCount: Int
-    let openIssuesCount: Int
-    let language: String?
-    let htmlPath: String  // リポジトリのURL
-    let websitePath: String?  // 設定したホームページ
-    let description: String?
     
-    // その他補完されて取得される情報
-    var subscribersCount: Int?
-    
-    var htmlURL: URL? {
-        URL(string: htmlPath)
-    }
-    
-    var websiteURL: URL? {
-        guard let websitePath else {
-            return nil
-        }
-        return URL(string: websitePath)
-    }
-
     private enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -52,6 +25,34 @@ struct Repository: Identifiable, Codable {
         case description
     }
     
+    // GitHubAPIService.SearchRepositoriesで取得される情報
+    let id: Int
+    let name: String  // e.g. "Tetris"
+    let fullName: String  // e.g. "dtrupenn/Tetris"
+    let owner: User
+    let starsCount: Int
+    let watchersCount: Int
+    let forksCount: Int
+    let openIssuesCount: Int
+    let language: String?
+    let htmlPath: String  // リポジトリのURL
+    let websitePath: String?  // 設定したホームページ
+    let description: String?
+
+    // その他補完されて取得される情報
+    var subscribersCount: Int?
+
+    var htmlURL: URL? {
+        URL(string: htmlPath)
+    }
+
+    var websiteURL: URL? {
+        guard let websitePath else {
+            return nil
+        }
+        return URL(string: websitePath)
+    }
+
     mutating func update(withRepositoryDetail detail: RepositoryDetail) {
         self.subscribersCount = detail.subscribersCount
     }

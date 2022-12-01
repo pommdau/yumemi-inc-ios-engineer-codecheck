@@ -16,7 +16,7 @@ struct GitHubLanguageColorManager {
         let id = UUID()
         let name: String
         let color: Color
-            
+
         /// Initializer
         /// - Parameters:
         ///   - name: Language name
@@ -43,7 +43,7 @@ struct GitHubLanguageColorManager {
         else {
             fatalError("github-lang-colors.jsonの読み込みに失敗しました。")
         }
-        
+
         self.languages = json.map { name, details in
             let color = details["color"] as? String ?? "#000000"  // 未定義の場合は黒#000000とする
             return Language(name: name, hex: color)

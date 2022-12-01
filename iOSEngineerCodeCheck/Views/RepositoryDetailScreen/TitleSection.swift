@@ -10,9 +10,9 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct TitleSection: View {
-    
+
     let repository: Repository
-    
+
     var body: some View {
         HStack(spacing: 8) {
             userIcon()
@@ -21,7 +21,7 @@ struct TitleSection: View {
             repositoryLink()
         }
     }
-    
+
     @ViewBuilder
     private func userIcon() -> some View {
         Button {
@@ -37,7 +37,7 @@ struct TitleSection: View {
                 .cornerRadius(20)
         }
     }
-    
+
     @ViewBuilder
     private func userLink() -> some View {
         Button {
@@ -51,7 +51,7 @@ struct TitleSection: View {
                 .font(.title2)
         }
     }
-    
+
     @ViewBuilder
     private func repositoryLink() -> some View {
         Button {

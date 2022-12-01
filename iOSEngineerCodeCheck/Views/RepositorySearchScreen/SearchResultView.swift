@@ -26,7 +26,7 @@ struct SearchResultView: View {
                 RepositoryList(repositories: repositories)
             }
         }
-        .onChange(of: isSearching) { newValue in            
+        .onChange(of: isSearching) { newValue in
             // 検索が終了した場合
             if !newValue {
                 viewModel.cancelSearching()

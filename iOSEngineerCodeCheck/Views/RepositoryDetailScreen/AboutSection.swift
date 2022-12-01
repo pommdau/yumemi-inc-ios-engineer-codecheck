@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct AboutSection: View {
-    
+
     // MARK: - Properties
-        
+
     let repository: Repository
-        
+
     // MARK: - View
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text("About")
@@ -26,19 +26,19 @@ struct AboutSection: View {
                !description.isEmpty {
                 Text(description)
                     .padding(.bottom, 8)
-            }            
+            }
             Grid(verticalSpacing: 8) {
                 starsGridRow(starsCount: repository.starsCount)
-//                wachersGridRow(watchersCount: repository.watchersCount)
+                //                wachersGridRow(watchersCount: repository.watchersCount)
                 forksGridRow(forksCount: repository.forksCount)
                 issuesGridRow(issuesCount: repository.openIssuesCount)
                 websiteGridRow(websiteURL: repository.websiteURL)
             }
         }
     }
-    
+
     // MARK: - @ViewBuilder
-    
+
     @ViewBuilder
     private func starsGridRow(starsCount: Int) -> some View {
         GridRow {
@@ -53,7 +53,7 @@ struct AboutSection: View {
                 .gridColumnAlignment(.leading)
         }
     }
-    
+
     @ViewBuilder
     private func wachersGridRow(watchersCount: Int) -> some View {
         GridRow {
@@ -65,7 +65,7 @@ struct AboutSection: View {
                 .foregroundColor(.secondary)
         }
     }
-    
+
     @ViewBuilder
     private func forksGridRow(forksCount: Int) -> some View {
         GridRow {
@@ -77,7 +77,7 @@ struct AboutSection: View {
                 .foregroundColor(.secondary)
         }
     }
-    
+
     @ViewBuilder
     private func issuesGridRow(issuesCount: Int) -> some View {
         GridRow {
@@ -89,7 +89,7 @@ struct AboutSection: View {
                 .foregroundColor(.secondary)
         }
     }
-    
+
     @ViewBuilder
     private func websiteGridRow(websiteURL: URL?) -> some View {
         if let websiteURL {

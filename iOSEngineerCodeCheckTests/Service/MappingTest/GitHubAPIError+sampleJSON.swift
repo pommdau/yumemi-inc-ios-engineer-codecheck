@@ -10,7 +10,7 @@
 
 extension GitHubAPIError {
     static var sampleJSON: String {
-        return """
+        """
         {
           "message": "Validation Failed",
           "errors": [
