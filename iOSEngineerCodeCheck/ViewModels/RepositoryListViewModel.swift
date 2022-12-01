@@ -38,7 +38,7 @@ extension RepositoryListViewModel {
                 if Task.isCancelled {
                     repositories = .idle
                 } else {
-                    self.repositories = .failed(error)
+                    repositories = .failed(error)
                 }
             }
         }
