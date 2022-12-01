@@ -1,5 +1,5 @@
 //
-//  AboutSection.swift
+//  AboutView.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/21.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AboutSection: View {
+struct AboutView: View {
 
     // MARK: - Properties
 
@@ -109,9 +109,9 @@ struct AboutSection: View {
     }
 }
 
-struct AboutSection_Previews: PreviewProvider {
+struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutSection(repository: Repository.sampleData[0])
+        AboutView(repository: Repository.sampleData[0])
             .previewLayout(.fixed(width: 600, height: 400))
     }
 }
