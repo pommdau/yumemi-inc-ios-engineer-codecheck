@@ -13,13 +13,13 @@ final class RepositoryListViewModel<GitHubAPIService>: ObservableObject
 where GitHubAPIService: GitHubAPIServiceProtocol {
     @Published private(set) var repositories: Stateful<[Repository]> = .idle
     @Published var keyword = ""
-    private(set) var task: Task<(), Never>? = nil
+    private(set) var task: Task<(), Never>?
 }
 
 // MARK: - Handle Searching Methods
 
 extension RepositoryListViewModel {
-    
+
     func cancelSearching() {
         task?.cancel()
         task = nil
@@ -47,7 +47,7 @@ extension RepositoryListViewModel {
     // サブスレッドで実行させるためnoisolatedを使用する
     nonisolated private func searchRepositories(keyword: String) async throws -> [Repository] {
         #if DEBUG
-//        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理のデバッグ用。
+        //        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理のデバッグ用。
         #endif
         return try await GitHubAPIService.shared.searchRepositories(keyword: keyword)
     }

@@ -41,7 +41,7 @@ struct RepositoryCell: View {
                 .lineLimit(1)
         }
     }
-    
+
     @ViewBuilder
     private func repositoryNameLabel() -> some View {
         Text(repository.name)
@@ -50,7 +50,7 @@ struct RepositoryCell: View {
             .bold()
             .padding(.vertical, 2)
     }
-    
+
     @ViewBuilder
     private func descriptionLabel() -> some View {
         if let description = repository.description,
@@ -86,12 +86,12 @@ struct RepositoryCell: View {
 
 struct RepositoryCell_Previews: PreviewProvider {
     static var previews: some View {
-        
+
         Group {
             RepositoryCell(repository: Repository.sampleData[0])
                 .previewLayout(.fixed(width: 200, height: 400))
                 .padding()
-            
+
             RepositoryCell(repository: Repository.sampleData[1])
                 .previewLayout(.fixed(width: 200, height: 400))
                 .padding()

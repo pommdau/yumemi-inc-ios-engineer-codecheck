@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct RepositorySearchScreen: View {
-    
+
     @StateObject private var viewModel: RepositoryListViewModel<GitHubAPIService> = .init()
-    
+
     var body: some View {
         NavigationView {
             // @Environment(\.isSearching) private var isSearching: Bool

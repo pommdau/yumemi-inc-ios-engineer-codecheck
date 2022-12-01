@@ -9,7 +9,7 @@
 import Foundation
 
 extension GitHubAPIService {
-        
+
     func request<Request>(with request: Request) async throws ->
     Request.Response where Request: GitHubAPIRequestProtocol {
 
@@ -40,8 +40,8 @@ extension GitHubAPIService {
 
         // 成功レスポンス
         #if DEBUG
-//        let responseString = String(data: data, encoding: .utf8) ?? ""
-//        print(responseString)
+        //        let responseString = String(data: data, encoding: .utf8) ?? ""
+        //        print(responseString)
         #endif
         do {
             let response = try JSONDecoder().decode(Request.Response.self, from: data)

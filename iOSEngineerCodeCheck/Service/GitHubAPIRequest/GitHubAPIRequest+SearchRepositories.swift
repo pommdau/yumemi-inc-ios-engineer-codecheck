@@ -11,9 +11,9 @@ import Foundation
 extension GitHubAPIRequest {
 
     public struct SearchRepositories: GitHubAPIRequestProtocol {
-        
+
         public typealias Response = SearchResponse<Repository>
-        
+
         public let keyword: String
 
         public var method: HTTPMethod {

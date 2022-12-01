@@ -22,14 +22,14 @@ struct Repository: Identifiable, Codable {
     let htmlPath: String  // リポジトリのURL
     let websitePath: String?  // 設定したホームページ
     let description: String?
-    
+
     // その他補完されて取得される情報
     var subscribersCount: Int?
-    
+
     var htmlURL: URL? {
         URL(string: htmlPath)
     }
-    
+
     var websiteURL: URL? {
         guard let websitePath else {
             return nil
@@ -51,7 +51,7 @@ struct Repository: Identifiable, Codable {
         case websitePath = "homepage"
         case description
     }
-    
+
     mutating func update(withRepositoryDetail detail: RepositoryDetail) {
         self.subscribersCount = detail.subscribersCount
     }

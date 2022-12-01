@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct RepositoryList: View {
-    
+
     let repositories: [Repository]
-    
+
     var body: some View {
         if repositories.isEmpty {
             Text("該当するリポジトリが見つかりませんでした")
@@ -35,11 +35,11 @@ struct RepositoryList_Previews: PreviewProvider {
                 RepositoryList(repositories: Repository.sampleData)
             }
             .previewDisplayName("regular")
-            
+
             NavigationView {
                 RepositoryList(repositories: [])
             }
-            .previewDisplayName("repositories.isEmpty")            
+            .previewDisplayName("repositories.isEmpty")
         }
     }
 }

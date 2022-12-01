@@ -14,15 +14,18 @@ final class SearchResponseTests: XCTestCase {
 
     func testDecode() throws {
         let jsonDecoder = JSONDecoder()
-        let data = SearchResponse<Repository>.sampleJSON.data(using: .utf8)!
+        guard let data = SearchResponse<Repository>.sampleJSON.data(using: .utf8) else {
+            XCTFail("jsonデータの取得に失敗しました")
+            return
+        }
         let response = try jsonDecoder.decode(SearchResponse<Repository>.self, from: data)
-        
+
         XCTAssertEqual(response.totalCount, 141722)
         XCTAssertEqual(response.items.count, 3)
-        
+
         let firstRepository = response.items.first
         XCTAssertEqual(firstRepository?.name, "swift")
         XCTAssertEqual(firstRepository?.fullName, "apple/swift")
     }
-    
+
 }

@@ -14,13 +14,16 @@ final class UserTests: XCTestCase {
 
     func testDecode() throws {
         let jsonDecoder = JSONDecoder()
-        let data = User.sampleJSON.data(using: .utf8)!
+        guard let data = User.sampleJSON.data(using: .utf8) else {
+            XCTFail("jsonデータの取得に失敗しました")
+            return
+        }
         let user = try jsonDecoder.decode(User.self, from: data)
-        
+
         XCTAssertEqual(user.id, 15658638)
         XCTAssertEqual(user.name, "tensorflow")
         XCTAssertEqual(user.avatarImagePath, "https://avatars.githubusercontent.com/u/15658638?v=4")
         XCTAssertEqual(user.htmlPath, "https://github.com/tensorflow")
     }
-    
+
 }
