@@ -11,6 +11,14 @@ import Foundation
 final actor GitHubAPIService: GitHubAPIServiceProtocol {
 
     static let shared: GitHubAPIService = .init()
+    
+    // FIXME: できればUnitTest用のURLSessionは公開したくない
+    
+    private(set) var urlSession: URLSessionProtocol = URLSession.shared
+    
+    func setURLSession(urlSession: URLSessionProtocol) {
+        self.urlSession = urlSession
+    }
 
     func searchRepositories(keyword: String) async throws -> [Repository] {
         let response = try await request(with: GitHubAPIRequest.SearchRepositories(keyword: keyword))

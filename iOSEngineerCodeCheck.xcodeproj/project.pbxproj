@@ -29,6 +29,8 @@
 		DA6BA6A7292F277700B1B98C /* SearchResponse+sampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */; };
 		DA6BA6A92930B1B000B1B98C /* GitHubAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */; };
 		DA6BA6AB2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */; };
+		DA8FABB029383EC1005377BF /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8FABAF29383EC1005377BF /* URLSessionStub.swift */; };
+		DA8FABB5293846C2005377BF /* GitHubAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8FABB4293846C2005377BF /* GitHubAPIServiceTests.swift */; };
 		DA955709292B2FA400DED60D /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955708292B2FA400DED60D /* AboutSection.swift */; };
 		DA95570B292B312900DED60D /* TitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570A292B312900DED60D /* TitleSection.swift */; };
 		DA95570D292B318100DED60D /* LanguageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570C292B318100DED60D /* LanguageSection.swift */; };
@@ -107,6 +109,8 @@
 		DA6BA6A6292F277700B1B98C /* SearchResponse+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResponse+sampleJSON.swift"; sourceTree = "<group>"; };
 		DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIErrorTests.swift; sourceTree = "<group>"; };
 		DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIError+sampleJSON.swift"; sourceTree = "<group>"; };
+		DA8FABAF29383EC1005377BF /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
+		DA8FABB4293846C2005377BF /* GitHubAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIServiceTests.swift; sourceTree = "<group>"; };
 		DA955708292B2FA400DED60D /* AboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = "<group>"; };
 		DA95570A292B312900DED60D /* TitleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSection.swift; sourceTree = "<group>"; };
 		DA95570C292B318100DED60D /* LanguageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSection.swift; sourceTree = "<group>"; };
@@ -213,8 +217,8 @@
 		BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */ = {
 			isa = PBXGroup;
 			children = (
+				DA8FABB2293845FB005377BF /* Service */,
 				DAC6D78E29326173003BC645 /* ViewModelTests */,
-				DA955717292EFDB700DED60D /* MappingTest */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
 			path = iOSEngineerCodeCheckTests;
@@ -237,6 +241,23 @@
 				DA34B640292229D400C052BD /* github-lang-colors.json */,
 			);
 			path = GitHubLanguageColor;
+			sourceTree = "<group>";
+		};
+		DA8FABB1293845EB005377BF /* GitHubAPIService */ = {
+			isa = PBXGroup;
+			children = (
+				DA8FABB4293846C2005377BF /* GitHubAPIServiceTests.swift */,
+			);
+			path = GitHubAPIService;
+			sourceTree = "<group>";
+		};
+		DA8FABB2293845FB005377BF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DA955717292EFDB700DED60D /* MappingTest */,
+				DA8FABB1293845EB005377BF /* GitHubAPIService */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		DA95570E292B33CA00DED60D /* RepositoryDetailScreen */ = {
@@ -319,6 +340,7 @@
 		DAE8D9BD2919FC4A00931C32 /* GitHubAPIService */ = {
 			isa = PBXGroup;
 			children = (
+				DA8FABAF29383EC1005377BF /* URLSessionStub.swift */,
 				DAE8D9C22919FCB000931C32 /* GitHubAPIServiceError.swift */,
 				DAE8D9C02919FC8800931C32 /* GitHubAPIServiceProtocol.swift */,
 				DA9D355E29334FDA00227EAA /* GitHubAPIService.swift */,
@@ -523,7 +545,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint --fix\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n#  swiftlint --fix\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -541,6 +563,7 @@
 				DAC707912937E38A00E56F95 /* RepositoryList.swift in Sources */,
 				DA95570B292B312900DED60D /* TitleSection.swift in Sources */,
 				DA29F69F2925BAE300EBC58C /* RepositoryDetail.swift in Sources */,
+				DA8FABB029383EC1005377BF /* URLSessionStub.swift in Sources */,
 				DAE8D9C12919FC8800931C32 /* GitHubAPIServiceProtocol.swift in Sources */,
 				DA29F69D2923DDA300EBC58C /* SearchResultView.swift in Sources */,
 				DAE8D9F22920ABB300931C32 /* RepositorySearchScreen.swift in Sources */,
@@ -582,6 +605,7 @@
 				DA955711292C625400DED60D /* Repository+sampleJSON.swift in Sources */,
 				DA955719292EFDCB00DED60D /* RepositoryTests.swift in Sources */,
 				DA95571F292F0F0100DED60D /* User+sampleJSON.swift in Sources */,
+				DA8FABB5293846C2005377BF /* GitHubAPIServiceTests.swift in Sources */,
 				DA6BA6A92930B1B000B1B98C /* GitHubAPIErrorTests.swift in Sources */,
 				DA6BA6A7292F277700B1B98C /* SearchResponse+sampleJSON.swift in Sources */,
 				DA5E40DF293351BE009471FF /* StubGitHubAPIService.swift in Sources */,

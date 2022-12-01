@@ -12,11 +12,11 @@ extension GitHubAPIService {
 
     func request<Request>(with request: Request) async throws ->
     Request.Response where Request: GitHubAPIRequestProtocol {
-
+        
         let (data, response): (Data, URLResponse)
         do {
             let urlRequest = request.buildURLRequest()
-            (data, response) = try await URLSession.shared.data(for: urlRequest)
+            (data, response) = try await urlSession.data(for: urlRequest)
         } catch {
             throw GitHubAPIServiceError.connectionError(error)
         }
@@ -25,10 +25,9 @@ extension GitHubAPIService {
               (200..<300).contains(statusCode) else {
             // エラーレスポンス
             #if DEBUG
-            //            let errorString = String(data: data, encoding: .utf8) ?? ""
-            //            print(errorString)
+//            let errorString = String(data: data, encoding: .utf8) ?? ""
+//            print(errorString)
             #endif
-
             let gitHubAPIError: GitHubAPIError
             do {
                 gitHubAPIError = try JSONDecoder().decode(GitHubAPIError.self, from: data)
@@ -37,7 +36,6 @@ extension GitHubAPIService {
             }
             throw GitHubAPIServiceError.apiError(gitHubAPIError)
         }
-
         // 成功レスポンス
         #if DEBUG
         //        let responseString = String(data: data, encoding: .utf8) ?? ""
