@@ -14,13 +14,13 @@ struct RepositoryDetailScreen: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            TitleSection(repository: repository)
+            TitleView(repository: repository)
             Divider()
-            AboutSection(repository: repository)
+            AboutView(repository: repository)
             if let language = repository.language,
                !language.isEmpty {
                 Divider()
-                LanguageSection(language: language)
+                LanguageView(language: language)
             }
             Spacer()
         }

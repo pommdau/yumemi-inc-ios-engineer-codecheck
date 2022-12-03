@@ -1,5 +1,5 @@
 //
-//  LanguageSection.swift
+//  LanguageView.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/21.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct LanguageSection: View {
+struct LanguageView: View {
 
     let language: String
 
@@ -28,9 +28,9 @@ struct LanguageSection: View {
     }
 }
 
-struct LanguageSection_Previews: PreviewProvider {
+struct LanguageView_Previews: PreviewProvider {
     static var previews: some View {
-        LanguageSection(language: "Swift")
+        LanguageView(language: "Swift")
             .previewLayout(.fixed(width: 400, height: 200))
     }
 
