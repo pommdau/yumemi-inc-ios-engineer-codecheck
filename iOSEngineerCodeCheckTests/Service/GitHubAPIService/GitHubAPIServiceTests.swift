@@ -11,8 +11,12 @@ import XCTest
 
 final class GitHubAPIServiceTests: XCTestCase {
     
+    // MARK: - Properties
+        
     private var sut: GitHubAPIService!
 
+    // MARK: - Setup/TearDown
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = GitHubAPIService()
@@ -22,6 +26,9 @@ final class GitHubAPIServiceTests: XCTestCase {
         sut = nil
         try super.tearDownWithError()
     }
+    
+    // MARK: - リポジトリの検索
+    // MARK: 成功
 
     func testSearchRepositotiesSuccess() async throws {
         // given
@@ -45,6 +52,8 @@ final class GitHubAPIServiceTests: XCTestCase {
             XCTFail("unexpected error: \(error.localizedDescription)")
         }
     }
+    
+    // MARK: 通信エラー
     
     func testSearchRepositotiesFailByConnectionError() async throws {
         // given
@@ -73,6 +82,8 @@ final class GitHubAPIServiceTests: XCTestCase {
         
         XCTAssert(errorIsExpected, "expected error is .connectionError")
     }
+    
+    // MARK: レスポンスの文字列のデコードエラー
     
     func testSearchRepositotiesFailByResponseParseError() async throws {
         // given
@@ -108,6 +119,8 @@ final class GitHubAPIServiceTests: XCTestCase {
         
         XCTAssert(errorIsExpected, "expected error is .responseParseError")
     }
+    
+    // MARK: GitHubAPIで返されたエラー
     
     func testSearchRepositotiesFailByGitHubAPIError() async throws {
         // given

@@ -27,8 +27,8 @@ struct SearchResultView: View {
             }
         }
         .onChange(of: isSearching) { newValue in
-            // 検索が終了した場合
             if !newValue {
+                // 検索がキャンセルされた場合
                 viewModel.cancelSearching()
             }
         }
