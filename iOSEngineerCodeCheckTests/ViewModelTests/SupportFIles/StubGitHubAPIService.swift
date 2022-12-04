@@ -9,6 +9,7 @@
 import Foundation
 @testable import iOSEngineerCodeCheck
 
+/// ViewModelの非同期処理を含めて確認するためのGitHubAPIServiceのStub
 final class StubGitHubAPIService: GitHubAPIServiceProtocol {
 
     static let shared: StubGitHubAPIService = .init()

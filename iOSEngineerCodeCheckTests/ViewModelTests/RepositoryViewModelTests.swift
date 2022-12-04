@@ -12,8 +12,12 @@ import XCTest
 @MainActor
 final class RepositoryViewModelTests: XCTestCase {
 
+    // MARK: - Properties
+    
     private var sut: RepositoryListViewModel<StubGitHubAPIService>!
 
+    // MARK: - Setup/TearDown
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = RepositoryListViewModel<StubGitHubAPIService>()
@@ -24,7 +28,9 @@ final class RepositoryViewModelTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    // MARK: - Searching Tests
+    // MARK: - リポジトリの検索
+    
+    // MARK: 検索フィールドが空の場合
 
     func testSearchRepositoriesButtonPressedWhenKeywordIsEmpty() async {
         // given
@@ -94,6 +100,8 @@ final class RepositoryViewModelTests: XCTestCase {
     }
      */
 
+    // MARK: 成功
+    
     func testSearchRepositoriesButtonPressedSuccess() async {
         // given
         sut.keyword = "swift"
@@ -129,8 +137,6 @@ final class RepositoryViewModelTests: XCTestCase {
         }
     }
 
-    // MARK: - Searching Fail Tests
-
     // MARK: Helpers
     
     private func searchRepositoriesFail(withError error: Error) async {
@@ -149,7 +155,7 @@ final class RepositoryViewModelTests: XCTestCase {
         _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
     }
     
-    // MARK: Tests
+    // MARK: 通信エラー
 
     func testSearchRepositoriesButtonPressedFailByConnectionError() async {
         // given/when
@@ -166,6 +172,8 @@ final class RepositoryViewModelTests: XCTestCase {
         }
     }
 
+    // MARK: レスポンスの文字列のデコードエラー
+    
     func testSearchRepositoriesButtonPressedFailByResponseParseErrorError() async {
         // given/when
         await searchRepositoriesFail(
@@ -180,6 +188,8 @@ final class RepositoryViewModelTests: XCTestCase {
             XCTFail("unexpected repositories: \(sut.repositories)")
         }
     }
+    
+    // MARK: GitHubAPIで返されたエラー
 
     func testSearchRepositoriesButtonPressedFailByAPIError() async {
         // given/when
@@ -195,6 +205,8 @@ final class RepositoryViewModelTests: XCTestCase {
             XCTFail("unexpected repositories: \(sut.repositories)")
         }
     }
+    
+    // MARK: その他のエラー
 
     func testSearchRepositoriesButtonPressedFailByOtherError() async {
         // given/when
