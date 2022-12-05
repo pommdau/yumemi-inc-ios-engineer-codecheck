@@ -1,11 +1,14 @@
-# 株式会社ゆめみ iOS エンジニアコードチェック課題
-
 ## 概要
+- キーワードを入力し、GitHubリポジトリを検索、詳細が確認できるSwiftUI製のiOSアプリケーション。
+- 下記リポジトリを基底としています。
+  - [株式会社ゆめみ iOS エンジニアコードチェック課題](https://github.com/yumemi-inc/ios-engineer-codecheck)
 
-本プロジェクトは株式会社ゆめみ（以下弊社）が、弊社に iOS エンジニアを希望する方に出す課題のベースプロジェクトです。本課題が与えられた方は、下記の概要を詳しく読んだ上で課題を取り組んでください。
-
-## アプリ仕様
+## アプリケーションの動作
 
 https://user-images.githubusercontent.com/29433103/205604387-0cb5cf5c-7e2c-4207-b6bd-fe9acd05ad0d.mov
 
-## TODO: 追記
+## 工夫した点
+- TODO: write
+
+## 課題
+- TODO: write
