@@ -27,6 +27,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
+      language = "en"
       codeCoverageEnabled = "YES"
       onlyGenerateCoverageForSpecifiedTargets = "YES">
       <CodeCoverageTargets>
@@ -56,6 +57,39 @@
                BlueprintIdentifier = "BFD945FB244DC5EB0012785A"
                BuildableName = "iOSEngineerCodeCheckUITests.xctest"
                BlueprintName = "iOSEngineerCodeCheckUITests"
+               ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DAB8D44D2942F27F004724FA"
+               BuildableName = "EngineerCodeCheckUITests.xctest"
+               BlueprintName = "EngineerCodeCheckUITests"
+               ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DA5C0DD02944698600E0D7B9"
+               BuildableName = "EngineerCodeCheckUITestsWithViewInspector.xctest"
+               BlueprintName = "EngineerCodeCheckUITestsWithViewInspector"
+               ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DA5C0DE229448FCA00E0D7B9"
+               BuildableName = "EngineerCodeCheckUITestsWithXCUITest.xctest"
+               BlueprintName = "EngineerCodeCheckUITestsWithXCUITest"
                ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
             </BuildableReference>
          </TestableReference>
