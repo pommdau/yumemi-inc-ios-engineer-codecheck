@@ -11,6 +11,7 @@ import SwiftUI
 struct RepositorySearchScreen: View {
 
     @StateObject private var viewModel: RepositoryListViewModel<GitHubAPIService> = .init()
+    internal let inspection = Inspection<Self>()
 
     var body: some View {
         NavigationView {
@@ -28,6 +29,7 @@ struct RepositorySearchScreen: View {
                     }
                 }
         }
+        .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
 }
 

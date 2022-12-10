@@ -11,7 +11,10 @@ import UIKit
 @MainActor
 final class RepositoryListViewModel<GitHubAPIService>: ObservableObject
 where GitHubAPIService: GitHubAPIServiceProtocol {
-    @Published private(set) var repositories: Stateful<[Repository]> = .idle
+    
+    // FIXME: private(set)したいがUITest用にpublicにしてしまっている状態
+    // ViewModelのProtocolを定義して対応する？
+    @Published var repositories: Stateful<[Repository]> = .idle
     @Published var keyword = ""
     private(set) var task: Task<(), Never>?
 }

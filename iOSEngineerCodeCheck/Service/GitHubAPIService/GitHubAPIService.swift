@@ -21,6 +21,14 @@ final actor GitHubAPIService: GitHubAPIServiceProtocol {
     }
 
     func searchRepositories(keyword: String) async throws -> [Repository] {
+#if DEBUG
+        // UITest用
+        // TODO: 型パラメータインジェクションを採用したためStubを使えていない状態。
+        // UITestでもうまくStubを遣う方法を考えたい
+        if ProcessInfo.processInfo.arguments.contains("-MockGitHubAPIService") {
+            return Repository.sampleData
+        }
+#endif
         let response = try await request(with: GitHubAPIRequest.SearchRepositories(keyword: keyword))
         let repositories = response.items
 

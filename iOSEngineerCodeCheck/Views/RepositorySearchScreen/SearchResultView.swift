@@ -12,6 +12,7 @@ struct SearchResultView: View {
 
     @Environment(\.isSearching) private var isSearching: Bool
     @StateObject var viewModel: RepositoryListViewModel<GitHubAPIService>
+    internal let inspection = Inspection<Self>()
 
     var body: some View {
         Group {
@@ -32,6 +33,8 @@ struct SearchResultView: View {
                 viewModel.cancelSearching()
             }
         }
+        .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
+//        .navigationTitle("リポジトリ検索")
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RepositoryList: View {
 
-    let repositories: [Repository]
+    let repositories: [Repository]    
 
     var body: some View {
         if repositories.isEmpty {
