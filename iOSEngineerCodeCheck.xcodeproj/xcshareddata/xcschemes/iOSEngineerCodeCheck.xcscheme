@@ -41,33 +41,13 @@
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BFD945F0244DC5EB0012785A"
-               BuildableName = "iOSEngineerCodeCheckTests.xctest"
-               BlueprintName = "iOSEngineerCodeCheckTests"
-               ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BFD945FB244DC5EB0012785A"
-               BuildableName = "iOSEngineerCodeCheckUITests.xctest"
-               BlueprintName = "iOSEngineerCodeCheckUITests"
-               ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
             skipped = "NO"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DAB8D44D2942F27F004724FA"
-               BuildableName = "EngineerCodeCheckUITests.xctest"
-               BlueprintName = "EngineerCodeCheckUITests"
+               BlueprintIdentifier = "DA9681AD2944C9F600805954"
+               BuildableName = "EngineerCodeCheckUnitTests.xctest"
+               BlueprintName = "EngineerCodeCheckUnitTests"
                ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
             </BuildableReference>
          </TestableReference>
