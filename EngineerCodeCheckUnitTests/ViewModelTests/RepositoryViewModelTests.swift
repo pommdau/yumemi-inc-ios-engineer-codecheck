@@ -14,13 +14,13 @@ final class RepositoryViewModelTests: XCTestCase {
 
     // MARK: - Properties
     
-    private var sut: RepositoryListViewModel<StubGitHubAPIService>!
+    private var sut: SearchResultViewModel<StubGitHubAPIService>!
 
     // MARK: - Setup/TearDown
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = RepositoryListViewModel<StubGitHubAPIService>()
+        sut = SearchResultViewModel<StubGitHubAPIService>()
     }
 
     override func tearDownWithError() throws {
