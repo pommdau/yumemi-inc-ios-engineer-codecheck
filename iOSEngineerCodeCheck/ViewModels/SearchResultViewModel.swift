@@ -1,15 +1,15 @@
 //
-//  RepositoryListViewModel.swift
+//  SearchResultViewModel.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/09.
 //  Copyright © 2022 YUMEMI Inc. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 @MainActor
-final class RepositoryListViewModel<GitHubAPIService>: ObservableObject
+final class SearchResultViewModel<GitHubAPIService>: ObservableObject
 where GitHubAPIService: GitHubAPIServiceProtocol {
     
     // FIXME: private(set)したいがUITest用にpublicにしてしまっている状態
@@ -21,7 +21,7 @@ where GitHubAPIService: GitHubAPIServiceProtocol {
 
 // MARK: - Handle Searching Methods
 
-extension RepositoryListViewModel {
+extension SearchResultViewModel {
 
     func cancelSearching() {
         task?.cancel()

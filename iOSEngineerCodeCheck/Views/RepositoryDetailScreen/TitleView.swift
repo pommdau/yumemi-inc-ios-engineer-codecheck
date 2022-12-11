@@ -70,7 +70,12 @@ struct TitleView: View {
 
 struct TitleView_Previews: PreviewProvider {
     static var previews: some View {
-        TitleView(repository: Repository.sampleData[0])
-            .previewLayout(.fixed(width: 600, height: 200))
+        Group {
+            TitleView(repository: Repository.sampleData[0])
+                .previewDisplayName("通常")
+            TitleView(repository: Repository.sampleDataWithLongWord)
+                .previewDisplayName("長い語句を含む場合")
+        }
+        .previewLayout(.fixed(width: 600, height: 200))
     }
 }

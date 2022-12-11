@@ -86,15 +86,17 @@ struct RepositoryCell: View {
 
 struct RepositoryCell_Previews: PreviewProvider {
     static var previews: some View {
-
         Group {
             RepositoryCell(repository: Repository.sampleData[0])
-                .previewLayout(.fixed(width: 200, height: 400))
-                .padding()
-
-            RepositoryCell(repository: Repository.sampleData[1])
-                .previewLayout(.fixed(width: 200, height: 400))
-                .padding()
+                .previewDisplayName("通常")
+            
+            RepositoryCell(repository: Repository.sampleDataWithLongWord)
+                .previewDisplayName("長い語句を含む場合")
+            
+            RepositoryCell(repository: Repository.sampleDataWithoutSomeInfo)
+                .previewDisplayName("空の情報がある場合")
         }
+        .padding()
+        .previewLayout(.fixed(width: 400, height: 400))
     }
 }
