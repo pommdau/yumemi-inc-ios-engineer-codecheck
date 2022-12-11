@@ -24,6 +24,14 @@ struct RepositoryList: View {
                     RepositoryCell(repository: repository)
                 }
             }
+            .onAppear {
+                var message = ""
+                for repository in repositories {
+                    message += repository.createInitializerString()
+                    message += "\n"
+                }
+                print(message)
+            }
         }
     }
 }
@@ -34,12 +42,12 @@ struct RepositoryList_Previews: PreviewProvider {
             NavigationView {
                 RepositoryList(repositories: Repository.sampleData)
             }
-            .previewDisplayName("regular")
+            .previewDisplayName("通常")
 
             NavigationView {
                 RepositoryList(repositories: [])
             }
-            .previewDisplayName("repositories.isEmpty")
-        }
+            .previewDisplayName("検索結果が空")
+        }        
     }
 }

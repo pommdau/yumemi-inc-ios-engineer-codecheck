@@ -111,7 +111,14 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutView(repository: Repository.sampleData[0])
-            .previewLayout(.fixed(width: 600, height: 400))
+        Group {
+            AboutView(repository: Repository.sampleData[0])
+                .previewDisplayName("通常")
+            AboutView(repository: Repository.sampleDataWithLongWord)
+                .previewDisplayName("長い語句を含む場合")
+            AboutView(repository: Repository.sampleDataWithoutSomeInfo)
+                .previewDisplayName("空の情報がある場合")
+        }
+        .previewLayout(.fixed(width: 600, height: 400))
     }
 }
