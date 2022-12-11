@@ -25,6 +25,7 @@ final class RepositorySearchScreenTests: XCTestCase {
     }
 
     // リポジトリ検索を行いCellが表示されるかどうかを確認
+    // ViewInspectorがNavigationViewの.searchableに非対応(2022-12-10現在)のため、この部分のみXCUITestを遣う
     func testSearchRepositoryAndCheckCellExistence() throws {
         let navigationBar = app.navigationBars["_TtGC7SwiftUI19UIHosting"]
         let searchField = navigationBar.searchFields["検索"]
