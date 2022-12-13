@@ -24,14 +24,6 @@ struct RepositoryList: View {
                     RepositoryCell(repository: repository)
                 }
             }
-            .onAppear {
-                var message = ""
-                for repository in repositories {
-                    message += repository.createInitializerString()
-                    message += "\n"
-                }
-                print(message)
-            }
         }
     }
 }
