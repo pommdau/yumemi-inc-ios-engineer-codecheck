@@ -563,6 +563,18 @@ extension Repository {
     ]
 }
 
+/// sampleDataの作成用のデバッグ関数
+/*
+ e.g.
+ .onAppear {
+     var message = ""
+     for repository in repositories {
+         message += repository.createInitializerString()
+         message += "\n"
+     }
+     print(message)
+ }
+ */
 extension Repository {
     
     func createInitializerString() -> String {
