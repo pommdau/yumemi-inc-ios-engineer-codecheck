@@ -12,11 +12,9 @@ final actor GitHubAPIService: GitHubAPIServiceProtocol {
 
     static let shared: GitHubAPIService = .init()
     
-    // FIXME: できればUnitTest用のURLSessionは公開したくない
+    private(set) var urlSession: URLSessionProtocol
     
-    private(set) var urlSession: URLSessionProtocol = URLSession.shared
-    
-    func setURLSession(urlSession: URLSessionProtocol) {
+    init(urlSession: URLSessionProtocol = URLSession.shared) {
         self.urlSession = urlSession
     }
 

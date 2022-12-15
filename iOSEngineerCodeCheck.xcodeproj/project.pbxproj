@@ -25,7 +25,7 @@
 		DA34FD832942F78700EFB647 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34FD822942F78700EFB647 /* Inspection.swift */; };
 		DA3AB79C2938842A00A62A6C /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3AB79B2938842A00A62A6C /* URLSessionProtocol.swift */; };
 		DA5C0DD42944698600E0D7B9 /* EngineerCodeCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C0DD32944698600E0D7B9 /* EngineerCodeCheckUITests.swift */; };
-		DA5C0DDA2944699300E0D7B9 /* Inspectable+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34FD7F2942F3BD00EFB647 /* Inspectable+Model.swift */; };
+		DA5C0DDA2944699300E0D7B9 /* Inspection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34FD7F2942F3BD00EFB647 /* Inspection+Model.swift */; };
 		DA5C0DDC294469E000E0D7B9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA5C0DDB294469E000E0D7B9 /* SDWebImageSwiftUI */; };
 		DA5C0DDE294469E000E0D7B9 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = DA5C0DDD294469E000E0D7B9 /* ViewInspector */; };
 		DA5C0DEF29448FE800E0D7B9 /* RepositorySearchScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C0DEE29448FE800E0D7B9 /* RepositorySearchScreenTests.swift */; };
@@ -109,7 +109,7 @@
 		DA34B640292229D400C052BD /* github-lang-colors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "github-lang-colors.json"; sourceTree = "<group>"; };
 		DA34B6612922492A00C052BD /* GitHubLanguageColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLanguageColorManager.swift; sourceTree = "<group>"; };
 		DA34B6632922495000C052BD /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
-		DA34FD7F2942F3BD00EFB647 /* Inspectable+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inspectable+Model.swift"; sourceTree = "<group>"; };
+		DA34FD7F2942F3BD00EFB647 /* Inspection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inspection+Model.swift"; sourceTree = "<group>"; };
 		DA34FD822942F78700EFB647 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		DA3AB79B2938842A00A62A6C /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		DA3AB79D2938844400A62A6C /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 		DA5C0DD22944698600E0D7B9 /* EngineerCodeCheckUITestsWithViewInspector */ = {
 			isa = PBXGroup;
 			children = (
-				DA34FD7F2942F3BD00EFB647 /* Inspectable+Model.swift */,
+				DA34FD7F2942F3BD00EFB647 /* Inspection+Model.swift */,
 				DA5C0DD32944698600E0D7B9 /* EngineerCodeCheckUITests.swift */,
 			);
 			path = EngineerCodeCheckUITestsWithViewInspector;
@@ -629,7 +629,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		DAA00AEC291500D400EB1481 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -695,7 +695,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA5C0DDA2944699300E0D7B9 /* Inspectable+Model.swift in Sources */,
+				DA5C0DDA2944699300E0D7B9 /* Inspection+Model.swift in Sources */,
 				DA5C0DD42944698600E0D7B9 /* EngineerCodeCheckUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

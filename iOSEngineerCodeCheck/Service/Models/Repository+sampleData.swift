@@ -558,12 +558,10 @@ extension Repository {
               htmlPath: "https://github.com/ivanvorobei/SwiftUI",
               websitePath: "https://opensource.ivanvorobei.by",
               description: "Examples projects using SwiftUI released by WWDC2019. Include Layout, UI, Animations, Gestures, Draw and Data.",
-              subscribersCount: 0),
-        
+              subscribersCount: 0)
     ]
 }
 
-/// sampleDataの作成用のデバッグ関数
 /*
  e.g.
  .onAppear {
@@ -575,6 +573,7 @@ extension Repository {
      print(message)
  }
  */
+/// sampleDataの作成用のデバッグ関数
 extension Repository {
     
     func createInitializerString() -> String {
