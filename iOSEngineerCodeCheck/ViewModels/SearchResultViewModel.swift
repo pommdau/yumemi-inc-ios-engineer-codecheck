@@ -11,11 +11,12 @@ import Foundation
 @MainActor
 final class SearchResultViewModel<GitHubAPIService>: ObservableObject
 where GitHubAPIService: GitHubAPIServiceProtocol {
-    
-    // FIXME: private(set)したいがUITest用にpublicにしてしまっている状態
-    // ViewModelのProtocolを定義して対応する？
-    @Published var repositories: Stateful<[Repository]> = .idle
+    @Published private(set) var repositories: Stateful<[Repository]>
     private(set) var task: Task<(), Never>?
+    
+    init(repositories: Stateful<[Repository]> = .idle) {
+        self.repositories = repositories
+    }
 }
 
 // MARK: - Handle Searching Methods
