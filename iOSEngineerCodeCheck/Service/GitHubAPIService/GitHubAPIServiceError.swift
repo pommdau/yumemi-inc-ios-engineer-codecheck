@@ -17,4 +17,15 @@ enum GitHubAPIServiceError: Error {
 
     // APIからエラーレスポンスを受け取った
     case apiError(GitHubAPIError)
+    
+    var message: String {
+        switch self {
+        case .connectionError:
+            return "通信エラー"
+        case .responseParseError:
+            return "データの取得に失敗"
+        case .apiError(let gitHubAPIError):
+            return gitHubAPIError.message
+        }
+    }
 }

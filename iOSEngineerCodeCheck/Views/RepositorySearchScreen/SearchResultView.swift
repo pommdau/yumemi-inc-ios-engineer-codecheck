@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SearchResultView: View {
 
+    // isSearchingは.searchableと同じViewで使用できないため、本Viewを切り出している
     @Environment(\.isSearching) private var isSearching: Bool
     @StateObject var viewModel: SearchResultViewModel<GitHubAPIService>
     internal let inspection = Inspection<Self>()
@@ -34,7 +35,6 @@ struct SearchResultView: View {
             }
         }
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
-//        .navigationTitle("リポジトリ検索")
     }
 }
 

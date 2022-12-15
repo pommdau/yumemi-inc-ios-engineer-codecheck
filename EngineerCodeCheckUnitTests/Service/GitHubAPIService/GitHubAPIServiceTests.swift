@@ -19,7 +19,6 @@ final class GitHubAPIServiceTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = GitHubAPIService()
     }
 
     override func tearDownWithError() throws {
@@ -42,7 +41,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         )
-        await sut.setURLSession(urlSession: urlSessionStub)
+        sut = GitHubAPIService(urlSession: urlSessionStub)
                 
         // when/then
         do {
@@ -60,7 +59,7 @@ final class GitHubAPIServiceTests: XCTestCase {
         let urlSessionStub = StubURLSession(
             error: URLError(.cannotConnectToHost)
         )
-        await sut.setURLSession(urlSession: urlSessionStub)
+        sut = GitHubAPIService(urlSession: urlSessionStub)
         
         // when
         var errorIsExpected = false
@@ -97,7 +96,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         )
-        await sut.setURLSession(urlSession: urlSessionStub)
+        sut = GitHubAPIService(urlSession: urlSessionStub)
         
         // when
         var errorIsExpected = false
@@ -134,7 +133,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 400, httpVersion: nil, headerFields: nil)
         )
-        await sut.setURLSession(urlSession: urlSessionStub)
+        sut = GitHubAPIService(urlSession: urlSessionStub)
         
         // when
         var errorIsExpected = false

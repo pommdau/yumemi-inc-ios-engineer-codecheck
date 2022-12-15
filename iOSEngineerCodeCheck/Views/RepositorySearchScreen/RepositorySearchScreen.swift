@@ -11,21 +11,19 @@ import SwiftUI
 struct RepositorySearchScreen: View {
 
     @StateObject private var viewModel: SearchResultViewModel<GitHubAPIService> = .init()
+    @State private var keyword = ""
     internal let inspection = Inspection<Self>()
 
     var body: some View {
         NavigationView {
-            // @Environment(\.isSearching) private var isSearching: Bool
-            // 上記が.searchableと同じクラスでは使えず子Viewでしか使えないためクラスを分割している
-            // TODO: ViewModelを複数クラスで使用するのは行儀の良くない気がする…
             SearchResultView(viewModel: viewModel)
                 .navigationBarTitleDisplayMode(.inline)
-                .searchable(text: $viewModel.keyword,
+                .searchable(text: $keyword,
                             placement: .automatic,
                             prompt: "検索") {
                 }.onSubmit(of: .search) {
                     Task {
-                        await viewModel.searchButtonPressed()
+                        await viewModel.searchButtonPressed(withKeyword: keyword)
                     }
                 }
         }

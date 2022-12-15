@@ -11,12 +11,12 @@ import Foundation
 @MainActor
 final class SearchResultViewModel<GitHubAPIService>: ObservableObject
 where GitHubAPIService: GitHubAPIServiceProtocol {
-    
-    // FIXME: private(set)したいがUITest用にpublicにしてしまっている状態
-    // ViewModelのProtocolを定義して対応する？
-    @Published var repositories: Stateful<[Repository]> = .idle
-    @Published var keyword = ""
+    @Published private(set) var repositories: Stateful<[Repository]>
     private(set) var task: Task<(), Never>?
+    
+    init(repositories: Stateful<[Repository]> = .idle) {
+        self.repositories = repositories
+    }
 }
 
 // MARK: - Handle Searching Methods
@@ -28,7 +28,7 @@ extension SearchResultViewModel {
         task = nil
     }
 
-    func searchButtonPressed() async {
+    func searchButtonPressed(withKeyword keyword: String) async {
         if keyword.isEmpty {
             return
         }
@@ -50,7 +50,7 @@ extension SearchResultViewModel {
     // サブスレッドで実行させるためnoisolatedを使用する
     nonisolated private func searchRepositories(keyword: String) async throws -> [Repository] {
         #if DEBUG
-        //        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理のデバッグ用。
+        //        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理の動作確認用。
         #endif
         return try await GitHubAPIService.shared.searchRepositories(keyword: keyword)
     }

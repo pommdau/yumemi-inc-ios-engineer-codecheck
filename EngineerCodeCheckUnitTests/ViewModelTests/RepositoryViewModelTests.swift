@@ -34,10 +34,8 @@ final class RepositoryViewModelTests: XCTestCase {
 
     func testSearchRepositoriesButtonPressedWhenKeywordIsEmpty() async {
         // given
-        sut.keyword = ""
-
         // when
-        await sut.searchButtonPressed()
+        await sut.searchButtonPressed(withKeyword: "")
 
         // then
         switch sut.repositories {
@@ -61,10 +59,8 @@ final class RepositoryViewModelTests: XCTestCase {
     /*
     func testSearchRepositoriesButtonPressedAndCancel() async {
         // given
-        sut.keyword = "swift"
-
         // when
-        async let search: Void = sut.searchButtonPressed()
+        async let search: Void = sut.searchButtonPressed(withKeyword: "swift)
         while StubGitHubAPIService.shared.searchContinuation == nil {
             await Task.yield()
         }
@@ -104,10 +100,8 @@ final class RepositoryViewModelTests: XCTestCase {
     
     func testSearchRepositoriesButtonPressedSuccess() async {
         // given
-        sut.keyword = "swift"
-
         // when
-        async let search: Void = sut.searchButtonPressed()
+        async let search: Void = sut.searchButtonPressed(withKeyword: "swift")
         while StubGitHubAPIService.shared.searchContinuation == nil {
             await Task.yield()
         }
@@ -141,10 +135,8 @@ final class RepositoryViewModelTests: XCTestCase {
     
     private func searchRepositoriesFail(withError error: Error) async {
         // given
-        sut.keyword = "swift"
-
         // when
-        async let search: Void = sut.searchButtonPressed()
+        async let search: Void = sut.searchButtonPressed(withKeyword: "swift")
         while StubGitHubAPIService.shared.searchContinuation == nil {
             await Task.yield()
         }
