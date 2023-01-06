@@ -5,11 +5,8 @@
 
 ## スクリーンショット
 
-<img width="400" alt="image" src="https://i.imgur.com/pDxU966.png">
+| 検索前 | 検索中 | 検索後 | 詳細画面 |
+|---|---|---|---|
+| ![Screen Shot 2023-01-06 at 22.25.41](https://i.imgur.com/0QFNKWV.png) | ![Screen Shot 2023-01-06 at 22.25.22](https://i.imgur.com/pru4Nnf.png) | ![Screen Shot 2023-01-06 at 22.25.34](https://i.imgur.com/YigKDIi.png) | ![ScreenShot](https://i.imgur.com/YMxZBVp.png) |
 
-<img width="400" alt="image" src="https://i.imgur.com/x4z6CXe.png">
-
-<img width="400" alt="image" src="https://i.imgur.com/zZf7hLE.png">
-
-https://user-images.githubusercontent.com/29433103/205604387-0cb5cf5c-7e2c-4207-b6bd-fe9acd05ad0d.mov
-
+https://user-images.githubusercontent.com/29433103/211025910-5a224cf9-5251-4d15-8349-b25ff0863c95.mp4
