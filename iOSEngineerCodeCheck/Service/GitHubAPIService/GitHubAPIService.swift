@@ -29,8 +29,7 @@ final actor GitHubAPIService: GitHubAPIServiceProtocol {
         let response = try await request(with: GitHubAPIRequest.SearchRepositories(keyword: keyword))
         let repositories = response.items
 
-        // TODO: RateLimitに注意
-        // リポジトリの詳細情報を取得して情報を追加する
+        // リポジトリの詳細情報を取得して情報を追加する(RateLimitに注意)
 //        let details = try await fetchRepositoryDetails(withRepositories: repositories)
 //        for index in details.indices {
 //            repositories[index].update(withRepositoryDetail: details[index])
@@ -64,5 +63,4 @@ extension GitHubAPIService {
         let response = try await request(with: GitHubAPIRequest.GetRepositoryDetail(userName: userName, repositoryName: repositoryName))
         return response
     }
-        
 }

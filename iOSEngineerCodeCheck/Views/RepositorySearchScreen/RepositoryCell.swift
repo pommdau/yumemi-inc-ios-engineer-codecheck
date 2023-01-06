@@ -15,9 +15,9 @@ struct RepositoryCell: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            userLabel()
             repositoryNameLabel()
             descriptionLabel()
+            userLabel()
             HStack(spacing: 18) {
                 starsLabel()
                 languageLabel()
@@ -37,9 +37,14 @@ struct RepositoryCell: View {
                 .frame(width: 24, height: 24)
                 .cornerRadius(12)
             Text(repository.owner.name)
-                .foregroundColor(.secondary)
                 .lineLimit(1)
         }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(.secondary.opacity(0.2))
+                .frame(height: 40)
+        )
     }
 
     @ViewBuilder
