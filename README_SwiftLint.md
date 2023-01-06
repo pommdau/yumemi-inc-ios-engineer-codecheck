@@ -1,3 +1,3 @@
 #  SwiftLintのルール
-- 下記に配置した自身のSwiftLintの設定を使用する
+- 下記のSwiftLintの設定を一部変えて使用する
     - https://github.com/pommdau/SwiftLint-Config
