@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RepositorySearchScreen: View {
 
-    @StateObject private var viewModel: SearchResultViewModel<GitHubAPIService> = .init()
+    @State private var viewModel: SearchResultViewModel<GitHubAPIService> = .init()
     @State private var keyword = ""
     internal let inspection = Inspection<Self>()
 
