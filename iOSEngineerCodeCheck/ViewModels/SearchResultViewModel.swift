@@ -9,9 +9,9 @@
 import Foundation
 
 @MainActor
-final class SearchResultViewModel<GitHubAPIService>: ObservableObject
+final class SearchResultViewModel<GitHubAPIService>: Observable
 where GitHubAPIService: GitHubAPIServiceProtocol {
-    @Published private(set) var repositories: Stateful<[Repository]>
+    private(set) var repositories: Stateful<[Repository]>
     private(set) var task: Task<(), Never>?
     
     init(repositories: Stateful<[Repository]> = .idle) {
