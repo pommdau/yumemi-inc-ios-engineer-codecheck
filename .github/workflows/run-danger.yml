@@ -29,3 +29,5 @@ jobs:
     # danger-swift の実行
     - name: Run Danger Swift
       run: danger-swift ci
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

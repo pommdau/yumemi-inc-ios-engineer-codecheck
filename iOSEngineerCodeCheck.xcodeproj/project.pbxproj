@@ -137,6 +137,9 @@
 		DAA00AEB2915009100EB1481 /* README_SwiftLint.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_SwiftLint.md; sourceTree = "<group>"; };
 		DAA00AED291500F700EB1481 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DAB202942CA3C2A900FE363E /* Danger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Danger.swift; sourceTree = "<group>"; };
+		DAB202952CA3C39000FE363E /* copy-issues.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "copy-issues.yml"; sourceTree = "<group>"; };
+		DAB202962CA3C39000FE363E /* run-danger.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "run-danger.yml"; sourceTree = "<group>"; };
+		DAB202982CA3C39000FE363E /* pull_request_template.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = pull_request_template.md; sourceTree = "<group>"; };
 		DAC6D78A29324EF9003BC645 /* RepositoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModelTests.swift; sourceTree = "<group>"; };
 		DAC7078A2937E25E00E56F95 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		DAC7078E2937E2B800E56F95 /* FailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedView.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
+				DAB202992CA3C39000FE363E /* .github */,
 				DAB202942CA3C2A900FE363E /* Danger.swift */,
 				DAA00AED291500F700EB1481 /* .swiftlint.yml */,
 				DAA00AEB2915009100EB1481 /* README_SwiftLint.md */,
@@ -371,6 +375,24 @@
 				DAC6D78E29326173003BC645 /* ViewModelTests */,
 			);
 			path = EngineerCodeCheckUnitTests;
+			sourceTree = "<group>";
+		};
+		DAB202972CA3C39000FE363E /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				DAB202952CA3C39000FE363E /* copy-issues.yml */,
+				DAB202962CA3C39000FE363E /* run-danger.yml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		DAB202992CA3C39000FE363E /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				DAB202972CA3C39000FE363E /* workflows */,
+				DAB202982CA3C39000FE363E /* pull_request_template.md */,
+			);
+			path = .github;
 			sourceTree = "<group>";
 		};
 		DAC6D78E29326173003BC645 /* ViewModelTests */ = {
