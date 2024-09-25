@@ -1,0 +1,31 @@
+name: Danger Swift with SwiftLint
+
+on:
+  pull_request:
+
+jobs:
+  danger:
+    runs-on: macos-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v3
+
+    # Homebrew のキャッシュを利用
+    - name: Cache Homebrew
+      uses: actions/cache@v3
+      with:
+        path: /usr/local/Homebrew
+        key: ${{ runner.os }}-brew-${{ hashFiles('**/Brewfile') }}
+        restore-keys: |
+          ${{ runner.os }}-brew-
+
+    # SwiftLint と danger-swift のインストール
+    - name: Install SwiftLint and danger-swift
+      run: |
+        brew install swiftlint
+        brew install danger/tap/danger-swift
+
+    # danger-swift の実行
+    - name: Run Danger Swift
+      run: danger-swift ci
