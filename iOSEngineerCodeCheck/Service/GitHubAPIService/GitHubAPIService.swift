@@ -20,7 +20,7 @@ final actor GitHubAPIService: GitHubAPIServiceProtocol {
 
     func searchRepositories(keyword: String) async throws -> [Repository] {
 #if DEBUG
-        // TODO: 型パラメータインジェクションによるDIのため、ViewModelの外からのテストでStubを使えていない
+        // wanring:型パラメータインジェクションによるDIのため、ViewModelの外からのテストでStubを使えていない
         // UITestでもうまくStubを遣う方法を考えたい
         if ProcessInfo.processInfo.arguments.contains("-MockGitHubAPIService") {
             return Repository.sampleData

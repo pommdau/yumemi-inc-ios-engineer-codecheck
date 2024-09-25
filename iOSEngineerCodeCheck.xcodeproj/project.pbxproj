@@ -136,6 +136,9 @@
 		DAA00AEA2914FABD00EB1481 /* README_Git.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_Git.md; sourceTree = "<group>"; };
 		DAA00AEB2915009100EB1481 /* README_SwiftLint.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_SwiftLint.md; sourceTree = "<group>"; };
 		DAA00AED291500F700EB1481 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		DAB2029A2CA3C9A400FE363E /* copy-issues.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "copy-issues.yml"; sourceTree = "<group>"; };
+		DAB2029B2CA3C9A400FE363E /* run-swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "run-swiftlint.yml"; sourceTree = "<group>"; };
+		DAB2029D2CA3C9A400FE363E /* pull_request_template.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = pull_request_template.md; sourceTree = "<group>"; };
 		DAC6D78A29324EF9003BC645 /* RepositoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModelTests.swift; sourceTree = "<group>"; };
 		DAC7078A2937E25E00E56F95 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		DAC7078E2937E2B800E56F95 /* FailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedView.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
+				DAB2029E2CA3C9A400FE363E /* .github */,
 				DAA00AED291500F700EB1481 /* .swiftlint.yml */,
 				DAA00AEB2915009100EB1481 /* README_SwiftLint.md */,
 				DAA00AEA2914FABD00EB1481 /* README_Git.md */,
@@ -371,6 +375,24 @@
 			path = EngineerCodeCheckUnitTests;
 			sourceTree = "<group>";
 		};
+		DAB2029C2CA3C9A400FE363E /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				DAB2029A2CA3C9A400FE363E /* copy-issues.yml */,
+				DAB2029B2CA3C9A400FE363E /* run-swiftlint.yml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		DAB2029E2CA3C9A400FE363E /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				DAB2029C2CA3C9A400FE363E /* workflows */,
+				DAB2029D2CA3C9A400FE363E /* pull_request_template.md */,
+			);
+			path = .github;
+			sourceTree = "<group>";
+		};
 		DAC6D78E29326173003BC645 /* ViewModelTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,11 +487,11 @@
 				BFD945D7244DC5E80012785A /* Sources */,
 				BFD945D8244DC5E80012785A /* Frameworks */,
 				BFD945D9244DC5E80012785A /* Resources */,
-				DAA00AEC291500D400EB1481 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DAB202932CA3A8BB00FE363E /* PBXTargetDependency */,
 			);
 			name = iOSEngineerCodeCheck;
 			packageProductDependencies = (
@@ -490,6 +512,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA798CE62CA3D18600A7ADDE /* PBXTargetDependency */,
 				DA5C0DD62944698600E0D7B9 /* PBXTargetDependency */,
 			);
 			name = EngineerCodeCheckUITestsWithViewInspector;
@@ -512,6 +535,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA798CE82CA3D18900A7ADDE /* PBXTargetDependency */,
 				DA5C0DEA29448FCA00E0D7B9 /* PBXTargetDependency */,
 			);
 			name = EngineerCodeCheckUITestsWithXCUITest;
@@ -530,6 +554,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA798CE42CA3D18200A7ADDE /* PBXTargetDependency */,
 				DA9681B32944C9F600805954 /* PBXTargetDependency */,
 			);
 			name = EngineerCodeCheckUnitTests;
@@ -546,8 +571,9 @@
 		BFD945D3244DC5E80012785A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = "YUMEMI Inc.";
 				TargetAttributes = {
 					BFD945DA244DC5E80012785A = {
@@ -579,6 +605,7 @@
 			packageReferences = (
 				DA34B66529224EE100C052BD /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				DAB8D4572942F299004724FA /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = BFD945DC244DC5E80012785A /* Products */;
 			projectDirPath = "";
@@ -625,27 +652,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DAA00AEC291500D400EB1481 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n#  swiftlint --fix\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BFD945D7244DC5E80012785A /* Sources */ = {
@@ -741,10 +747,26 @@
 			target = BFD945DA244DC5E80012785A /* iOSEngineerCodeCheck */;
 			targetProxy = DA5C0DE929448FCA00E0D7B9 /* PBXContainerItemProxy */;
 		};
+		DA798CE42CA3D18200A7ADDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DA798CE32CA3D18200A7ADDE /* SwiftLintBuildToolPlugin */;
+		};
+		DA798CE62CA3D18600A7ADDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DA798CE52CA3D18600A7ADDE /* SwiftLintBuildToolPlugin */;
+		};
+		DA798CE82CA3D18900A7ADDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DA798CE72CA3D18900A7ADDE /* SwiftLintBuildToolPlugin */;
+		};
 		DA9681B32944C9F600805954 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BFD945DA244DC5E80012785A /* iOSEngineerCodeCheck */;
 			targetProxy = DA9681B22944C9F600805954 /* PBXContainerItemProxy */;
+		};
+		DAB202932CA3A8BB00FE363E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DAB202922CA3A8BB00FE363E /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -797,6 +819,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -858,6 +881,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1095,6 +1119,14 @@
 				kind = branch;
 			};
 		};
+		DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.57.0;
+			};
+		};
 		DAB8D4572942F299004724FA /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector";
@@ -1121,10 +1153,30 @@
 			package = DAB8D4572942F299004724FA /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
 		};
+		DA798CE32CA3D18200A7ADDE /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		DA798CE52CA3D18600A7ADDE /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		DA798CE72CA3D18900A7ADDE /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
 		DA9681C12944CA7600805954 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DA34B66529224EE100C052BD /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		DAB202922CA3A8BB00FE363E /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

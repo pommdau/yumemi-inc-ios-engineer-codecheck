@@ -98,6 +98,7 @@ disabled_rules:
   #- unused_control_flow_label
   #- unused_enumerated
   #- unused_optional_binding
+  - unneeded_override # テンプレートとして書いておきたいoverrideがあるため
   #- unused_setter_value
   #- valid_ibinspectable
   #- vertical_parameter_alignment
@@ -109,7 +110,6 @@ disabled_rules:
 opt_in_rules:
   - accessibility_label_for_image
   #- anonymous_argument_in_multiline_closure
-  - anyobject_protocol
   - array_init
   - attributes
   - balanced_xctest_lifecycle
@@ -152,7 +152,7 @@ opt_in_rules:
   - function_default_parameter_at_end
   - ibinspectable_in_extension
   - identical_operands
-  - implicit_return
+#  - implicit_return # 保守性を考えてreturnを利用する方針のため
   #- implicitly_unwrapped_optional # VIPERで変数を `!` で定義したいため
   #- indentation_width # `guard` のインデントに対応していなく、メソッドの引数でも引っかかって厳しいため
   - joined_default_parameter
@@ -189,7 +189,7 @@ opt_in_rules:
   #- prefixed_toplevel_constant # 定数のプリフィックスに `k` を付けたくないため
   - private_action
   - private_outlet
-  - private_subject
+#  - private_subject # ViewInspectorによるwanring抑制のため
   #- prohibited_interface_builder # IBを使ってビューを生成したいため
   - prohibited_super_call
   - quick_discouraged_call

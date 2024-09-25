@@ -1,0 +1,33 @@
+name: SwiftLint
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main  # 実行したいブランチを指定
+
+jobs:
+  swiftlint:
+    runs-on: macos-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v3
+
+    # Homebrewのキャッシュを利用
+    - name: Cache Homebrew
+      uses: actions/cache@v3
+      with:
+        path: /usr/local/Homebrew
+        key: ${{ runner.os }}-brew-${{ hashFiles('**/Brewfile') }}
+        restore-keys: |
+          ${{ runner.os }}-brew-
+
+    # SwiftLintのインストール
+    - name: Install SwiftLint
+      run: brew install swiftlint
+
+    # SwiftLintを実行
+    - name: Run SwiftLint
+      run: swiftlint --strict

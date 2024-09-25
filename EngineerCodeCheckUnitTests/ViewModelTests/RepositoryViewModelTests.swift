@@ -9,7 +9,6 @@
 import XCTest
 @testable import iOSEngineerCodeCheck
 
-@MainActor
 final class RepositoryViewModelTests: XCTestCase {
 
     // MARK: - Properties
@@ -18,6 +17,7 @@ final class RepositoryViewModelTests: XCTestCase {
 
     // MARK: - Setup/TearDown
     
+    @MainActor
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = SearchResultViewModel<StubGitHubAPIService>()
@@ -31,7 +31,7 @@ final class RepositoryViewModelTests: XCTestCase {
     // MARK: - リポジトリの検索
     
     // MARK: 検索フィールドが空の場合
-
+    @MainActor
     func testSearchRepositoriesButtonPressedWhenKeywordIsEmpty() async {
         // given
         // when
@@ -46,7 +46,7 @@ final class RepositoryViewModelTests: XCTestCase {
         }
     }
     
-    // FIXME: 検索のキャンセル処理のテストがうまく動作していないので一時的にコメントアウト
+    // 課題:検索のキャンセル処理のテストがうまく動作していないので一時的にコメントアウト
     /*
      task = Task {
          do {
@@ -97,7 +97,7 @@ final class RepositoryViewModelTests: XCTestCase {
      */
 
     // MARK: 成功
-    
+    @MainActor
     func testSearchRepositoriesButtonPressedSuccess() async {
         // given
         // when
@@ -148,7 +148,7 @@ final class RepositoryViewModelTests: XCTestCase {
     }
     
     // MARK: 通信エラー
-
+    @MainActor
     func testSearchRepositoriesButtonPressedFailByConnectionError() async {
         // given/when
         await searchRepositoriesFail(
@@ -165,7 +165,7 @@ final class RepositoryViewModelTests: XCTestCase {
     }
 
     // MARK: レスポンスの文字列のデコードエラー
-    
+    @MainActor
     func testSearchRepositoriesButtonPressedFailByResponseParseErrorError() async {
         // given/when
         await searchRepositoriesFail(
@@ -182,7 +182,7 @@ final class RepositoryViewModelTests: XCTestCase {
     }
     
     // MARK: GitHubAPIで返されたエラー
-
+    @MainActor
     func testSearchRepositoriesButtonPressedFailByAPIError() async {
         // given/when
         await searchRepositoriesFail(
@@ -199,7 +199,7 @@ final class RepositoryViewModelTests: XCTestCase {
     }
     
     // MARK: その他のエラー
-
+    @MainActor
     func testSearchRepositoriesButtonPressedFailByOtherError() async {
         // given/when
         await searchRepositoriesFail(

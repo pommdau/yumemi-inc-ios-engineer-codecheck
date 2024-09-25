@@ -33,9 +33,12 @@ struct RepositoryCell: View {
         HStack {
             WebImage(url: URL(string: repository.owner.avatarImagePath))
                 .resizable()
-                .placeholder(Image(systemName: "person.fill"))
+                .placeholder(
+                    Image(systemName: "person.fill")
+                )
                 .frame(width: 24, height: 24)
                 .cornerRadius(12)
+                .accessibilityLabel(Text("User Image"))
             Text(repository.owner.name)
                 .lineLimit(1)
         }
@@ -69,6 +72,7 @@ struct RepositoryCell: View {
     private func starsLabel() -> some View {
         HStack(spacing: 2) {
             Image(systemName: "star")
+                .accessibilityLabel(Text("Star Image"))
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repository.starsCount))")
         }
         .foregroundColor(.secondary)
