@@ -11,4 +11,4 @@ import Danger
 let danger = Danger()
 
 // SwiftLintの実行結果をインラインで表示
-SwiftLint.lint(inline: true)
+SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true)
