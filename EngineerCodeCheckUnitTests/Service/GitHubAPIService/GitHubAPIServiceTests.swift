@@ -86,9 +86,8 @@ final class GitHubAPIServiceTests: XCTestCase {
     
     func testSearchRepositotiesFailByResponseParseError() async throws {
         // given
-        guard let data = "{}".data(using: .utf8),  // ダミーのデータを渡す
-              let url = URL(string: "https://api.github.com/search/repositories?q=Swift")
-        else {
+        let data = Data("{}".utf8) // ダミーのデータを渡す
+        guard let url = URL(string: "https://api.github.com/search/repositories?q=Swift") else {
             XCTFail("Stubデータの作成に失敗しました")
             return
         }

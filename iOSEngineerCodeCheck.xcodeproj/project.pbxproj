@@ -512,6 +512,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA798CE62CA3D18600A7ADDE /* PBXTargetDependency */,
 				DA5C0DD62944698600E0D7B9 /* PBXTargetDependency */,
 			);
 			name = EngineerCodeCheckUITestsWithViewInspector;
@@ -534,6 +535,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA798CE82CA3D18900A7ADDE /* PBXTargetDependency */,
 				DA5C0DEA29448FCA00E0D7B9 /* PBXTargetDependency */,
 			);
 			name = EngineerCodeCheckUITestsWithXCUITest;
@@ -552,6 +554,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA798CE42CA3D18200A7ADDE /* PBXTargetDependency */,
 				DA9681B32944C9F600805954 /* PBXTargetDependency */,
 			);
 			name = EngineerCodeCheckUnitTests;
@@ -743,6 +746,18 @@
 			isa = PBXTargetDependency;
 			target = BFD945DA244DC5E80012785A /* iOSEngineerCodeCheck */;
 			targetProxy = DA5C0DE929448FCA00E0D7B9 /* PBXContainerItemProxy */;
+		};
+		DA798CE42CA3D18200A7ADDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DA798CE32CA3D18200A7ADDE /* SwiftLintBuildToolPlugin */;
+		};
+		DA798CE62CA3D18600A7ADDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DA798CE52CA3D18600A7ADDE /* SwiftLintBuildToolPlugin */;
+		};
+		DA798CE82CA3D18900A7ADDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DA798CE72CA3D18900A7ADDE /* SwiftLintBuildToolPlugin */;
 		};
 		DA9681B32944C9F600805954 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1137,6 +1152,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DAB8D4572942F299004724FA /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
+		};
+		DA798CE32CA3D18200A7ADDE /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		DA798CE52CA3D18600A7ADDE /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		DA798CE72CA3D18900A7ADDE /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 		DA9681C12944CA7600805954 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
