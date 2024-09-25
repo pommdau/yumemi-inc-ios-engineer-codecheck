@@ -31,14 +31,15 @@ struct RepositoryCell: View {
     @ViewBuilder
     private func userLabel() -> some View {
         HStack {
-            WebImage(url: URL(string: repository.owner.avatarImagePath))
-                .resizable()
-                .placeholder(
-                    Image(systemName: "person.fill")
-                )
-                .frame(width: 24, height: 24)
-                .cornerRadius(12)
-                .accessibilityLabel(Text("User Image"))
+            WebImage(url: URL(string: repository.owner.avatarImagePath)) { image in
+                image
+            } placeholder: {
+                Image(systemName: "person.fill")
+            }
+            .resizable()
+            .frame(width: 24, height: 24)
+            .cornerRadius(12)
+            .accessibilityLabel(Text("User Image"))
             Text(repository.owner.name)
                 .lineLimit(1)
         }

@@ -30,12 +30,16 @@ struct TitleView: View {
             }
             UIApplication.shared.open(url)
         } label: {
-            WebImage(url: repository.owner.avatarImageURL)
-                .resizable()
-                .placeholder(Image(systemName: "person.fill"))
-                .accessibilityLabel(Text("User Image"))
-                .frame(maxWidth: 40, maxHeight: 40)
-                .cornerRadius(20)
+            WebImage(url: repository.owner.avatarImageURL) { image in
+                image
+            } placeholder: {
+                Image(systemName: "person.fill")
+                    .accessibilityLabel(Text("User Image"))
+            }
+            .resizable()
+            .accessibilityLabel(Text("User Image"))
+            .frame(maxWidth: 40, maxHeight: 40)
+            .cornerRadius(20)
         }
     }
 
