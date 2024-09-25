@@ -12,7 +12,6 @@ struct LanguageView: View {
 
     let language: String
 
-    @ViewBuilder
     var body: some View {
         VStack(alignment: .leading) {
             Text("Language")

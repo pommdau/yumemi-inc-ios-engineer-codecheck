@@ -43,6 +43,7 @@ struct AboutView: View {
     private func starsGridRow(starsCount: Int) -> some View {
         GridRow {
             Image(systemName: "star")
+                .accessibilityLabel(Text("Stars Image"))
                 .foregroundColor(.secondary)
                 .gridColumnAlignment(.center)
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(starsCount))")
@@ -55,9 +56,10 @@ struct AboutView: View {
     }
 
     @ViewBuilder
-    private func wachersGridRow(watchersCount: Int) -> some View {
+    private func watchersGridRow(watchersCount: Int) -> some View {
         GridRow {
             Image(systemName: "eye")
+                .accessibilityLabel(Text("Watchers Image"))
                 .foregroundColor(.secondary)
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(watchersCount))")
                 .bold()
@@ -70,6 +72,7 @@ struct AboutView: View {
     private func forksGridRow(forksCount: Int) -> some View {
         GridRow {
             Image(systemName: "arrow.triangle.branch")
+                .accessibilityLabel(Text("Forks Image"))
                 .foregroundColor(.secondary)
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(forksCount))")
                 .bold()
@@ -82,6 +85,7 @@ struct AboutView: View {
     private func issuesGridRow(issuesCount: Int) -> some View {
         GridRow {
             Image(systemName: "circle.circle")
+                .accessibilityLabel(Text("Issues Image"))
                 .foregroundColor(.secondary)
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repository.openIssuesCount))")
                 .bold()
@@ -95,6 +99,7 @@ struct AboutView: View {
         if let websiteURL {
             GridRow {
                 Image(systemName: "link")
+                    .accessibilityLabel(Text("Link Image"))
                     .foregroundColor(.secondary)
                 Button {
                     UIApplication.shared.open(websiteURL)

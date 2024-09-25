@@ -33,6 +33,7 @@ struct TitleView: View {
             WebImage(url: repository.owner.avatarImageURL)
                 .resizable()
                 .placeholder(Image(systemName: "person.fill"))
+                .accessibilityLabel(Text("User Image"))
                 .frame(maxWidth: 40, maxHeight: 40)
                 .cornerRadius(20)
         }
