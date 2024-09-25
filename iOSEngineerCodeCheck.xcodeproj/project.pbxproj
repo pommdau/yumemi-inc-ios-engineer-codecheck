@@ -136,6 +136,9 @@
 		DAA00AEA2914FABD00EB1481 /* README_Git.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_Git.md; sourceTree = "<group>"; };
 		DAA00AEB2915009100EB1481 /* README_SwiftLint.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_SwiftLint.md; sourceTree = "<group>"; };
 		DAA00AED291500F700EB1481 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		DAB2029A2CA3C9A400FE363E /* copy-issues.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "copy-issues.yml"; sourceTree = "<group>"; };
+		DAB2029B2CA3C9A400FE363E /* run-swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "run-swiftlint.yml"; sourceTree = "<group>"; };
+		DAB2029D2CA3C9A400FE363E /* pull_request_template.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = pull_request_template.md; sourceTree = "<group>"; };
 		DAC6D78A29324EF9003BC645 /* RepositoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModelTests.swift; sourceTree = "<group>"; };
 		DAC7078A2937E25E00E56F95 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		DAC7078E2937E2B800E56F95 /* FailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedView.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
+				DAB2029E2CA3C9A400FE363E /* .github */,
 				DAA00AED291500F700EB1481 /* .swiftlint.yml */,
 				DAA00AEB2915009100EB1481 /* README_SwiftLint.md */,
 				DAA00AEA2914FABD00EB1481 /* README_Git.md */,
@@ -369,6 +373,24 @@
 				DAC6D78E29326173003BC645 /* ViewModelTests */,
 			);
 			path = EngineerCodeCheckUnitTests;
+			sourceTree = "<group>";
+		};
+		DAB2029C2CA3C9A400FE363E /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				DAB2029A2CA3C9A400FE363E /* copy-issues.yml */,
+				DAB2029B2CA3C9A400FE363E /* run-swiftlint.yml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		DAB2029E2CA3C9A400FE363E /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				DAB2029C2CA3C9A400FE363E /* workflows */,
+				DAB2029D2CA3C9A400FE363E /* pull_request_template.md */,
+			);
+			path = .github;
 			sourceTree = "<group>";
 		};
 		DAC6D78E29326173003BC645 /* ViewModelTests */ = {

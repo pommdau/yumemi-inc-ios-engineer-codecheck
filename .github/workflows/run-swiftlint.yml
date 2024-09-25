@@ -30,4 +30,4 @@ jobs:
 
     # SwiftLintを実行
     - name: Run SwiftLint
-      run: swiftlint
+      run: swiftlint lint --strict
