@@ -10,8 +10,8 @@ import Danger
 
 let danger = Danger()
 
-// SwiftLintの実行結果をインラインで表示
-SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true)
+// SwiftLintの結果を取得し、警告やエラーがあればPRに表示する
+let swiftLintViolations = SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true)
 
 // SwiftLintの結果を処理して、warning または error の場合にPRに表示
 for violation in swiftLintViolations where violation.severity == .warning || violation.severity == .error {
