@@ -35,32 +35,34 @@ struct FailedView: View {
     }
 }
 
-struct FailedView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            FailedView(error:
-                        GitHubAPIServiceError.connectionError(
-                            MessageError(description: "(Debug) connectionError")
-                        )
-            )
-            .previewDisplayName(".connectionError")
+// MARK: - Previews
 
-            FailedView(error:
-                        GitHubAPIServiceError.responseParseError(
-                            MessageError(description: "(Debug) responseParseError.")
-                        )
-            )
-            .previewDisplayName(".responseParseError")
+#Preview(".connectionError", traits: .sizeThatFitsLayout) {
+    let error = GitHubAPIServiceError.connectionError(
+        MessageError(description: "(Debug) connectionError")
+    )
+    return FailedView(error: error)
+        .padding()
+}
 
-            FailedView(error:
-                        GitHubAPIServiceError.apiError(
-                            GitHubAPIError.sampleData[0]
-                        )
-            )
-            .previewDisplayName(".apiError")
+#Preview(".responseParseError", traits: .sizeThatFitsLayout) {
+    let error = GitHubAPIServiceError.responseParseError(
+        MessageError(description: "(Debug) responseParseError.")
+    )
+    return FailedView(error: error)
+        .padding()
+}
 
-            FailedView(error: MessageError(description: "(Debug) other error"))
-                .previewDisplayName("other error")
-        }
-    }
+#Preview(".apiError", traits: .sizeThatFitsLayout) {
+    let error = GitHubAPIServiceError.apiError(
+        GitHubAPIError.sampleData[0]
+    )
+    return FailedView(error: error)
+        .padding()
+}
+
+#Preview("other error", traits: .sizeThatFitsLayout) {
+    let error = MessageError(description: "(Debug) other error")
+    return FailedView(error: error)
+        .padding()
 }

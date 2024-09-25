@@ -40,8 +40,8 @@ struct SearchResultView: View {
     }
 }
 
-struct SearchResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchResultView(viewModel: .init())
-    }
+// MARK: - Previews
+
+#Preview {
+    SearchResultView(viewModel: .init())
 }

@@ -73,14 +73,14 @@ struct TitleView: View {
     }
 }
 
-struct TitleView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            TitleView(repository: Repository.sampleData[0])
-                .previewDisplayName("通常")
-            TitleView(repository: Repository.sampleDataWithLongWord)
-                .previewDisplayName("長い語句を含む場合")
-        }
-        .previewLayout(.fixed(width: 600, height: 200))
-    }
+// MARK: - Previews
+
+#Preview("通常", traits: .sizeThatFitsLayout) {
+    TitleView(repository: Repository.sampleData[2])
+        .padding()
+}
+
+#Preview("長い語句を含む場合", traits: .sizeThatFitsLayout) {
+    TitleView(repository: Repository.sampleDataWithLongWord)
+        .padding()
 }
