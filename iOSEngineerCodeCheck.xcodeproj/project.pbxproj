@@ -29,7 +29,7 @@
 		DA5C0DEF29448FE800E0D7B9 /* RepositorySearchScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C0DEE29448FE800E0D7B9 /* RepositorySearchScreenTests.swift */; };
 		DA66ED152925E6EB007D5F99 /* GitHubAPIError+sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */; };
 		DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */; };
-		DA955709292B2FA400DED60D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955708292B2FA400DED60D /* AboutView.swift */; };
+		DA955709292B2FA400DED60D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955708292B2FA400DED60D /* DescriptionView.swift */; };
 		DA95570B292B312900DED60D /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570A292B312900DED60D /* TitleView.swift */; };
 		DA95570D292B318100DED60D /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570C292B318100DED60D /* LanguageView.swift */; };
 		DA9681B72944CA5300805954 /* GitHubAPIError+sampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */; };
@@ -122,7 +122,7 @@
 		DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIErrorTests.swift; sourceTree = "<group>"; };
 		DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIError+sampleJSON.swift"; sourceTree = "<group>"; };
 		DA8FABB4293846C2005377BF /* GitHubAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIServiceTests.swift; sourceTree = "<group>"; };
-		DA955708292B2FA400DED60D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		DA955708292B2FA400DED60D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		DA95570A292B312900DED60D /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		DA95570C292B318100DED60D /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		DA955710292C625400DED60D /* Repository+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repository+sampleJSON.swift"; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 			children = (
 				DAEE4CC629211D2E00123CB9 /* RepositoryDetailScreen.swift */,
 				DA95570A292B312900DED60D /* TitleView.swift */,
-				DA955708292B2FA400DED60D /* AboutView.swift */,
+				DA955708292B2FA400DED60D /* DescriptionView.swift */,
 				DA95570C292B318100DED60D /* LanguageView.swift */,
 			);
 			path = RepositoryDetailScreen;
@@ -685,7 +685,7 @@
 				DAC7078F2937E2B800E56F95 /* FailedView.swift in Sources */,
 				DAC7078B2937E25E00E56F95 /* ReadyView.swift in Sources */,
 				DA34B6622922492A00C052BD /* GitHubLanguageColorManager.swift in Sources */,
-				DA955709292B2FA400DED60D /* AboutView.swift in Sources */,
+				DA955709292B2FA400DED60D /* DescriptionView.swift in Sources */,
 				DA95570D292B318100DED60D /* LanguageView.swift in Sources */,
 				DA34B6642922495000C052BD /* Color+hex.swift in Sources */,
 				DA34FD832942F78700EFB647 /* Inspection.swift in Sources */,

@@ -15,9 +15,9 @@ struct RepositoryCell: View {
 
     var body: some View {
         VStack(alignment: .leading) {
+            userLabel()
             repositoryNameLabel()
             descriptionLabel()
-            userLabel()
             HStack(spacing: 18) {
                 starsLabel()
                 languageLabel()
@@ -40,22 +40,21 @@ struct RepositoryCell: View {
             .frame(width: 24, height: 24)
             .cornerRadius(12)
             .accessibilityLabel(Text("User Image"))
+            .background {
+                Circle()
+                    .stroke(lineWidth: 1)
+                    .foregroundStyle(.secondary.opacity(0.5))
+            }
             Text(repository.owner.name)
                 .lineLimit(1)
         }
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(.secondary.opacity(0.2))
-                .frame(height: 40)
-        )
     }
 
     @ViewBuilder
     private func repositoryNameLabel() -> some View {
         Text(repository.name)
             .lineLimit(1)
-            .font(.title2)
+            .font(.title3)
             .bold()
             .padding(.vertical, 2)
     }
