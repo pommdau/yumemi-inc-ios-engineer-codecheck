@@ -9,7 +9,8 @@
 import Foundation
 
 @MainActor
-final class SearchResultViewModel<GitHubAPIService>: Observable
+@Observable
+final class SearchResultViewModel<GitHubAPIService>
 where GitHubAPIService: GitHubAPIServiceProtocol {
     private(set) var repositories: Stateful<[Repository]>
     private(set) var task: Task<(), Never>?
