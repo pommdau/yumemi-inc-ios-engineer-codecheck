@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Shimmer
 
 struct RepositoryCell: View {
 
@@ -35,6 +36,7 @@ struct RepositoryCell: View {
                 image
             } placeholder: {
                 Image(systemName: "person.fill")
+                    .resizable()
             }
             .resizable()
             .frame(width: 24, height: 24)
