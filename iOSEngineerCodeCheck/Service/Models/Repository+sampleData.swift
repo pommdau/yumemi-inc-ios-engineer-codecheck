@@ -48,6 +48,29 @@ extension Repository {
               description: nil,
               subscribersCount: 0)
 
+    static let sampleDataForRepositoryCellSkelton = Repository(
+        id: 44838949,
+        name: "Lorem ipsum dol",
+        fullName: "apple/swift",
+        owner:
+            User(id: 10639145,
+                 name: "Lorem ipsum",
+                 avatarImagePath: "",
+                 htmlPath: "https://github.com/apple"),
+        starsCount: 61308,
+        watchersCount: 61308,
+        forksCount: 9858,
+        openIssuesCount: 6244,
+        language: "",
+        htmlPath: "https://github.com/apple/swift",
+        websitePath: "https://swift.org",
+        description: """
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+""",
+        subscribersCount: 0
+    )
+    
     static let sampleData: [Repository] = [
         .init(id: 44838949,
               name: "swift",

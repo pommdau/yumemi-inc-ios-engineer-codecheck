@@ -23,7 +23,7 @@ struct SearchResultView: View {
             case .idle:
                 ReadyView()
             case .loading:
-                ProgressView("検索しています…")
+                RepositoryListSkelton()
             case .failed(let error):
                 FailedView(error: error)
             case let .loaded(repositories):

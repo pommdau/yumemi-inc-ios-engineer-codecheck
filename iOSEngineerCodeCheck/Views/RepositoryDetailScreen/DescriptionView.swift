@@ -1,5 +1,5 @@
 //
-//  AboutView.swift
+//  DescriptionView.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/21.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AboutView: View {
+struct DescriptionView: View {
 
     // MARK: - Properties
 
@@ -18,10 +18,10 @@ struct AboutView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("About")
-                .font(.title2)
-                .bold()
-                .padding(.vertical)
+//            Text("About")
+//                .font(.title2)
+//                .bold()
+//                .padding(.vertical)
             if let description = repository.description,
                !description.isEmpty {
                 Text(description)
@@ -117,16 +117,16 @@ struct AboutView: View {
 // MARK: - Previews
 
 #Preview("通常", traits: .sizeThatFitsLayout) {
-    AboutView(repository: Repository.sampleData[0])
+    DescriptionView(repository: Repository.sampleData[0])
         .padding()
 }
 
 #Preview("長い語句を含む場合", traits: .sizeThatFitsLayout) {
-    AboutView(repository: Repository.sampleDataWithLongWord)
+    DescriptionView(repository: Repository.sampleDataWithLongWord)
         .padding()
 }
 
 #Preview("空の情報がある場合", traits: .sizeThatFitsLayout) {
-    AboutView(repository: Repository.sampleDataWithoutSomeInfo)
+    DescriptionView(repository: Repository.sampleDataWithoutSomeInfo)
         .padding()
 }

@@ -16,7 +16,7 @@ struct RepositoryDetailScreen: View {
         VStack(alignment: .leading) {
             TitleView(repository: repository)
             Divider()
-            AboutView(repository: repository)
+            DescriptionView(repository: repository)
             if let language = repository.language,
                !language.isEmpty {
                 Divider()

@@ -11,6 +11,9 @@
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
 		BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFD945E7244DC5EB0012785A /* Assets.xcassets */; };
 		BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */; };
+		DA1F58052CAAA6AE00BD59C9 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = DA1F58042CAAA6AE00BD59C9 /* Shimmer */; };
+		DA1F58072CAAA86300BD59C9 /* RepositoryCellSkelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F58062CAAA86300BD59C9 /* RepositoryCellSkelton.swift */; };
+		DA1F58092CAAAA0D00BD59C9 /* RepositoryListSkelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F58082CAAAA0D00BD59C9 /* RepositoryListSkelton.swift */; };
 		DA1F8B9629213ED9002B286C /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F8B9529213ED9002B286C /* RepositoryCell.swift */; };
 		DA1F9A0D2936E9310093505D /* GitHubAPIService+request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F9A0C2936E9310093505D /* GitHubAPIService+request.swift */; };
 		DA2505AB2922136000C31B70 /* Stateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2505AA2922136000C31B70 /* Stateful.swift */; };
@@ -29,7 +32,7 @@
 		DA5C0DEF29448FE800E0D7B9 /* RepositorySearchScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C0DEE29448FE800E0D7B9 /* RepositorySearchScreenTests.swift */; };
 		DA66ED152925E6EB007D5F99 /* GitHubAPIError+sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66ED142925E6EB007D5F99 /* GitHubAPIError+sampleData.swift */; };
 		DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */; };
-		DA955709292B2FA400DED60D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955708292B2FA400DED60D /* AboutView.swift */; };
+		DA955709292B2FA400DED60D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA955708292B2FA400DED60D /* DescriptionView.swift */; };
 		DA95570B292B312900DED60D /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570A292B312900DED60D /* TitleView.swift */; };
 		DA95570D292B318100DED60D /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95570C292B318100DED60D /* LanguageView.swift */; };
 		DA9681B72944CA5300805954 /* GitHubAPIError+sampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */; };
@@ -97,6 +100,8 @@
 		BFD945E7244DC5EB0012785A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFD945EA244DC5EB0012785A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFD945EC244DC5EB0012785A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA1F58062CAAA86300BD59C9 /* RepositoryCellSkelton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCellSkelton.swift; sourceTree = "<group>"; };
+		DA1F58082CAAAA0D00BD59C9 /* RepositoryListSkelton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListSkelton.swift; sourceTree = "<group>"; };
 		DA1F8B9529213ED9002B286C /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		DA1F9A0C2936E9310093505D /* GitHubAPIService+request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIService+request.swift"; sourceTree = "<group>"; };
 		DA2505AA2922136000C31B70 /* Stateful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stateful.swift; sourceTree = "<group>"; };
@@ -122,7 +127,7 @@
 		DA6BA6A82930B1B000B1B98C /* GitHubAPIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIErrorTests.swift; sourceTree = "<group>"; };
 		DA6BA6AA2930B1EC00B1B98C /* GitHubAPIError+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIError+sampleJSON.swift"; sourceTree = "<group>"; };
 		DA8FABB4293846C2005377BF /* GitHubAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIServiceTests.swift; sourceTree = "<group>"; };
-		DA955708292B2FA400DED60D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		DA955708292B2FA400DED60D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		DA95570A292B312900DED60D /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		DA95570C292B318100DED60D /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		DA955710292C625400DED60D /* Repository+sampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repository+sampleJSON.swift"; sourceTree = "<group>"; };
@@ -164,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1F58052CAAA6AE00BD59C9 /* Shimmer in Frameworks */,
 				DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,7 +330,7 @@
 			children = (
 				DAEE4CC629211D2E00123CB9 /* RepositoryDetailScreen.swift */,
 				DA95570A292B312900DED60D /* TitleView.swift */,
-				DA955708292B2FA400DED60D /* AboutView.swift */,
+				DA955708292B2FA400DED60D /* DescriptionView.swift */,
 				DA95570C292B318100DED60D /* LanguageView.swift */,
 			);
 			path = RepositoryDetailScreen;
@@ -335,10 +341,12 @@
 			children = (
 				DAE8D9F12920ABB300931C32 /* RepositorySearchScreen.swift */,
 				DA1F8B9529213ED9002B286C /* RepositoryCell.swift */,
+				DA1F58062CAAA86300BD59C9 /* RepositoryCellSkelton.swift */,
 				DA29F69C2923DDA300EBC58C /* SearchResultView.swift */,
 				DAC7078A2937E25E00E56F95 /* ReadyView.swift */,
 				DAC7078E2937E2B800E56F95 /* FailedView.swift */,
 				DAC707902937E38A00E56F95 /* RepositoryList.swift */,
+				DA1F58082CAAAA0D00BD59C9 /* RepositoryListSkelton.swift */,
 			);
 			path = RepositorySearchScreen;
 			sourceTree = "<group>";
@@ -492,6 +500,7 @@
 			name = iOSEngineerCodeCheck;
 			packageProductDependencies = (
 				DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */,
+				DA1F58042CAAA6AE00BD59C9 /* Shimmer */,
 			);
 			productName = iOSEngineerCodeCheck;
 			productReference = BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */;
@@ -600,6 +609,7 @@
 				DAB8D4572942F299004724FA /* XCRemoteSwiftPackageReference "ViewInspector" */,
 				DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				DA798CE92CA3E88700A7ADDE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				DA1F58032CAAA6AE00BD59C9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = BFD945DC244DC5E80012785A /* Products */;
 			projectDirPath = "";
@@ -662,6 +672,7 @@
 				DA95570B292B312900DED60D /* TitleView.swift in Sources */,
 				DA29F69F2925BAE300EBC58C /* RepositoryDetail.swift in Sources */,
 				DAE8D9C12919FC8800931C32 /* GitHubAPIServiceProtocol.swift in Sources */,
+				DA1F58092CAAAA0D00BD59C9 /* RepositoryListSkelton.swift in Sources */,
 				DA29F69D2923DDA300EBC58C /* SearchResultView.swift in Sources */,
 				DA3AB79C2938842A00A62A6C /* URLSessionProtocol.swift in Sources */,
 				DAE8D9F22920ABB300931C32 /* RepositorySearchScreen.swift in Sources */,
@@ -682,10 +693,11 @@
 				DA1F9A0D2936E9310093505D /* GitHubAPIService+request.swift in Sources */,
 				DA9D355F29334FDA00227EAA /* GitHubAPIService.swift in Sources */,
 				DAEE4CC52920E5E200123CB9 /* Repository+sampleData.swift in Sources */,
+				DA1F58072CAAA86300BD59C9 /* RepositoryCellSkelton.swift in Sources */,
 				DAC7078F2937E2B800E56F95 /* FailedView.swift in Sources */,
 				DAC7078B2937E25E00E56F95 /* ReadyView.swift in Sources */,
 				DA34B6622922492A00C052BD /* GitHubLanguageColorManager.swift in Sources */,
-				DA955709292B2FA400DED60D /* AboutView.swift in Sources */,
+				DA955709292B2FA400DED60D /* DescriptionView.swift in Sources */,
 				DA95570D292B318100DED60D /* LanguageView.swift in Sources */,
 				DA34B6642922495000C052BD /* Color+hex.swift in Sources */,
 				DA34FD832942F78700EFB647 /* Inspection.swift in Sources */,
@@ -1105,6 +1117,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DA1F58032CAAA6AE00BD59C9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
 		DA798CE92CA3E88700A7ADDE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -1132,6 +1152,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DA1F58042CAAA6AE00BD59C9 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA1F58032CAAA6AE00BD59C9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
 		DA5C0DDD294469E000E0D7B9 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DAB8D4572942F299004724FA /* XCRemoteSwiftPackageReference "ViewInspector" */;
