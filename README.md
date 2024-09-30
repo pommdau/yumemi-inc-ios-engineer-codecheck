@@ -4,7 +4,7 @@
   - [株式会社ゆめみ iOS エンジニアコードチェック課題](https://github.com/yumemi-inc/ios-engineer-codecheck)
 
 ## 実装で工夫した点
-- [Swift Concurrencyを使ったGitHubリポジトリ検索のiOSアプリケーションの実装](https://zenn.dev/ikeh1024/articles/1b8c0ecc11c99f)
+- TBD
 
 ## スクリーンショット
 
