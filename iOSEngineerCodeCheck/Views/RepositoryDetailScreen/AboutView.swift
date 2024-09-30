@@ -114,16 +114,19 @@ struct AboutView: View {
     }
 }
 
-struct AboutView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            AboutView(repository: Repository.sampleData[0])
-                .previewDisplayName("通常")
-            AboutView(repository: Repository.sampleDataWithLongWord)
-                .previewDisplayName("長い語句を含む場合")
-            AboutView(repository: Repository.sampleDataWithoutSomeInfo)
-                .previewDisplayName("空の情報がある場合")
-        }
-        .previewLayout(.fixed(width: 600, height: 400))
-    }
+// MARK: - Previews
+
+#Preview("通常", traits: .sizeThatFitsLayout) {
+    AboutView(repository: Repository.sampleData[0])
+        .padding()
+}
+
+#Preview("長い語句を含む場合", traits: .sizeThatFitsLayout) {
+    AboutView(repository: Repository.sampleDataWithLongWord)
+        .padding()
+}
+
+#Preview("空の情報がある場合", traits: .sizeThatFitsLayout) {
+    AboutView(repository: Repository.sampleDataWithoutSomeInfo)
+        .padding()
 }

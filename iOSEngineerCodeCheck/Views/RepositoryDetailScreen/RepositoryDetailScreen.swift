@@ -28,16 +28,16 @@ struct RepositoryDetailScreen: View {
     }
 }
 
-struct RepositoryDetailView_Previews: PreviewProvider {
+// MARK: - Previews
 
-    static var previews: some View {
-        Group {
-            RepositoryDetailScreen(repository: Repository.sampleData[0])
-                .previewDisplayName("通常")
-            RepositoryDetailScreen(repository: Repository.sampleDataWithLongWord)
-                .previewDisplayName("長い語句を含む場合")
-            RepositoryDetailScreen(repository: Repository.sampleDataWithoutSomeInfo)
-                .previewDisplayName("空の情報がある場合")
-        }
-    }
+#Preview("通常") {
+    RepositoryDetailScreen(repository: Repository.sampleData[0])
+}
+
+#Preview("長い語句を含む場合") {
+    RepositoryDetailScreen(repository: Repository.sampleDataWithLongWord)
+}
+
+#Preview("空の情報がある場合") {
+    RepositoryDetailScreen(repository: Repository.sampleDataWithoutSomeInfo)
 }

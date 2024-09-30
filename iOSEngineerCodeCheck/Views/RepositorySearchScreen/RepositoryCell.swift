@@ -31,14 +31,15 @@ struct RepositoryCell: View {
     @ViewBuilder
     private func userLabel() -> some View {
         HStack {
-            WebImage(url: URL(string: repository.owner.avatarImagePath))
-                .resizable()
-                .placeholder(
-                    Image(systemName: "person.fill")
-                )
-                .frame(width: 24, height: 24)
-                .cornerRadius(12)
-                .accessibilityLabel(Text("User Image"))
+            WebImage(url: URL(string: repository.owner.avatarImagePath)) { image in
+                image
+            } placeholder: {
+                Image(systemName: "person.fill")
+            }
+            .resizable()
+            .frame(width: 24, height: 24)
+            .cornerRadius(12)
+            .accessibilityLabel(Text("User Image"))
             Text(repository.owner.name)
                 .lineLimit(1)
         }
@@ -93,19 +94,19 @@ struct RepositoryCell: View {
     }
 }
 
-struct RepositoryCell_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            RepositoryCell(repository: Repository.sampleData[0])
-                .previewDisplayName("通常")
-            
-            RepositoryCell(repository: Repository.sampleDataWithLongWord)
-                .previewDisplayName("長い語句を含む場合")
-            
-            RepositoryCell(repository: Repository.sampleDataWithoutSomeInfo)
-                .previewDisplayName("空の情報がある場合")
-        }
+// MARK: - Previews
+
+#Preview("通常", traits: .sizeThatFitsLayout) {
+    RepositoryCell(repository: Repository.sampleData[0])
         .padding()
-        .previewLayout(.fixed(width: 400, height: 400))
-    }
+}
+
+#Preview("長い語句を含む場合", traits: .sizeThatFitsLayout) {
+    RepositoryCell(repository: Repository.sampleDataWithLongWord)
+        .padding()
+}
+
+#Preview("空の情報がある場合", traits: .sizeThatFitsLayout) {
+    RepositoryCell(repository: Repository.sampleDataWithoutSomeInfo)
+        .padding()
 }

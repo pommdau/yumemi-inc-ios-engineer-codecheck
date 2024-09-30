@@ -30,8 +30,8 @@ struct SearchResultView: View {
                 RepositoryList(repositories: repositories)
             }
         }
-        .onChange(of: isSearching) { newValue in
-            if !newValue {
+        .onChange(of: isSearching) { 
+            if !isSearching {
                 // 検索がキャンセルされた場合
                 viewModel.cancelSearching()
             }
@@ -40,8 +40,8 @@ struct SearchResultView: View {
     }
 }
 
-struct SearchResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchResultView(viewModel: .init())
-    }
+// MARK: - Previews
+
+#Preview {
+    SearchResultView(viewModel: .init())
 }

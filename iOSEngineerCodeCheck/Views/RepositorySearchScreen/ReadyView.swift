@@ -21,8 +21,8 @@ struct ReadyView: View {
     }
 }
 
-struct ReadyView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReadyView()
-    }
+// MARK: - Previews
+
+#Preview {
+    ReadyView()
 }

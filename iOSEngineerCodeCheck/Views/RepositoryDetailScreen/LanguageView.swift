@@ -27,10 +27,14 @@ struct LanguageView: View {
     }
 }
 
-struct LanguageView_Previews: PreviewProvider {
-    static var previews: some View {
-        LanguageView(language: "Swift")
-            .previewLayout(.fixed(width: 400, height: 200))
-    }
+// MARK: - Previews
 
+#Preview("Swift", traits: .sizeThatFitsLayout) {
+    LanguageView(language: "Swift")
+        .padding()
+}
+
+#Preview("JavaScript", traits: .sizeThatFitsLayout) {
+    LanguageView(language: "JavaScript")
+        .padding()
 }

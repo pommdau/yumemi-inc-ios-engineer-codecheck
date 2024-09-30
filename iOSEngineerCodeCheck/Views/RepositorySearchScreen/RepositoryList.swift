@@ -28,18 +28,16 @@ struct RepositoryList: View {
     }
 }
 
-struct RepositoryList_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            NavigationView {
-                RepositoryList(repositories: Repository.sampleData)
-            }
-            .previewDisplayName("通常")
+// MARK: - Previews
 
-            NavigationView {
-                RepositoryList(repositories: [])
-            }
-            .previewDisplayName("検索結果が空")
-        }        
+#Preview("通常") {
+    NavigationView {
+        RepositoryList(repositories: Repository.sampleData)
+    }
+}
+
+#Preview("検索結果が空") {
+    NavigationView {
+        RepositoryList(repositories: [])
     }
 }
