@@ -12,6 +12,7 @@ import Foundation
 @Observable
 final class SearchResultViewModel<GitHubAPIService>
 where GitHubAPIService: GitHubAPIServiceProtocol {
+    var keyword: String = ""
     private(set) var repositories: Stateful<[Repository]>
     private(set) var task: Task<(), Never>?
     
@@ -29,7 +30,7 @@ extension SearchResultViewModel {
         task = nil
     }
 
-    func searchButtonPressed(withKeyword keyword: String) async {
+    func searchButtonPressed() async {
         if keyword.isEmpty {
             return
         }
