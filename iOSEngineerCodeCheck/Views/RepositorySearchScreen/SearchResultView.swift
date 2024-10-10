@@ -21,11 +21,21 @@ struct SearchResultView: View {
         Group {
             switch viewModel.repositories {
             case .idle:
-                ReadyView()
+                if isSearching {
+                    // .searchSuggestionsの修飾ViewがListでないと表示が崩れるため
+                    List {}
+                } else {
+                    ReadyView()
+                }
             case .loading:
                 RepositoryListSkelton()
             case .failed(let error):
-                FailedView(error: error)
+                if isSearching {
+                    // .searchSuggestionsの修飾ViewがListでないと表示が崩れるため
+                    List {}
+                } else {
+                    FailedView(error: error)
+                }
             case let .loaded(repositories):
                 RepositoryList(repositories: repositories)
             }

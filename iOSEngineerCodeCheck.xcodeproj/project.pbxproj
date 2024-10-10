@@ -51,6 +51,8 @@
 		DAC7078B2937E25E00E56F95 /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7078A2937E25E00E56F95 /* ReadyView.swift */; };
 		DAC7078F2937E2B800E56F95 /* FailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7078E2937E2B800E56F95 /* FailedView.swift */; };
 		DAC707912937E38A00E56F95 /* RepositoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC707902937E38A00E56F95 /* RepositoryList.swift */; };
+		DAD2178A2CB7CB1F004A6E78 /* Array+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD217892CB7CB1F004A6E78 /* Array+RawRepresentable.swift */; };
+		DAD2178C2CB7CCC0004A6E78 /* SearchSuggestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2178B2CB7CCC0004A6E78 /* SearchSuggestionManager.swift */; };
 		DAE8D9A329191D0600931C32 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A229191D0600931C32 /* Repository.swift */; };
 		DAE8D9A72919538000931C32 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A62919538000931C32 /* SearchResponse.swift */; };
 		DAE8D9A92919574700931C32 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE8D9A82919574700931C32 /* User.swift */; };
@@ -146,6 +148,8 @@
 		DAC7078A2937E25E00E56F95 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		DAC7078E2937E2B800E56F95 /* FailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedView.swift; sourceTree = "<group>"; };
 		DAC707902937E38A00E56F95 /* RepositoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryList.swift; sourceTree = "<group>"; };
+		DAD217892CB7CB1F004A6E78 /* Array+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RawRepresentable.swift"; sourceTree = "<group>"; };
+		DAD2178B2CB7CCC0004A6E78 /* SearchSuggestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionManager.swift; sourceTree = "<group>"; };
 		DAE8D9A229191D0600931C32 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		DAE8D9A62919538000931C32 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		DAE8D9A82919574700931C32 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				DA34FD812942F48500EFB647 /* ViewInspector */,
 				DAE8D9E0291C851500931C32 /* Utils */,
 				DAE8D9AF2919F2ED00931C32 /* Service */,
+				DAD2178D2CB7D3E7004A6E78 /* Controllers */,
 				DAE8D9D9291C815100931C32 /* Views */,
 				DAE8D9CB291AA36C00931C32 /* ViewModels */,
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
@@ -406,6 +411,14 @@
 			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
+		DAD2178D2CB7D3E7004A6E78 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DAD2178B2CB7CCC0004A6E78 /* SearchSuggestionManager.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		DAE8D9AF2919F2ED00931C32 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +490,7 @@
 				DA34B6602922491800C052BD /* GitHubLanguageColor */,
 				DA2505AA2922136000C31B70 /* Stateful.swift */,
 				DA2505B32922235200C31B70 /* MessageError.swift */,
+				DAD217892CB7CB1F004A6E78 /* Array+RawRepresentable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -576,7 +590,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = "YUMEMI Inc.";
 				TargetAttributes = {
 					BFD945DA244DC5E80012785A = {
@@ -665,6 +679,7 @@
 				DAE8D9C32919FCB000931C32 /* GitHubAPIServiceError.swift in Sources */,
 				DAE8D9EC291F82A400931C32 /* ContentView.swift in Sources */,
 				DAE8D9B62919F33B00931C32 /* GitHubAPIRequest.swift in Sources */,
+				DAD2178C2CB7CCC0004A6E78 /* SearchSuggestionManager.swift in Sources */,
 				DA2505AB2922136000C31B70 /* Stateful.swift in Sources */,
 				DAEE4CC729211D2E00123CB9 /* RepositoryDetailScreen.swift in Sources */,
 				DA29F6A32925BE5C00EBC58C /* GitHubAPIRequest+GetRepositoryDetail.swift in Sources */,
@@ -685,6 +700,7 @@
 				DAE8D9B12919F2F500931C32 /* HTTPMethod.swift in Sources */,
 				DA1F8B9629213ED9002B286C /* RepositoryCell.swift in Sources */,
 				DAE8D9BA2919F38D00931C32 /* GitHubAPIRequestProtocol.swift in Sources */,
+				DAD2178A2CB7CB1F004A6E78 /* Array+RawRepresentable.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				DAE8D9EA291F828F00931C32 /* EngineerCodeCheckApp.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
@@ -792,6 +808,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -854,6 +871,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
