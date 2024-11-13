@@ -13,6 +13,13 @@ import Shimmer
 struct RepoCell: View {
 
     let repo: Repo
+    
+    private var languageColor: Color {
+        guard let languageName = repo.language else {
+            return .clear
+        }
+        return LanguageRepository.shared.fetch(name: languageName)?.color ?? .clear
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -77,7 +84,7 @@ struct RepoCell: View {
                 .accessibilityLabel(Text("Star Image"))
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repo.starsCount))")
         }
-        .foregroundColor(.secondary)
+        .foregroundStyle(.secondary)
     }
 
     @ViewBuilder
@@ -87,9 +94,9 @@ struct RepoCell: View {
             HStack(spacing: 4) {
                 Circle()
                     .frame(width: 14, height: 14)
-                    .foregroundColor(GitHubLanguageColorManager.shared.getColor(withLanguageName: language))
+                    .foregroundStyle(languageColor)
                 Text(language)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             }
         }
     }

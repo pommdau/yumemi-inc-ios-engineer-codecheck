@@ -44,13 +44,13 @@ struct DescriptionView: View {
         GridRow {
             Image(systemName: "star")
                 .accessibilityLabel(Text("Stars Image"))
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
                 .gridColumnAlignment(.center)
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(starsCount))")
                 .bold()
                 .gridColumnAlignment(.trailing)
             Text("stars")
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
                 .gridColumnAlignment(.leading)
         }
     }
@@ -60,11 +60,11 @@ struct DescriptionView: View {
         GridRow {
             Image(systemName: "eye")
                 .accessibilityLabel(Text("Watchers Image"))
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(watchersCount))")
                 .bold()
             Text("watching")
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
         }
     }
 
@@ -73,11 +73,11 @@ struct DescriptionView: View {
         GridRow {
             Image(systemName: "arrow.triangle.branch")
                 .accessibilityLabel(Text("Forks Image"))
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(forksCount))")
                 .bold()
             Text("forks")
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
         }
     }
 
@@ -86,11 +86,11 @@ struct DescriptionView: View {
         GridRow {
             Image(systemName: "circle.circle")
                 .accessibilityLabel(Text("Issues Image"))
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
             Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repo.openIssuesCount))")
                 .bold()
             Text("issues")
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
         }
     }
 
@@ -100,7 +100,7 @@ struct DescriptionView: View {
             GridRow {
                 Image(systemName: "link")
                     .accessibilityLabel(Text("Link Image"))
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
                 Button {
                     UIApplication.shared.open(websiteURL)
                 } label: {

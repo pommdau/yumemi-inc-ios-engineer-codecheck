@@ -30,7 +30,7 @@ struct FailedView: View {
                     Text(error.localizedDescription)
                 }
             }
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
         }
     }
 }

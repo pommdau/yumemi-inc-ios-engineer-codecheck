@@ -43,7 +43,7 @@ struct TitleView: View {
                 .background {
                     Circle()
                         .stroke(lineWidth: 1)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
                 // User名
                 Text(repo.owner.name)
