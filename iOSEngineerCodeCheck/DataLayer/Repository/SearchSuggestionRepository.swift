@@ -36,6 +36,7 @@ struct SearchSuggestionRepository: SearchSuggestionRepositoryProtocol {
         
         // 履歴になければ検索された語句を追加
         historySuggestions.insert(keyword, at: 0)
+        
         // 履歴の上限を超えた分を古い順に削除
         while historySuggestions.count > maxHistoryCount {
             historySuggestions.removeLast()
