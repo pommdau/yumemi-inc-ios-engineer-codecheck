@@ -41,9 +41,9 @@
 		DA5C0DD12944698600E0D7B9 /* EngineerCodeCheckUITestsWithViewInspector.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineerCodeCheckUITestsWithViewInspector.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5C0DE329448FCA00E0D7B9 /* EngineerCodeCheckUITestsWithXCUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineerCodeCheckUITestsWithXCUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9681AE2944C9F600805954 /* EngineerCodeCheckUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineerCodeCheckUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAA00AEA2914FABD00EB1481 /* README_Git.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_Git.md; sourceTree = "<group>"; };
-		DAA00AEB2915009100EB1481 /* README_SwiftLint.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_SwiftLint.md; sourceTree = "<group>"; };
 		DAA00AED291500F700EB1481 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		DAF276F72CE49F80005B8723 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		DAF276F82CE49F80005B8723 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -51,7 +51,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				GitHubAPI/Client/GitHubAPIClientStub.swift,
-				Info.plist,
+				Resources/Info.plist,
 			);
 			target = BFD945DA244DC5E80012785A /* iOSEngineerCodeCheck */;
 		};
@@ -70,6 +70,7 @@
 		DA34D29A2CE3572000BBF391 /* iOSEngineerCodeCheck */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (DA34D2CB2CE3572000BBF391 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, DAF7DF9F2CE439110090B2A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = iOSEngineerCodeCheck; sourceTree = "<group>"; };
 		DA34D2C92CE3572000BBF391 /* EngineerCodeCheckUITestsWithXCUITest */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EngineerCodeCheckUITestsWithXCUITest; sourceTree = "<group>"; };
 		DA34D2D02CE3572F00BBF391 /* .github */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = .github; sourceTree = "<group>"; };
+		DAF276FC2CE49F99005B8723 /* Docs */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Docs; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,10 +111,11 @@
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
+				DAF276FC2CE49F99005B8723 /* Docs */,
 				DA34D2D02CE3572F00BBF391 /* .github */,
 				DAA00AED291500F700EB1481 /* .swiftlint.yml */,
-				DAA00AEB2915009100EB1481 /* README_SwiftLint.md */,
-				DAA00AEA2914FABD00EB1481 /* README_Git.md */,
+				DAF276F72CE49F80005B8723 /* LICENSE */,
+				DAF276F82CE49F80005B8723 /* README.md */,
 				DA34D29A2CE3572000BBF391 /* iOSEngineerCodeCheck */,
 				DA34D24E2CE3572000BBF391 /* EngineerCodeCheckUnitTests */,
 				DA34D25D2CE3572000BBF391 /* EngineerCodeCheckUITestsWithViewInspector */,
@@ -510,7 +512,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
+				INFOPLIST_FILE = iOSEngineerCodeCheck/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -533,7 +535,7 @@
 					"*+sampleData.swift",
 					"*+sampleJSON.swift",
 				);
-				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
+				INFOPLIST_FILE = iOSEngineerCodeCheck/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
