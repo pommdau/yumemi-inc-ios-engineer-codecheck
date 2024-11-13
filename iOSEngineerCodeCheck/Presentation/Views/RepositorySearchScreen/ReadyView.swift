@@ -16,7 +16,7 @@ struct ReadyView: View {
                 .bold()
                 .padding()
             Text("GitHub内のリポジトリが検索できます")
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
         }
     }
 }

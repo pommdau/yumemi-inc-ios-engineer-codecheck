@@ -13,11 +13,11 @@ import Foundation
 final class SearchResultViewModel<GitHubAPIClient>
 where GitHubAPIClient: GitHubAPIClientProtocol {
     var keyword: String = ""
-    private(set) var repos: Stateful<[Repo]>
+    private(set) var state: ViewState<[Repo]>
     private(set) var task: Task<(), Never>?
     
-    init(repos: Stateful<[Repo]> = .idle) {
-        self.repos = repos
+    init(repos: ViewState<[Repo]> = .idle([])) {
+        self.state = repos
     }
 }
 
@@ -34,16 +34,16 @@ extension SearchResultViewModel {
         if keyword.isEmpty {
             return
         }
-        repos = .loading
+        state = .loading
         task = Task {
             do {
                 let repos = try await searchRepos(keyword: keyword)
-                self.repos = .loaded(repos)
+                self.state = .loaded(repos)
             } catch {
                 if Task.isCancelled {
-                    repos = .idle
+                    state = .idle([])
                 } else {
-                    repos = .failed(error)
+                    state = .failed(error)
                 }
             }
         }

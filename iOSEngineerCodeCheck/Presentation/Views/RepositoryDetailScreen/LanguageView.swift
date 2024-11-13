@@ -10,7 +10,11 @@ import SwiftUI
 
 struct LanguageView: View {
 
-    let language: String
+    let languageName: String
+    
+    private var languageColor: Color {
+        LanguageRepository.shared.fetch(name: languageName)?.color ?? .clear
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,8 +24,8 @@ struct LanguageView: View {
             HStack(spacing: 8) {
                 Circle()
                     .frame(width: 14, height: 14)
-                    .foregroundColor(GitHubLanguageColorManager.shared.getColor(withLanguageName: language))
-                Text(language)
+                    .foregroundStyle(languageColor)
+                Text(languageName)
             }
         }
     }
@@ -30,11 +34,11 @@ struct LanguageView: View {
 // MARK: - Previews
 
 #Preview("Swift", traits: .sizeThatFitsLayout) {
-    LanguageView(language: "Swift")
+    LanguageView(languageName: "Swift")
         .padding()
 }
 
 #Preview("JavaScript", traits: .sizeThatFitsLayout) {
-    LanguageView(language: "JavaScript")
+    LanguageView(languageName: "JavaScript")
         .padding()
 }

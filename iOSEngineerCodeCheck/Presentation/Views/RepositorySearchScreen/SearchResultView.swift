@@ -19,7 +19,7 @@ struct SearchResultView: View {
 
     var body: some View {
         Group {
-            switch viewModel.repos {
+            switch viewModel.state {
             case .idle:
                 if isSearching {
                     // .searchSuggestionsの修飾ViewがListでないと表示が崩れるため

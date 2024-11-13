@@ -5,10 +5,10 @@
 //  Created by HIROKI IKEUCHI on 2022/11/14.
 //  Copyright © 2022 YUMEMI Inc. All rights reserved.
 //
+//  refs: [Use Hex color in SwiftUI](https://stackoverflow.com/questions/56874133/use-hex-color-in-swiftui)
 
 import SwiftUI
 
-// ref: [Use Hex color in SwiftUI](https://stackoverflow.com/questions/56874133/use-hex-color-in-swiftui)
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

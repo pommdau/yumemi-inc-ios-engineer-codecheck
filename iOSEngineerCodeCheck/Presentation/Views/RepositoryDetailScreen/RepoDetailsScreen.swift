@@ -20,7 +20,7 @@ struct RepoDetailsScreen: View {
             if let language = repo.language,
                !language.isEmpty {
                 Divider()
-                LanguageView(language: language)
+                LanguageView(languageName: language)
             }
             Spacer()
         }
