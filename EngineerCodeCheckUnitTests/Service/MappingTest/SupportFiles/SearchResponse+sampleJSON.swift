@@ -8,7 +8,7 @@
 
 @testable import iOSEngineerCodeCheck
 
-extension SearchResponse where Item == Repository {
+extension SearchResponse where Item == Repo {
 
     static var sampleJSON: String {
         #"""

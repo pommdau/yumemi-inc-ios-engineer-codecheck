@@ -9,7 +9,7 @@
 import Foundation
 @testable import iOSEngineerCodeCheck
 
-/// GitHubAPIServiceのテストで使用するURLSessionのStub
+/// GitHubAPIClientのテストで使用するURLSessionのStub
 class StubURLSession: URLSessionProtocol {
     private let stubbedData: Data?
     private let stubbedResponse: URLResponse?

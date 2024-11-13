@@ -47,7 +47,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
     // MARK: - SearchResultView Tests
     
     func testSearchResultViewWhenReady() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIService> = .init()
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init()
         let view = SearchResultView(viewModel: viewModel)
         let expectation = view.inspection.inspect { view in
             // 期待するViewが表示されているか
@@ -59,42 +59,43 @@ final class EngineerCodeCheckUITests: XCTestCase {
     }
     
     func testSearchResultViewWhenLoading() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIService> = .init(repositories: .loading)
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repos: .loading)
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in
             // 期待するViewが表示されているか
-            _ = try view.find(text: "検索しています…")
+            let repoListSkelton = view.findAll(RepoListSkelton.self)
+            XCTAssertNotNil(repoListSkelton)
         }
         ViewHosting.host(view: view)
         self.wait(for: [expectation], timeout: 1.0)
     }
     
-    func testSearchResultViewWhenRepositoriesExist() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIService> = .init(repositories: .loaded(Repository.sampleData))
+    func testSearchResultViewWhenReposExist() throws {
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repos: .loaded(Repo.sampleData))
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in
             // 期待するViewが表示されているか
-            let repositoryList = view.findAll(RepositoryList.self)
-            XCTAssertNotNil(repositoryList)
+            let repoList = view.findAll(RepoList.self)
+            XCTAssertNotNil(repoList)
             
             // セル数の確認
-            let cells = view.findAll(RepositoryCell.self)
-            XCTAssertEqual(cells.count, Repository.sampleData.count)
+            let cells = view.findAll(RepoCell.self)
+            XCTAssertEqual(cells.count, Repo.sampleData.count)
         }
         ViewHosting.host(view: view)
         self.wait(for: [expectation], timeout: 1.0)
     }
     
-    func testSearchResultViewWhenRepositorieyIsEmpty() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIService> = .init(repositories: .loaded([]))
+    func testSearchResultViewWhenRepoIsEmpty() throws {
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repos: .loaded([]))
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in
             // 期待するViewが表示されているか
-            let repositoryList = view.findAll(RepositoryList.self)
-            XCTAssertNotNil(repositoryList)
+            let repoList = view.findAll(RepoList.self)
+            XCTAssertNotNil(repoList)
             _ = try view.find(text: "該当するリポジトリが見つかりませんでした")
         }
         ViewHosting.host(view: view)

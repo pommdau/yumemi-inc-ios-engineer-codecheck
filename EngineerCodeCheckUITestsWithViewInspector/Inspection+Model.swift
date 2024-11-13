@@ -2,8 +2,8 @@ import ViewInspector
 @testable import iOSEngineerCodeCheck
 
 extension Inspection: InspectionEmissary {}
-extension RepositorySearchScreen: Inspectable {}
+extension RepoSearchScreen: Inspectable {}
 extension SearchResultView: Inspectable {}
 extension ReadyView: Inspectable {}
-extension RepositoryList: Inspectable {}
-extension RepositoryCell: Inspectable {}
+extension RepoList: Inspectable {}
+extension RepoCell: Inspectable {}
