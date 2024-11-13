@@ -10,8 +10,8 @@ import Foundation
 
 @MainActor
 @Observable
-final class SearchResultViewModel<GitHubAPIService>
-where GitHubAPIService: GitHubAPIServiceProtocol {
+final class SearchResultViewModel<GitHubAPIClient>
+where GitHubAPIClient: GitHubAPIClientProtocol {
     var keyword: String = ""
     private(set) var repositories: Stateful<[Repository]>
     private(set) var task: Task<(), Never>?
@@ -54,6 +54,6 @@ extension SearchResultViewModel {
         #if DEBUG
         //        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理の動作確認用。
         #endif
-        return try await GitHubAPIService.shared.searchRepositories(keyword: keyword)
+        return try await GitHubAPIClient.shared.searchRepositories(keyword: keyword)
     }
 }

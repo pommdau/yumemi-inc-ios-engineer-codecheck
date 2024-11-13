@@ -47,7 +47,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
     // MARK: - SearchResultView Tests
     
     func testSearchResultViewWhenReady() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIService> = .init()
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init()
         let view = SearchResultView(viewModel: viewModel)
         let expectation = view.inspection.inspect { view in
             // 期待するViewが表示されているか
@@ -59,7 +59,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
     }
     
     func testSearchResultViewWhenLoading() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIService> = .init(repositories: .loading)
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repositories: .loading)
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in
@@ -71,7 +71,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
     }
     
     func testSearchResultViewWhenRepositoriesExist() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIService> = .init(repositories: .loaded(Repository.sampleData))
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repositories: .loaded(Repository.sampleData))
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in
@@ -88,7 +88,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
     }
     
     func testSearchResultViewWhenRepositorieyIsEmpty() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIService> = .init(repositories: .loaded([]))
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repositories: .loaded([]))
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in

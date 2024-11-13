@@ -11,7 +11,7 @@ import SwiftUI
 // Xcode16以上のビルドではViewに\@MainActorがつくので下記は不要となる
 @MainActor
 struct RepositorySearchScreen: View {
-    @State private var viewModel: SearchResultViewModel<GitHubAPIService> = .init()
+    @State private var viewModel: SearchResultViewModel<GitHubAPIClient> = .init()
     @State private var searchSuggestionManager: SearchSuggestionManager = .init()
     internal let inspection = Inspection<Self>()
     

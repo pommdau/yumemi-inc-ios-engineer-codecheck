@@ -1,5 +1,5 @@
 //
-//  GitHubAPIService+request.swift
+//  GitHubAPIClient+request.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/30.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension GitHubAPIService {
+extension GitHubAPIClient {
 
     func request<Request>(with request: Request) async throws ->
     Request.Response where Request: GitHubAPIRequestProtocol {
@@ -18,7 +18,7 @@ extension GitHubAPIService {
             let urlRequest = request.buildURLRequest()
             (data, response) = try await urlSession.data(for: urlRequest)
         } catch {
-            throw GitHubAPIServiceError.connectionError(error)
+            throw GitHubAPIClientError.connectionError(error)
         }
 
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode,
@@ -32,9 +32,9 @@ extension GitHubAPIService {
             do {
                 gitHubAPIError = try JSONDecoder().decode(GitHubAPIError.self, from: data)
             } catch {
-                throw GitHubAPIServiceError.responseParseError(error)
+                throw GitHubAPIClientError.responseParseError(error)
             }
-            throw GitHubAPIServiceError.apiError(gitHubAPIError)
+            throw GitHubAPIClientError.apiError(gitHubAPIError)
         }
         // 成功レスポンス
         #if DEBUG
@@ -45,7 +45,7 @@ extension GitHubAPIService {
             let response = try JSONDecoder().decode(Request.Response.self, from: data)
             return response
         } catch {
-            throw GitHubAPIServiceError.responseParseError(error)
+            throw GitHubAPIClientError.responseParseError(error)
         }
     }
 }

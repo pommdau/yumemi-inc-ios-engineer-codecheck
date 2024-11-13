@@ -14,7 +14,7 @@ struct SearchResultView: View {
     @Environment(\.isSearching)
     private var isSearching: Bool
     
-    @State var viewModel: SearchResultViewModel<GitHubAPIService>
+    @State var viewModel: SearchResultViewModel<GitHubAPIClient>
     internal let inspection = Inspection<Self>()
 
     var body: some View {

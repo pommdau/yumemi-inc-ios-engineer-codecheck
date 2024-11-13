@@ -1,5 +1,5 @@
 //
-//  GitHubAPIServiceError.swift
+//  GitHubAPIClientError.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/08.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum GitHubAPIServiceError: Error {
+enum GitHubAPIClientError: Error {
     // 通信に失敗
     case connectionError(Error)
 

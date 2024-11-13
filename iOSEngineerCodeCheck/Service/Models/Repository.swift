@@ -25,7 +25,7 @@ struct Repository: Identifiable, Codable {
         case description
     }
     
-    // GitHubAPIService.SearchRepositoriesで取得される情報
+    // searchRepositoriesで取得される情報
     let id: Int
     let name: String  // e.g. "Tetris"
     let fullName: String  // e.g. "dtrupenn/Tetris"

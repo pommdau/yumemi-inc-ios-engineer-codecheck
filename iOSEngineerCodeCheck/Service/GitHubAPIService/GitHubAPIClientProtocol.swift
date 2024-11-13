@@ -1,5 +1,5 @@
 //
-//  GitHubAPIServiceProtocol.swift
+//  GitHubAPIClientProtocol.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/08.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol GitHubAPIServiceProtocol {
+protocol GitHubAPIClientProtocol {
     static var shared: Self { get }
     func searchRepositories(keyword: String) async throws -> [Repository]
 }

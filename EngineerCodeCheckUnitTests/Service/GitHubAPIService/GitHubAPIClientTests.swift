@@ -1,5 +1,5 @@
 //
-//  GitHubAPIServiceTests.swift
+//  GitHubAPIClientTests.swift
 //  iOSEngineerCodeCheckTests
 //
 //  Created by HIROKI IKEUCHI on 2022/12/01.
@@ -9,11 +9,11 @@
 import XCTest
 @testable import iOSEngineerCodeCheck
 
-final class GitHubAPIServiceTests: XCTestCase {
+final class GitHubAPIClientTests: XCTestCase {
     
     // MARK: - Properties
         
-    private var sut: GitHubAPIService!
+    private var sut: GitHubAPIClient!
 
     // MARK: - Setup/TearDown
     
@@ -41,7 +41,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         )
-        sut = GitHubAPIService(urlSession: urlSessionStub)
+        sut = GitHubAPIClient(urlSession: urlSessionStub)
                 
         // when/then
         do {
@@ -59,7 +59,7 @@ final class GitHubAPIServiceTests: XCTestCase {
         let urlSessionStub = StubURLSession(
             error: URLError(.cannotConnectToHost)
         )
-        sut = GitHubAPIService(urlSession: urlSessionStub)
+        sut = GitHubAPIClient(urlSession: urlSessionStub)
         
         // when
         var errorIsExpected = false
@@ -67,7 +67,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             _ = try await sut.searchRepositories(keyword: "Swift")
         } catch {
             // then
-            if let serviceError = error as? GitHubAPIServiceError {
+            if let serviceError = error as? GitHubAPIClientError {
                 switch serviceError {
                 case .connectionError:
                     errorIsExpected = true
@@ -95,7 +95,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         )
-        sut = GitHubAPIService(urlSession: urlSessionStub)
+        sut = GitHubAPIClient(urlSession: urlSessionStub)
         
         // when
         var errorIsExpected = false
@@ -103,7 +103,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             _ = try await sut.searchRepositories(keyword: "Swift")
         } catch {
             // then
-            if let serviceError = error as? GitHubAPIServiceError {
+            if let serviceError = error as? GitHubAPIClientError {
                 switch serviceError {
                 case .responseParseError:
                     errorIsExpected = true
@@ -132,7 +132,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             data: data,
             response: HTTPURLResponse(url: url, statusCode: 400, httpVersion: nil, headerFields: nil)
         )
-        sut = GitHubAPIService(urlSession: urlSessionStub)
+        sut = GitHubAPIClient(urlSession: urlSessionStub)
         
         // when
         var errorIsExpected = false
@@ -140,7 +140,7 @@ final class GitHubAPIServiceTests: XCTestCase {
             _ = try await sut.searchRepositories(keyword: "Swift")
         } catch {
             // then
-            if let serviceError = error as? GitHubAPIServiceError {
+            if let serviceError = error as? GitHubAPIClientError {
                 switch serviceError {
                 case .apiError:
                     errorIsExpected = true

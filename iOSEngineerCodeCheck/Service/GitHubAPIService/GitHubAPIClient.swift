@@ -1,5 +1,5 @@
 //
-//  GitHubAPIService.swift
+//  GitHubAPIClient.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/27.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-final actor GitHubAPIService: GitHubAPIServiceProtocol {
+final actor GitHubAPIClient: GitHubAPIClientProtocol {
 
-    static let shared: GitHubAPIService = .init()
+    static let shared: GitHubAPIClient = .init()
     
     private(set) var urlSession: URLSessionProtocol
     
@@ -39,7 +39,7 @@ final actor GitHubAPIService: GitHubAPIServiceProtocol {
     }
 }
 
-extension GitHubAPIService {
+extension GitHubAPIClient {
     /// すぐにAPI制限に引っかかってしまうため、必要なときになって初めて呼び出す工夫が必要
     func fetchRepositoryDetails(withRepositories repositories: [Repository]) async throws -> [RepositoryDetail] {
         try await withThrowingTaskGroup(of: RepositoryDetail.self) { group in

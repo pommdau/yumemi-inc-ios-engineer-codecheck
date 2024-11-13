@@ -13,14 +13,14 @@ final class RepositoryViewModelTests: XCTestCase {
 
     // MARK: - Properties
     
-    private var sut: SearchResultViewModel<StubGitHubAPIService>!
+    private var sut: SearchResultViewModel<StubGitHubAPIClient>!
 
     // MARK: - Setup/TearDown
     
     @MainActor
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = SearchResultViewModel<StubGitHubAPIService>()
+        sut = SearchResultViewModel<StubGitHubAPIClient>()
     }
 
     override func tearDownWithError() throws {
@@ -102,7 +102,7 @@ final class RepositoryViewModelTests: XCTestCase {
         // given
         // when
         async let search: Void = sut.searchButtonPressed(withKeyword: "swift")
-        while StubGitHubAPIService.shared.searchContinuation == nil {
+        while StubGitHubAPIClient.shared.searchContinuation == nil {
             await Task.yield()
         }
 
@@ -116,9 +116,9 @@ final class RepositoryViewModelTests: XCTestCase {
         }
 
         // GitHubAPIの実行
-        StubGitHubAPIService.shared.searchContinuation?
+        StubGitHubAPIClient.shared.searchContinuation?
             .resume(returning: Repository.sampleData)
-        StubGitHubAPIService.shared.searchContinuation = nil
+        StubGitHubAPIClient.shared.searchContinuation = nil
         await search
         _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
 
@@ -137,12 +137,12 @@ final class RepositoryViewModelTests: XCTestCase {
         // given
         // when
         async let search: Void = sut.searchButtonPressed(withKeyword: "swift")
-        while StubGitHubAPIService.shared.searchContinuation == nil {
+        while StubGitHubAPIClient.shared.searchContinuation == nil {
             await Task.yield()
         }
-        StubGitHubAPIService.shared.searchContinuation?
+        StubGitHubAPIClient.shared.searchContinuation?
             .resume(throwing: error)
-        StubGitHubAPIService.shared.searchContinuation = nil
+        StubGitHubAPIClient.shared.searchContinuation = nil
         await search
         _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
     }
@@ -153,7 +153,7 @@ final class RepositoryViewModelTests: XCTestCase {
         // given/when
         await searchRepositoriesFail(
             withError:
-                GitHubAPIServiceError.connectionError(MessageError(description: "(Debug) .connectionErrror"))
+                GitHubAPIClientError.connectionError(MessageError(description: "(Debug) .connectionErrror"))
         )
         // then
         switch sut.repositories {
@@ -170,7 +170,7 @@ final class RepositoryViewModelTests: XCTestCase {
         // given/when
         await searchRepositoriesFail(
             withError:
-                GitHubAPIServiceError.responseParseError(MessageError(description: "(Debug) .connectionErrror"))
+                GitHubAPIClientError.responseParseError(MessageError(description: "(Debug) .connectionErrror"))
         )
         // then
         switch sut.repositories {
@@ -187,7 +187,7 @@ final class RepositoryViewModelTests: XCTestCase {
         // given/when
         await searchRepositoriesFail(
             withError:
-                GitHubAPIServiceError.apiError(GitHubAPIError.sampleData[0])
+                GitHubAPIClientError.apiError(GitHubAPIError.sampleData[0])
         )
         // then
         switch sut.repositories {

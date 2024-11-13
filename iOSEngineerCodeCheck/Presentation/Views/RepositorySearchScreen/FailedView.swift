@@ -17,7 +17,7 @@ struct FailedView: View {
             Group {
                 Text("リポジトリの検索に失敗しました")
                     .padding(.bottom, 8)
-                if let serviceError = error as? GitHubAPIServiceError {
+                if let serviceError = error as? GitHubAPIClientError {
                     switch serviceError {
                     case .connectionError:
                         Text(serviceError.message)
@@ -38,7 +38,7 @@ struct FailedView: View {
 // MARK: - Previews
 
 #Preview(".connectionError", traits: .sizeThatFitsLayout) {
-    let error = GitHubAPIServiceError.connectionError(
+    let error = GitHubAPIClientError.connectionError(
         MessageError(description: "(Debug) connectionError")
     )
     return FailedView(error: error)
@@ -46,7 +46,7 @@ struct FailedView: View {
 }
 
 #Preview(".responseParseError", traits: .sizeThatFitsLayout) {
-    let error = GitHubAPIServiceError.responseParseError(
+    let error = GitHubAPIClientError.responseParseError(
         MessageError(description: "(Debug) responseParseError.")
     )
     return FailedView(error: error)
@@ -54,7 +54,7 @@ struct FailedView: View {
 }
 
 #Preview(".apiError", traits: .sizeThatFitsLayout) {
-    let error = GitHubAPIServiceError.apiError(
+    let error = GitHubAPIClientError.apiError(
         GitHubAPIError.sampleData[0]
     )
     return FailedView(error: error)
