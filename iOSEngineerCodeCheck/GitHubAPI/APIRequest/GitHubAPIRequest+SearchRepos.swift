@@ -1,5 +1,5 @@
 //
-//  GitHubAPIRequest+SearchRepositories.swift
+//  GitHubAPIRequest+SearchRepos.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/08.
@@ -10,9 +10,9 @@ import Foundation
 
 extension GitHubAPIRequest {
 
-    public struct SearchRepositories: GitHubAPIRequestProtocol {
+    public struct SearchRepos: GitHubAPIRequestProtocol {
 
-        public typealias Response = SearchResponse<Repository>
+        public typealias Response = SearchResponse<Repo>
 
         public let keyword: String
 

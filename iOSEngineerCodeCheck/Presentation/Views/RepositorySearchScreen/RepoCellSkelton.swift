@@ -1,5 +1,5 @@
 //
-//  RepositoryCellSkelton.swift
+//  RepoCellSkelton.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2024/09/30.
@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-struct RepositoryCellSkelton: View {
+struct RepoCellSkelton: View {
     var body: some View {
-        RepositoryCell(repository: Repository.sampleDataForRepositoryCellSkelton)
+        RepoCell(repo: Repo.sampleDataForReposCellSkelton)
             .redacted(reason: .placeholder)
             .shimmering()
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    RepositoryCellSkelton()
+    RepoCellSkelton()
         .padding()
 }

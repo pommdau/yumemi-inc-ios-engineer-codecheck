@@ -19,7 +19,7 @@ struct SearchResultView: View {
 
     var body: some View {
         Group {
-            switch viewModel.repositories {
+            switch viewModel.repos {
             case .idle:
                 if isSearching {
                     // .searchSuggestionsの修飾ViewがListでないと表示が崩れるため
@@ -28,7 +28,7 @@ struct SearchResultView: View {
                     ReadyView()
                 }
             case .loading:
-                RepositoryListSkelton()
+                RepoListSkelton()
             case .failed(let error):
                 if isSearching {
                     // .searchSuggestionsの修飾ViewがListでないと表示が崩れるため
@@ -36,8 +36,8 @@ struct SearchResultView: View {
                 } else {
                     FailedView(error: error)
                 }
-            case let .loaded(repositories):
-                RepositoryList(repositories: repositories)
+            case let .loaded(repos):
+                RepoList(repos: repos)
             }
         }
         .onChange(of: isSearching) { 

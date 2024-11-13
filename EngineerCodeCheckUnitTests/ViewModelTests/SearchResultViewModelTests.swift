@@ -1,5 +1,5 @@
 //
-//  RepositoryViewModelTests.swift
+//  SearchResultViewModelTests.swift
 //  iOSEngineerCodeCheckTests
 //
 //  Created by HIROKI IKEUCHI on 2022/11/26.
@@ -9,18 +9,18 @@
 import XCTest
 @testable import iOSEngineerCodeCheck
 
-final class RepositoryViewModelTests: XCTestCase {
+final class SearchResultViewModelTests: XCTestCase {
 
     // MARK: - Properties
     
-    private var sut: SearchResultViewModel<StubGitHubAPIClient>!
+    private var sut: SearchResultViewModel<GitHubAPIClientStub>!
 
     // MARK: - Setup/TearDown
     
     @MainActor
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = SearchResultViewModel<StubGitHubAPIClient>()
+        sut = SearchResultViewModel<GitHubAPIClientStub>()
     }
 
     override func tearDownWithError() throws {
@@ -32,17 +32,18 @@ final class RepositoryViewModelTests: XCTestCase {
     
     // MARK: 検索フィールドが空の場合
     @MainActor
-    func testSearchRepositoriesButtonPressedWhenKeywordIsEmpty() async {
+    func testSearchReposButtonPressedWhenKeywordIsEmpty() async {
         // given
         // when
-        await sut.searchButtonPressed(withKeyword: "")
+        sut.keyword = ""
+        await sut.searchButtonPressed()
 
         // then
-        switch sut.repositories {
+        switch sut.repos {
         case .idle:
             break
         default:
-            XCTFail("unexpected repositories: \(sut.repositories)")
+            XCTFail("unexpected repos: \(sut.repos)")
         }
     }
     
@@ -57,7 +58,7 @@ final class RepositoryViewModelTests: XCTestCase {
      }
      */
     /*
-    func testSearchRepositoriesButtonPressedAndCancel() async {
+    func testSearchReposButtonPressedAndCancel() async {
         // given
         // when
         async let search: Void = sut.searchButtonPressed(withKeyword: "swift)
@@ -68,17 +69,17 @@ final class RepositoryViewModelTests: XCTestCase {
         // then
 
         // 検索中の状態になっているかの確認
-        switch sut.repositories {
+        switch sut.repos {
         case .loading:
             break
         default:
-            XCTFail("unexpected repositories: \(sut.repositories)")
+            XCTFail("unexpected repos: \(sut.repos)")
         }
 
         // GitHubAPIの実行
                 
 //        StubGitHubAPIService.shared.searchContinuation?
-//            .resume(returning: Repository.sampleData)
+//            .resume(returning: Repo.sampleData)
 //        StubGitHubAPIService.shared.searchContinuation = nil
         await search
         sut.cancelSearching()
@@ -86,11 +87,11 @@ final class RepositoryViewModelTests: XCTestCase {
         
         // then
         // 検索後の状態の確認
-        switch sut.repositories {
+        switch sut.repos {
         case .idle:
             break
         default:
-//            XCTFail("unexpected repositories: \(sut.repositories)")
+//            XCTFail("unexpected repos: \(sut.repos)")
             break
         }
     }
@@ -98,120 +99,122 @@ final class RepositoryViewModelTests: XCTestCase {
 
     // MARK: 成功
     @MainActor
-    func testSearchRepositoriesButtonPressedSuccess() async {
+    func testSearchReposButtonPressedSuccess() async {
         // given
         // when
-        async let search: Void = sut.searchButtonPressed(withKeyword: "swift")
-        while StubGitHubAPIClient.shared.searchContinuation == nil {
+        sut.keyword = "swift"
+        async let search: Void = sut.searchButtonPressed()
+        while GitHubAPIClientStub.shared.searchContinuation == nil {
             await Task.yield()
         }
 
         // then
         // 検索中の状態になっているかの確認
-        switch sut.repositories {
+        switch sut.repos {
         case .loading:
             break
         default:
-            XCTFail("unexpected repositories: \(sut.repositories)")
+            XCTFail("unexpected repos: \(sut.repos)")
         }
 
         // GitHubAPIの実行
-        StubGitHubAPIClient.shared.searchContinuation?
-            .resume(returning: Repository.sampleData)
-        StubGitHubAPIClient.shared.searchContinuation = nil
+        GitHubAPIClientStub.shared.searchContinuation?
+            .resume(returning: Repo.sampleData)
+        GitHubAPIClientStub.shared.searchContinuation = nil
         await search
         _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
 
         // 検索後の状態の確認
-        switch sut.repositories {
-        case let .loaded(repositories):
-            XCTAssertFalse(repositories.isEmpty)
+        switch sut.repos {
+        case let .loaded(repos):
+            XCTAssertFalse(repos.isEmpty)
         default:
-            XCTFail("unexpected repositories: \(sut.repositories)")
+            XCTFail("unexpected repos: \(sut.repos)")
         }
     }
 
     // MARK: Helpers
-    
-    private func searchRepositoriesFail(withError error: Error) async {
+    @MainActor
+    private func searchReposFail(withError error: Error) async {
         // given
         // when
-        async let search: Void = sut.searchButtonPressed(withKeyword: "swift")
-        while StubGitHubAPIClient.shared.searchContinuation == nil {
+        sut.keyword = "swift"
+        async let search: Void = sut.searchButtonPressed()
+        while GitHubAPIClientStub.shared.searchContinuation == nil {
             await Task.yield()
         }
-        StubGitHubAPIClient.shared.searchContinuation?
+        GitHubAPIClientStub.shared.searchContinuation?
             .resume(throwing: error)
-        StubGitHubAPIClient.shared.searchContinuation = nil
+        GitHubAPIClientStub.shared.searchContinuation = nil
         await search
         _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
     }
     
     // MARK: 通信エラー
     @MainActor
-    func testSearchRepositoriesButtonPressedFailByConnectionError() async {
+    func testSearchReposButtonPressedFailByConnectionError() async {
         // given/when
-        await searchRepositoriesFail(
+        await searchReposFail(
             withError:
                 GitHubAPIClientError.connectionError(MessageError(description: "(Debug) .connectionErrror"))
         )
         // then
-        switch sut.repositories {
+        switch sut.repos {
         case .failed:
             break
         default:
-            XCTFail("unexpected repositories: \(sut.repositories)")
+            XCTFail("unexpected repos: \(sut.repos)")
         }
     }
 
     // MARK: レスポンスの文字列のデコードエラー
     @MainActor
-    func testSearchRepositoriesButtonPressedFailByResponseParseErrorError() async {
+    func testSearchReposButtonPressedFailByResponseParseErrorError() async {
         // given/when
-        await searchRepositoriesFail(
+        await searchReposFail(
             withError:
                 GitHubAPIClientError.responseParseError(MessageError(description: "(Debug) .connectionErrror"))
         )
         // then
-        switch sut.repositories {
+        switch sut.repos {
         case .failed:
             break
         default:
-            XCTFail("unexpected repositories: \(sut.repositories)")
+            XCTFail("unexpected repos: \(sut.repos)")
         }
     }
     
     // MARK: GitHubAPIで返されたエラー
     @MainActor
-    func testSearchRepositoriesButtonPressedFailByAPIError() async {
+    func testSearchReposButtonPressedFailByAPIError() async {
         // given/when
-        await searchRepositoriesFail(
+        await searchReposFail(
             withError:
                 GitHubAPIClientError.apiError(GitHubAPIError.sampleData[0])
         )
         // then
-        switch sut.repositories {
+        switch sut.repos {
         case .failed:
             break
         default:
-            XCTFail("unexpected repositories: \(sut.repositories)")
+            XCTFail("unexpected repos: \(sut.repos)")
         }
     }
     
     // MARK: その他のエラー
     @MainActor
-    func testSearchRepositoriesButtonPressedFailByOtherError() async {
+    func testSearchReposButtonPressedFailByOtherError() async {
         // given/when
-        await searchRepositoriesFail(
+        await searchReposFail(
             withError:
                 MessageError(description: "(Debug) error")
         )
         // then
-        switch sut.repositories {
+        switch sut.repos {
         case .failed:
             break
         default:
-            XCTFail("unexpected repositories: \(sut.repositories)")
+            XCTFail("unexpected repos: \(sut.repos)")
         }
     }
 

@@ -11,26 +11,26 @@ import SDWebImageSwiftUI
 
 struct TitleView: View {
 
-    let repository: Repository
+    let repo: Repo
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             userLabel()
-            repositoryLabel()
+            repoLabel()
         }
     }
     
     @ViewBuilder
     private func userLabel() -> some View {
         Button {
-            guard let url = repository.owner.htmlURL else {
+            guard let url = repo.owner.htmlURL else {
                 return
             }
             UIApplication.shared.open(url)
         } label: {
             HStack {
                 // Userアイコン
-                WebImage(url: repository.owner.avatarImageURL) { image in
+                WebImage(url: repo.owner.avatarImageURL) { image in
                     image
                 } placeholder: {
                     Image(systemName: "person.fill")
@@ -46,7 +46,7 @@ struct TitleView: View {
                         .foregroundColor(.secondary)
                 }
                 // User名
-                Text(repository.owner.name)
+                Text(repo.owner.name)
                     .lineLimit(1)
             }
         }
@@ -54,14 +54,14 @@ struct TitleView: View {
     }
 
     @ViewBuilder
-    private func repositoryLabel() -> some View {
+    private func repoLabel() -> some View {
         Button {
-            guard let url = repository.htmlURL else {
+            guard let url = repo.htmlURL else {
                 return
             }
             UIApplication.shared.open(url)
         } label: {
-            Text(repository.name)
+            Text(repo.name)
                 .lineLimit(1)
                 .font(.title)
                 .bold()
@@ -73,11 +73,11 @@ struct TitleView: View {
 // MARK: - Previews
 
 #Preview("通常", traits: .sizeThatFitsLayout) {
-    TitleView(repository: Repository.sampleData[2])
+    TitleView(repo: Repo.sampleData[2])
         .padding()
 }
 
 #Preview("長い語句を含む場合", traits: .sizeThatFitsLayout) {
-    TitleView(repository: Repository.sampleDataWithLongWord)
+    TitleView(repo: Repo.sampleDataWithLongWord)
         .padding()
 }

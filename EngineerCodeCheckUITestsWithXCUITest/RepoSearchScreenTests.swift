@@ -1,5 +1,5 @@
 //
-//  RepositorySearchScreenTests.swift
+//  RepoSearchScreenTests.swift
 //  EngineerCodeCheckUITestsWithXCUITest
 //
 //  Created by HIROKI IKEUCHI on 2022/12/10.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-final class RepositorySearchScreenTests: XCTestCase {
+final class RepoSearchScreenTests: XCTestCase {
     
     private var app: XCUIApplication!
     
@@ -26,12 +26,12 @@ final class RepositorySearchScreenTests: XCTestCase {
 
     // リポジトリ検索を行いCellが表示されるかどうかを確認
     // ViewInspectorがNavigationViewの.searchableに非対応(2022-12-10現在)のため、この部分のみXCUITestを遣う
-    func testSearchRepositoryAndCheckCellExistence() throws {
+    func testSearchRepoAndCheckCellExistence() throws {
         let navigationBar = app.navigationBars["_TtGC7SwiftUI19UIHosting"]
         let searchField = navigationBar.searchFields["検索"]
         searchField.tap()
         searchField.typeText("Swift")
-        app/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".keyboards",".buttons[\"search\"]",".buttons[\"Search\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        searchField.tap()
         XCTAssert(app.collectionViews.children(matching: .any).firstMatch.exists)
     }
 }

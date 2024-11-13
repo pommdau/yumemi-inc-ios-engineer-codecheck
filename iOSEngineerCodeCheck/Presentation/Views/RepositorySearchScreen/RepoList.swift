@@ -1,5 +1,5 @@
 //
-//  RepositoryListView.swift
+//  RepoList.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/12/01.
@@ -8,20 +8,20 @@
 
 import SwiftUI
 
-struct RepositoryList: View {
+struct RepoList: View {
 
-    let repositories: [Repository]    
+    let repos: [Repo]    
 
     var body: some View {
-        if repositories.isEmpty {
+        if repos.isEmpty {
             Text("該当するリポジトリが見つかりませんでした")
                 .fontWeight(.bold)
         } else {
-            List(repositories) { repository in
+            List(repos) { repo in
                 NavigationLink {
-                    RepositoryDetailScreen(repository: repository)
+                    RepoDetailsScreen(repo: repo)
                 } label: {
-                    RepositoryCell(repository: repository)
+                    RepoCell(repo: repo)
                 }
             }
         }
@@ -32,12 +32,12 @@ struct RepositoryList: View {
 
 #Preview("通常") {
     NavigationView {
-        RepositoryList(repositories: Repository.sampleData)
+        RepoList(repos: Repo.sampleData)
     }
 }
 
 #Preview("検索結果が空") {
     NavigationView {
-        RepositoryList(repositories: [])
+        RepoList(repos: [])
     }
 }

@@ -1,27 +1,27 @@
 //
-//  SearchSuggestionManager.swift
+//  SearchSuggestionRepository.swift
 //  iOSEngineerCodeCheck
 //
-//  Created by HIROKI IKEUCHI on 2024/10/10.
+//  Created by HIROKI IKEUCHI on 2024/11/13.
 //  Copyright © 2024 YUMEMI Inc. All rights reserved.
 //
 
 import SwiftUI
 
-struct SearchSuggestionManager {
+struct SearchSuggestionRepository: SearchSuggestionRepositoryProtocol {
     
-    private let maxHistoryCount: Int = 3 // 履歴の最大記憶数
+    // MARK: - Property
     
-    let recommendedSuggestions: [String] = ["SwiftUI", "Swift", "Python", "Apple", "Qiita"]
+    let maxHistoryCount = 5
+    let recommendedSuggestions = ["SwiftUI", "Swift", "Python", "Apple", "Qiita"]
     
-    // 複数存在するようになった場合はこのIdentifiedなキーにすること
-    @AppStorage("searchHistories")
-    private(set) var historySuggestions: [String] = []            
-}
-
-// MARK: - History Methods
-
-extension SearchSuggestionManager {
+    // Warn: 複数存在するようになった場合はこのIdentifiedなキーにすること
+    @AppStorage("history-suggestions")
+    var historySuggestions: [String] = []
+        
+    // MARK: - CRUD
+    
+    // MARK: Create
     
     func addHistory(_ keyword: String) {
         if keyword.isEmpty {
@@ -41,6 +41,8 @@ extension SearchSuggestionManager {
             historySuggestions.removeLast()
         }
     }
+    
+    // MARK: Delete
     
     func removeAllHistories() {
         historySuggestions.removeAll()

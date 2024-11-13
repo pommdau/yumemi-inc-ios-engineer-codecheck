@@ -1,5 +1,5 @@
 //
-//  RepositoryListSkelton.swift
+//  RepoListSkelton.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2024/09/30.
@@ -8,16 +8,16 @@
 
 import SwiftUI
 
-struct RepositoryListSkelton: View {
+struct RepoListSkelton: View {
     var body: some View {
         List {
             ForEach(0..<10) { _ in
-                RepositoryCellSkelton()
+                RepoCellSkelton()
             }
         }
     }
 }
 
 #Preview {
-    RepositoryListSkelton()
+    RepoListSkelton()
 }

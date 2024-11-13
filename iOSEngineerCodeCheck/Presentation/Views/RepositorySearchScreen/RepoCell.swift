@@ -1,5 +1,5 @@
 //
-//  RepositoryCell.swift
+//  RepoCell.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/14.
@@ -10,14 +10,14 @@ import SwiftUI
 import SDWebImageSwiftUI
 import Shimmer
 
-struct RepositoryCell: View {
+struct RepoCell: View {
 
-    let repository: Repository
+    let repo: Repo
 
     var body: some View {
         VStack(alignment: .leading) {
             userLabel()
-            repositoryNameLabel()
+            repoNameLabel()
             descriptionLabel()
             HStack(spacing: 18) {
                 starsLabel()
@@ -32,7 +32,7 @@ struct RepositoryCell: View {
     @ViewBuilder
     private func userLabel() -> some View {
         HStack {
-            WebImage(url: URL(string: repository.owner.avatarImagePath)) { image in
+            WebImage(url: URL(string: repo.owner.avatarImagePath)) { image in
                 image
             } placeholder: {
                 Image(systemName: "person.fill")
@@ -47,14 +47,14 @@ struct RepositoryCell: View {
                     .stroke(lineWidth: 1)
                     .foregroundStyle(.secondary.opacity(0.5))
             }
-            Text(repository.owner.name)
+            Text(repo.owner.name)
                 .lineLimit(1)
         }
     }
 
     @ViewBuilder
-    private func repositoryNameLabel() -> some View {
-        Text(repository.name)
+    private func repoNameLabel() -> some View {
+        Text(repo.name)
             .lineLimit(1)
             .font(.title3)
             .bold()
@@ -63,7 +63,7 @@ struct RepositoryCell: View {
 
     @ViewBuilder
     private func descriptionLabel() -> some View {
-        if let description = repository.description,
+        if let description = repo.description,
            !description.isEmpty {
             Text(description)
                 .lineLimit(3)
@@ -75,14 +75,14 @@ struct RepositoryCell: View {
         HStack(spacing: 2) {
             Image(systemName: "star")
                 .accessibilityLabel(Text("Star Image"))
-            Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repository.starsCount))")
+            Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repo.starsCount))")
         }
         .foregroundColor(.secondary)
     }
 
     @ViewBuilder
     private func languageLabel() -> some View {
-        if let language = repository.language,
+        if let language = repo.language,
            !language.isEmpty {
             HStack(spacing: 4) {
                 Circle()
@@ -98,16 +98,16 @@ struct RepositoryCell: View {
 // MARK: - Previews
 
 #Preview("通常", traits: .sizeThatFitsLayout) {
-    RepositoryCell(repository: Repository.sampleData[0])
+    RepoCell(repo: Repo.sampleData[0])
         .padding()
 }
 
 #Preview("長い語句を含む場合", traits: .sizeThatFitsLayout) {
-    RepositoryCell(repository: Repository.sampleDataWithLongWord)
+    RepoCell(repo: Repo.sampleDataWithLongWord)
         .padding()
 }
 
 #Preview("空の情報がある場合", traits: .sizeThatFitsLayout) {
-    RepositoryCell(repository: Repository.sampleDataWithoutSomeInfo)
+    RepoCell(repo: Repo.sampleDataWithoutSomeInfo)
         .padding()
 }

@@ -1,5 +1,5 @@
 //
-//  Repository+sampleData.swift
+//  Repo+sampleData.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/13.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension Repository {
+extension Repo {
     
-    static let sampleDataWithLongWord: Repository =
+    static let sampleDataWithLongWord: Repo =
         .init(id: 44838949,
               name: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
               fullName: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
@@ -29,7 +29,7 @@ extension Repository {
               description: String(repeating: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", count: 5),
               subscribersCount: 2508)
             
-    static let sampleDataWithoutSomeInfo: Repository =
+    static let sampleDataWithoutSomeInfo: Repo =
         .init(id: 44838949,
               name: "swift",
               fullName: "apple/swift",
@@ -48,7 +48,7 @@ extension Repository {
               description: nil,
               subscribersCount: 0)
 
-    static let sampleDataForRepositoryCellSkelton = Repository(
+    static let sampleDataForReposCellSkelton = Repo(
         id: 44838949,
         name: "Lorem ipsum dol",
         fullName: "apple/swift",
@@ -71,7 +71,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         subscribersCount: 0
     )
     
-    static let sampleData: [Repository] = [
+    static let sampleData: [Repo] = [
         .init(id: 44838949,
               name: "swift",
               fullName: "apple/swift",
@@ -589,15 +589,15 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
  e.g.
  .onAppear {
      var message = ""
-     for repository in repositories {
-         message += repository.createInitializerString()
+     for repo in repos {
+         message += repo.createInitializerString()
          message += "\n"
      }
      print(message)
  }
  */
 /// sampleDataの作成用のデバッグ関数
-extension Repository {
+extension Repo {
     
     func createInitializerString() -> String {
         """

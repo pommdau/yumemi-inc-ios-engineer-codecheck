@@ -13,11 +13,11 @@ import Foundation
 final class SearchResultViewModel<GitHubAPIClient>
 where GitHubAPIClient: GitHubAPIClientProtocol {
     var keyword: String = ""
-    private(set) var repositories: Stateful<[Repository]>
+    private(set) var repos: Stateful<[Repo]>
     private(set) var task: Task<(), Never>?
     
-    init(repositories: Stateful<[Repository]> = .idle) {
-        self.repositories = repositories
+    init(repos: Stateful<[Repo]> = .idle) {
+        self.repos = repos
     }
 }
 
@@ -34,26 +34,26 @@ extension SearchResultViewModel {
         if keyword.isEmpty {
             return
         }
-        repositories = .loading
+        repos = .loading
         task = Task {
             do {
-                let repositories = try await searchRepositories(keyword: keyword)
-                self.repositories = .loaded(repositories)
+                let repos = try await searchRepos(keyword: keyword)
+                self.repos = .loaded(repos)
             } catch {
                 if Task.isCancelled {
-                    repositories = .idle
+                    repos = .idle
                 } else {
-                    repositories = .failed(error)
+                    repos = .failed(error)
                 }
             }
         }
     }
 
-    // サブスレッドで実行させるためnoisolatedを使用する
-    nonisolated private func searchRepositories(keyword: String) async throws -> [Repository] {
+    // noisolated: APIClientの処理がサブスレッドで実行されるため
+    nonisolated private func searchRepos(keyword: String) async throws -> [Repo] {
         #if DEBUG
         //        try await Task.sleep(nanoseconds: 3 * NSEC_PER_SEC)  // n秒待つ。検索キャンセル処理の動作確認用。
         #endif
-        return try await GitHubAPIClient.shared.searchRepositories(keyword: keyword)
+        return try await GitHubAPIClient.shared.searchRepos(keyword: keyword)
     }
 }

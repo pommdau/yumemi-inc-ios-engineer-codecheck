@@ -29,9 +29,9 @@ final class GitHubAPIClientTests: XCTestCase {
     // MARK: - リポジトリの検索
     // MARK: 成功
 
-    func testSearchRepositotiesSuccess() async throws {
+    func testSearchReposSuccess() async throws {
         // given
-        guard let data = SearchResponse<Repository>.sampleJSON.data(using: .utf8),
+        guard let data = SearchResponse<Repo>.sampleJSON.data(using: .utf8),
               let url = URL(string: "https://api.github.com/search/repositories?q=Swift")
         else {
             XCTFail("Stubデータの作成に失敗しました")
@@ -45,8 +45,8 @@ final class GitHubAPIClientTests: XCTestCase {
                 
         // when/then
         do {
-            let repositories = try await sut.searchRepositories(keyword: "Swift")
-            XCTAssertFalse(repositories.isEmpty)
+            let repos = try await sut.searchRepos(keyword: "Swift")
+            XCTAssertFalse(repos.isEmpty)
         } catch {
             XCTFail("unexpected error: \(error.localizedDescription)")
         }
@@ -54,7 +54,7 @@ final class GitHubAPIClientTests: XCTestCase {
     
     // MARK: 通信エラー
     
-    func testSearchRepositotiesFailByConnectionError() async throws {
+    func testSearchReposFailByConnectionError() async throws {
         // given
         let urlSessionStub = StubURLSession(
             error: URLError(.cannotConnectToHost)
@@ -64,7 +64,7 @@ final class GitHubAPIClientTests: XCTestCase {
         // when
         var errorIsExpected = false
         do {
-            _ = try await sut.searchRepositories(keyword: "Swift")
+            _ = try await sut.searchRepos(keyword: "Swift")
         } catch {
             // then
             if let serviceError = error as? GitHubAPIClientError {
@@ -84,7 +84,7 @@ final class GitHubAPIClientTests: XCTestCase {
     
     // MARK: レスポンスの文字列のデコードエラー
     
-    func testSearchRepositotiesFailByResponseParseError() async throws {
+    func testSearchReposFailByResponseParseError() async throws {
         // given
         let data = Data("{}".utf8) // ダミーのデータを渡す
         guard let url = URL(string: "https://api.github.com/search/repositories?q=Swift") else {
@@ -100,7 +100,7 @@ final class GitHubAPIClientTests: XCTestCase {
         // when
         var errorIsExpected = false
         do {
-            _ = try await sut.searchRepositories(keyword: "Swift")
+            _ = try await sut.searchRepos(keyword: "Swift")
         } catch {
             // then
             if let serviceError = error as? GitHubAPIClientError {
@@ -120,7 +120,7 @@ final class GitHubAPIClientTests: XCTestCase {
     
     // MARK: GitHubAPIで返されたエラー
     
-    func testSearchRepositotiesFailByGitHubAPIError() async throws {
+    func testSearchReposFailByGitHubAPIError() async throws {
         // given
         guard let data = GitHubAPIError.sampleJSON.data(using: .utf8),
               let url = URL(string: "https://api.github.com/search/repositories?q=Swift")
@@ -137,7 +137,7 @@ final class GitHubAPIClientTests: XCTestCase {
         // when
         var errorIsExpected = false
         do {
-            _ = try await sut.searchRepositories(keyword: "Swift")
+            _ = try await sut.searchRepos(keyword: "Swift")
         } catch {
             // then
             if let serviceError = error as? GitHubAPIClientError {

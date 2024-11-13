@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailScreen.swift
+//  RepoDetailsScreen.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/13.
@@ -8,16 +8,16 @@
 
 import SwiftUI
 
-struct RepositoryDetailScreen: View {
+struct RepoDetailsScreen: View {
 
-    let repository: Repository
+    let repo: Repo
 
     var body: some View {
         VStack(alignment: .leading) {
-            TitleView(repository: repository)
+            TitleView(repo: repo)
             Divider()
-            DescriptionView(repository: repository)
-            if let language = repository.language,
+            DescriptionView(repo: repo)
+            if let language = repo.language,
                !language.isEmpty {
                 Divider()
                 LanguageView(language: language)
@@ -31,13 +31,13 @@ struct RepositoryDetailScreen: View {
 // MARK: - Previews
 
 #Preview("通常") {
-    RepositoryDetailScreen(repository: Repository.sampleData[0])
+    RepoDetailsScreen(repo: Repo.sampleData[0])
 }
 
 #Preview("長い語句を含む場合") {
-    RepositoryDetailScreen(repository: Repository.sampleDataWithLongWord)
+    RepoDetailsScreen(repo: Repo.sampleDataWithLongWord)
 }
 
 #Preview("空の情報がある場合") {
-    RepositoryDetailScreen(repository: Repository.sampleDataWithoutSomeInfo)
+    RepoDetailsScreen(repo: Repo.sampleDataWithoutSomeInfo)
 }

@@ -1,5 +1,5 @@
 //
-//  RepositorySearchScreen.swift
+//  RepoSearchScreen.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/13.
@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-// Xcode16以上のビルドではViewに\@MainActorがつくので下記は不要となる
+// INFO: Xcode16以上のビルドではViewに\@MainActorがつくので下記は不要となる
 @MainActor
-struct RepositorySearchScreen: View {
+struct RepoSearchScreen: View {
     @State private var viewModel: SearchResultViewModel<GitHubAPIClient> = .init()
-    @State private var searchSuggestionManager: SearchSuggestionManager = .init()
+    @State private var searchSuggestionRepository: SearchSuggestionRepository = .init()
     internal let inspection = Inspection<Self>()
     
     var body: some View {
@@ -24,7 +24,7 @@ struct RepositorySearchScreen: View {
                     searchSuggestions()
                 }
                 .onSubmit(of: .search) {
-                    searchSuggestionManager.addHistory(viewModel.keyword)
+                    searchSuggestionRepository.addHistory(viewModel.keyword)
                     Task {
                         await viewModel.searchButtonPressed()
                     }
@@ -36,28 +36,28 @@ struct RepositorySearchScreen: View {
 
 // MARK: - Search Suggestions
 
-extension RepositorySearchScreen {
+extension RepoSearchScreen {
     @ViewBuilder
     private func searchSuggestions() -> some View {
         Section("履歴") {
-            if searchSuggestionManager.historySuggestions.isEmpty {
+            if searchSuggestionRepository.historySuggestions.isEmpty {
                 Text("(なし)")
                     .foregroundStyle(.secondary)
             } else {
-                ForEach(searchSuggestionManager.historySuggestions, id: \.self) { history in
+                ForEach(searchSuggestionRepository.historySuggestions, id: \.self) { history in
                     Label(history, systemImage: "clock")
                         .searchCompletion(history)
                         .foregroundStyle(.primary)
                     
                 }
                 Button("履歴のクリア") {
-                    searchSuggestionManager.removeAllHistories()
+                    searchSuggestionRepository.removeAllHistories()
                 }
                 .frame(alignment: .trailing)
             }
         }
         Section("おすすめ") {
-            ForEach(searchSuggestionManager.recommendedSuggestions, id: \.self) { suggestion in
+            ForEach(searchSuggestionRepository.recommendedSuggestions, id: \.self) { suggestion in
                 Label(suggestion, systemImage: "magnifyingglass")
                     .searchCompletion(suggestion)
                     .foregroundStyle(.primary)
@@ -69,5 +69,5 @@ extension RepositorySearchScreen {
 // MARK: - Previews
 
 #Preview {
-    RepositorySearchScreen()
+    RepoSearchScreen()
 }

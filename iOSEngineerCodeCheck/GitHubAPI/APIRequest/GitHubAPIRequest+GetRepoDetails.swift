@@ -1,5 +1,5 @@
 //
-//  GitHubAPIRequest+GetRepositoryDetail.swift
+//  GitHubAPIRequest+GetRepoDetails.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/17.
@@ -16,18 +16,18 @@ import Foundation
 
 extension GitHubAPIRequest {
 
-    public struct GetRepositoryDetail: GitHubAPIRequestProtocol {
+    public struct GetRepoDetails: GitHubAPIRequestProtocol {
 
-        public typealias Response = RepositoryDetail
+        public typealias Response = RepoDetail
         public let userName: String
-        public let repositoryName: String
+        public let repoName: String
 
         public var method: HTTPMethod {
             .get
         }
 
         public var path: String {
-            "/repos/\(userName)/\(repositoryName)"
+            "/repos/\(userName)/\(repoName)"
         }
 
         public var queryItems: [URLQueryItem] {

@@ -12,7 +12,7 @@ struct DescriptionView: View {
 
     // MARK: - Properties
 
-    let repository: Repository
+    let repo: Repo
 
     // MARK: - View
 
@@ -22,17 +22,17 @@ struct DescriptionView: View {
 //                .font(.title2)
 //                .bold()
 //                .padding(.vertical)
-            if let description = repository.description,
+            if let description = repo.description,
                !description.isEmpty {
                 Text(description)
                     .padding(.bottom, 8)
             }
             Grid(verticalSpacing: 8) {
-                starsGridRow(starsCount: repository.starsCount)
-                //                wachersGridRow(watchersCount: repository.watchersCount)
-                forksGridRow(forksCount: repository.forksCount)
-                issuesGridRow(issuesCount: repository.openIssuesCount)
-                websiteGridRow(websiteURL: repository.websiteURL)
+                starsGridRow(starsCount: repo.starsCount)
+                //                wachersGridRow(watchersCount: repo.watchersCount)
+                forksGridRow(forksCount: repo.forksCount)
+                issuesGridRow(issuesCount: repo.openIssuesCount)
+                websiteGridRow(websiteURL: repo.websiteURL)
             }
         }
     }
@@ -87,7 +87,7 @@ struct DescriptionView: View {
             Image(systemName: "circle.circle")
                 .accessibilityLabel(Text("Issues Image"))
                 .foregroundColor(.secondary)
-            Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repository.openIssuesCount))")
+            Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repo.openIssuesCount))")
                 .bold()
             Text("issues")
                 .foregroundColor(.secondary)
@@ -117,16 +117,16 @@ struct DescriptionView: View {
 // MARK: - Previews
 
 #Preview("通常", traits: .sizeThatFitsLayout) {
-    DescriptionView(repository: Repository.sampleData[0])
+    DescriptionView(repo: Repo.sampleData[0])
         .padding()
 }
 
 #Preview("長い語句を含む場合", traits: .sizeThatFitsLayout) {
-    DescriptionView(repository: Repository.sampleDataWithLongWord)
+    DescriptionView(repo: Repo.sampleDataWithLongWord)
         .padding()
 }
 
 #Preview("空の情報がある場合", traits: .sizeThatFitsLayout) {
-    DescriptionView(repository: Repository.sampleDataWithoutSomeInfo)
+    DescriptionView(repo: Repo.sampleDataWithoutSomeInfo)
         .padding()
 }

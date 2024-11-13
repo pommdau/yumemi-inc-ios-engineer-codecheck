@@ -1,5 +1,5 @@
 //
-//  Repository+sampleJSON.swift
+//  Repo+sampleJSON.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/22.
@@ -8,7 +8,7 @@
 
 @testable import iOSEngineerCodeCheck
 
-extension Repository {
+extension Repo {
 
     static var sampleJSON: String {
         #"""

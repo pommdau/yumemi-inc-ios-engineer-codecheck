@@ -1,5 +1,5 @@
 //
-//  StubGitHubAPIClient.swift
+//  GitHubAPIClientStub.swift
 //  iOSEngineerCodeCheckTests
 //
 //  Created by HIROKI IKEUCHI on 2022/11/27.
@@ -10,15 +10,15 @@ import Foundation
 @testable import iOSEngineerCodeCheck
 
 /// ViewModelの非同期処理を含めて確認するためのGitHubAPIServiceのStub
-final class StubGitHubAPIClient: GitHubAPIClientProtocol {
+final class GitHubAPIClientStub: GitHubAPIClientProtocol {
 
-    static let shared: StubGitHubAPIClient = .init()
+    static let shared: GitHubAPIClientStub = .init()
 
-    var searchContinuation: CheckedContinuation<[Repository], Error>?
+    var searchContinuation: CheckedContinuation<[Repo], Error>?
 
     private init() {}
 
-    func searchRepositories(keyword: String) async throws -> [Repository] {
+    func searchRepos(keyword: String) async throws -> [Repo] {
         try await withCheckedThrowingContinuation { continuation in
             searchContinuation = continuation
         }

@@ -1,5 +1,5 @@
 //
-//  Repository.swift
+//  Repo.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by HIROKI IKEUCHI on 2022/11/07.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Repository: Identifiable, Codable {
+// アーキテクチャのRepositoryと区別するためRepoの名称を使う
+struct Repo: Identifiable, Codable {
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -25,7 +26,7 @@ struct Repository: Identifiable, Codable {
         case description
     }
     
-    // searchRepositoriesで取得される情報
+    // searchReposで取得される情報
     let id: Int
     let name: String  // e.g. "Tetris"
     let fullName: String  // e.g. "dtrupenn/Tetris"
@@ -53,7 +54,7 @@ struct Repository: Identifiable, Codable {
         return URL(string: websitePath)
     }
 
-    mutating func update(withRepositoryDetail detail: RepositoryDetail) {
+    mutating func update(_ detail: RepoDetail) {
         self.subscribersCount = detail.subscribersCount
     }
 }
