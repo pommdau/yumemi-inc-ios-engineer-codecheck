@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA1F58052CAAA6AE00BD59C9 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = DA1F58042CAAA6AE00BD59C9 /* Shimmer */; };
+		DA25434F2CE58A8700ECCF72 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = DA25434E2CE58A8700ECCF72 /* RswiftLibrary */; };
 		DA5C0DDE294469E000E0D7B9 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = DA5C0DDD294469E000E0D7B9 /* ViewInspector */; };
 		DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 			files = (
 				DA1F58052CAAA6AE00BD59C9 /* Shimmer in Frameworks */,
 				DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */,
+				DA25434F2CE58A8700ECCF72 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +122,7 @@
 				DA34D24E2CE3572000BBF391 /* EngineerCodeCheckUnitTests */,
 				DA34D25D2CE3572000BBF391 /* EngineerCodeCheckUITestsWithViewInspector */,
 				DA34D2C92CE3572000BBF391 /* EngineerCodeCheckUITestsWithXCUITest */,
+				DA2543502CE58AA700ECCF72 /* Frameworks */,
 				BFD945DC244DC5E80012785A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,6 +136,13 @@
 				DA9681AE2944C9F600805954 /* EngineerCodeCheckUnitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DA2543502CE58AA700ECCF72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +159,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA2543522CE58ABD00ECCF72 /* PBXTargetDependency */,
 				DAB202932CA3A8BB00FE363E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -158,6 +169,7 @@
 			packageProductDependencies = (
 				DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */,
 				DA1F58042CAAA6AE00BD59C9 /* Shimmer */,
+				DA25434E2CE58A8700ECCF72 /* RswiftLibrary */,
 			);
 			productName = iOSEngineerCodeCheck;
 			productReference = BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */;
@@ -276,6 +288,7 @@
 				DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				DA798CE92CA3E88700A7ADDE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				DA1F58032CAAA6AE00BD59C9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				DA25434D2CE58A8700ECCF72 /* XCRemoteSwiftPackageReference "R" */,
 			);
 			productRefGroup = BFD945DC244DC5E80012785A /* Products */;
 			projectDirPath = "";
@@ -352,6 +365,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DA2543522CE58ABD00ECCF72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DA2543512CE58ABD00ECCF72 /* RswiftGenerateInternalResources */;
+		};
 		DA5C0DD62944698600E0D7B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BFD945DA244DC5E80012785A /* iOSEngineerCodeCheck */;
@@ -725,6 +742,14 @@
 				minimumVersion = 1.5.1;
 			};
 		};
+		DA25434D2CE58A8700ECCF72 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
 		DA798CE92CA3E88700A7ADDE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -756,6 +781,15 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA1F58032CAAA6AE00BD59C9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		DA25434E2CE58A8700ECCF72 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA25434D2CE58A8700ECCF72 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		DA2543512CE58ABD00ECCF72 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
 		};
 		DA5C0DDD294469E000E0D7B9 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  iOSEngineerCodeCheck
+
+  Created by HIROKI IKEUCHI on 2024/11/14.
+  Copyright © 2024 YUMEMI Inc. All rights reserved.
+*/
+
+"greeting" = "Hello";
