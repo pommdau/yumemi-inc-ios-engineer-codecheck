@@ -39,11 +39,11 @@ final class SearchResultViewModelTests: XCTestCase {
         await sut.searchButtonPressed()
 
         // then
-        switch sut.repos {
+        switch sut.state {
         case .idle:
             break
         default:
-            XCTFail("unexpected repos: \(sut.repos)")
+            XCTFail("unexpected repos: \(sut.state)")
         }
     }
     
@@ -69,11 +69,11 @@ final class SearchResultViewModelTests: XCTestCase {
         // then
 
         // 検索中の状態になっているかの確認
-        switch sut.repos {
+        switch sut.state {
         case .loading:
             break
         default:
-            XCTFail("unexpected repos: \(sut.repos)")
+            XCTFail("unexpected repos: \(sut.state)")
         }
 
         // GitHubAPIの実行
@@ -87,11 +87,11 @@ final class SearchResultViewModelTests: XCTestCase {
         
         // then
         // 検索後の状態の確認
-        switch sut.repos {
+        switch sut.state {
         case .idle:
             break
         default:
-//            XCTFail("unexpected repos: \(sut.repos)")
+//            XCTFail("unexpected repos: \(sut.state)")
             break
         }
     }
@@ -110,11 +110,11 @@ final class SearchResultViewModelTests: XCTestCase {
 
         // then
         // 検索中の状態になっているかの確認
-        switch sut.repos {
+        switch sut.state {
         case .loading:
             break
         default:
-            XCTFail("unexpected repos: \(sut.repos)")
+            XCTFail("unexpected repos: \(sut.state)")
         }
 
         // GitHubAPIの実行
@@ -125,11 +125,11 @@ final class SearchResultViewModelTests: XCTestCase {
         _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
 
         // 検索後の状態の確認
-        switch sut.repos {
+        switch sut.state {
         case let .loaded(repos):
             XCTAssertFalse(repos.isEmpty)
         default:
-            XCTFail("unexpected repos: \(sut.repos)")
+            XCTFail("unexpected repos: \(sut.state)")
         }
     }
 
@@ -159,11 +159,11 @@ final class SearchResultViewModelTests: XCTestCase {
                 GitHubAPIClientError.connectionError(MessageError(description: "(Debug) .connectionErrror"))
         )
         // then
-        switch sut.repos {
+        switch sut.state {
         case .failed:
             break
         default:
-            XCTFail("unexpected repos: \(sut.repos)")
+            XCTFail("unexpected repos: \(sut.state)")
         }
     }
 
@@ -176,11 +176,11 @@ final class SearchResultViewModelTests: XCTestCase {
                 GitHubAPIClientError.responseParseError(MessageError(description: "(Debug) .connectionErrror"))
         )
         // then
-        switch sut.repos {
+        switch sut.state {
         case .failed:
             break
         default:
-            XCTFail("unexpected repos: \(sut.repos)")
+            XCTFail("unexpected repos: \(sut.state)")
         }
     }
     
@@ -193,11 +193,11 @@ final class SearchResultViewModelTests: XCTestCase {
                 GitHubAPIClientError.apiError(GitHubAPIError.sampleData[0])
         )
         // then
-        switch sut.repos {
+        switch sut.state {
         case .failed:
             break
         default:
-            XCTFail("unexpected repos: \(sut.repos)")
+            XCTFail("unexpected repos: \(sut.state)")
         }
     }
     
@@ -210,11 +210,11 @@ final class SearchResultViewModelTests: XCTestCase {
                 MessageError(description: "(Debug) error")
         )
         // then
-        switch sut.repos {
+        switch sut.state {
         case .failed:
             break
         default:
-            XCTFail("unexpected repos: \(sut.repos)")
+            XCTFail("unexpected repos: \(sut.state)")
         }
     }
 

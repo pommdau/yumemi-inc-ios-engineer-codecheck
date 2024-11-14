@@ -6,4 +6,22 @@
   Copyright © 2024 YUMEMI Inc. All rights reserved.
 */
 
-"greeting" = "Hello";
+/* General */
+"General.Search" = "検索";
+
+
+/* RepositorySearchScreen */
+"RepositorySearchScreen.FailedView.title" = "リポジトリの検索に失敗しました";
+
+"RepositorySearchScreen.ReadyView.title" = "検索してみましょう";
+"RepositorySearchScreen.ReadyView.informativeText" = "GitHub内のリポジトリが検索できます";
+
+"RepositorySearchScreen.RepoList.noRepositoryText" = "検索してみましょう";
+
+"RepositorySearchScreen.RepoSearchScreen.noHistory" = "(なし)";
+"RepositorySearchScreen.RepoSearchScreen.clearHistory" = "履歴のクリア";
+"RepositorySearchScreen.RepoSearchScreen.recommendation" = "おすすめ";
+
+/* GitHubAPIClient */
+"GitHubAPI.GitHubAPIClientError.messageConnectionError" = "通信エラー";
+"GitHubAPI.GitHubAPIClientError.messageResponseParseError" = "データの取得に失敗しました";

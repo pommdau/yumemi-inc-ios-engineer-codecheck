@@ -14,7 +14,7 @@ struct RepoList: View {
 
     var body: some View {
         if repos.isEmpty {
-            Text("該当するリポジトリが見つかりませんでした")
+            Text(R.string.localizable.repositorySearchScreenRepoListNoRepositoryText())
                 .fontWeight(.bold)
         } else {
             List(repos) { repo in

@@ -14,7 +14,6 @@ struct LanguageRepository {
     // MARK: - Properties
 
     static let shared: LanguageRepository = .init()
-    static let sourceFile = "github-lang-colors"
     private let languages: [Language]
 
     // MARK: - LifeCycle

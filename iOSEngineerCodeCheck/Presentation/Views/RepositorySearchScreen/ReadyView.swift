@@ -11,11 +11,11 @@ import SwiftUI
 struct ReadyView: View {
     var body: some View {
         VStack {
-            Text("検索してみましょう")
+            Text(R.string.localizable.repositorySearchScreenReadyViewTitle)
                 .font(.title)
                 .bold()
                 .padding()
-            Text("GitHub内のリポジトリが検索できます")
+            Text(R.string.localizable.repositorySearchScreenReadyViewInformativeText)
                 .foregroundStyle(.secondary)
         }
     }
