@@ -33,15 +33,15 @@ final class EngineerCodeCheckUITests: XCTestCase {
         let view = ReadyView()
         let inspectedName = try view
             .inspect()
-            .find(text: "GitHub内のリポジトリが検索できます")
+            .find(text: R.string.localizable.repositorySearchScreenReadyViewTitle())
             .string()
-        XCTAssertEqual("GitHub内のリポジトリが検索できます", inspectedName)
+        XCTAssertEqual(R.string.localizable.repositorySearchScreenReadyViewTitle(), inspectedName)
         
         let inspectedDescription = try view
             .inspect()
-            .find(text: "検索してみましょう")
+            .find(text: R.string.localizable.repositorySearchScreenReadyViewInformativeText())
             .string()
-        XCTAssertEqual("検索してみましょう", inspectedDescription)
+        XCTAssertEqual(R.string.localizable.repositorySearchScreenReadyViewInformativeText(), inspectedDescription)
     }
     
     // MARK: - SearchResultView Tests
@@ -96,7 +96,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
             // 期待するViewが表示されているか
             let repoList = view.findAll(RepoList.self)
             XCTAssertNotNil(repoList)
-            _ = try view.find(text: "該当するリポジトリが見つかりませんでした")
+            _ = try view.find(text: R.string.localizable.repositorySearchScreenRepoListNoRepositoryText())
         }
         ViewHosting.host(view: view)
         self.wait(for: [expectation], timeout: 1.0)

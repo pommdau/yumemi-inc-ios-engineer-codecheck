@@ -15,7 +15,7 @@ struct FailedView: View {
     var body: some View {
         VStack {
             Group {
-                Text("リポジトリの検索に失敗しました")
+                Text(R.string.localizable.repositorySearchScreenFailedViewTitle())
                     .padding(.bottom, 8)
                 if let serviceError = error as? GitHubAPIClientError {
                     switch serviceError {

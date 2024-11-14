@@ -28,7 +28,7 @@ final class RepoSearchScreenTests: XCTestCase {
     // ViewInspectorがNavigationViewの.searchableに非対応(2022-12-10現在)のため、この部分のみXCUITestを遣う
     func testSearchRepoAndCheckCellExistence() throws {
         let navigationBar = app.navigationBars["_TtGC7SwiftUI19UIHosting"]
-        let searchField = navigationBar.searchFields["検索"]
+        let searchField = navigationBar.searchFields[R.string.localizable.generalSearch()]
         searchField.tap()
         searchField.typeText("Swift")
         searchField.tap()

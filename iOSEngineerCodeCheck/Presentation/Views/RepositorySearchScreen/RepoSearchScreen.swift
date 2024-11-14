@@ -39,9 +39,9 @@ struct RepoSearchScreen: View {
 extension RepoSearchScreen {
     @ViewBuilder
     private func searchSuggestions() -> some View {
-        Section("履歴") {
+        Section(R.string.localizable.generalSearch()) {
             if searchSuggestionRepository.historySuggestions.isEmpty {
-                Text("(なし)")
+                Text(R.string.localizable.repositorySearchScreenRepoSearchScreenNoHistory())
                     .foregroundStyle(.secondary)
             } else {
                 ForEach(searchSuggestionRepository.historySuggestions, id: \.self) { history in
@@ -50,13 +50,13 @@ extension RepoSearchScreen {
                         .foregroundStyle(.primary)
                     
                 }
-                Button("履歴のクリア") {
+                Button(R.string.localizable.repositorySearchScreenRepoSearchScreenClearHistory()) {
                     searchSuggestionRepository.removeAllHistories()
                 }
                 .frame(alignment: .trailing)
             }
         }
-        Section("おすすめ") {
+        Section(R.string.localizable.repositorySearchScreenRepoSearchScreenRecommendation()) {
             ForEach(searchSuggestionRepository.recommendedSuggestions, id: \.self) { suggestion in
                 Label(suggestion, systemImage: "magnifyingglass")
                     .searchCompletion(suggestion)

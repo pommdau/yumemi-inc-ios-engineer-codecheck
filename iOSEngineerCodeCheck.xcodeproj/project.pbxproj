@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 76;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		DA1F58052CAAA6AE00BD59C9 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = DA1F58042CAAA6AE00BD59C9 /* Shimmer */; };
+		DA2544CB2CE5BA1200ECCF72 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = DA2544CA2CE5BA1200ECCF72 /* RswiftLibrary */; };
 		DA5C0DDE294469E000E0D7B9 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = DA5C0DDD294469E000E0D7B9 /* ViewInspector */; };
 		DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */; };
+		DABC0A032CE5BEC20082AB25 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = DABC0A022CE5BEC20082AB25 /* RswiftLibrary */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +57,24 @@
 			);
 			target = BFD945DA244DC5E80012785A /* iOSEngineerCodeCheck */;
 		};
+		DA8928DB2CE5C9E100276808 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				/Localized/Resources/Localizable.strings,
+			);
+			target = DA5C0DD02944698600E0D7B9 /* EngineerCodeCheckUITestsWithViewInspector */;
+		};
+		DA8928DC2CE5C9E100276808 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				/Localized/Resources/Localizable.strings,
+			);
+			target = DA5C0DE229448FCA00E0D7B9 /* EngineerCodeCheckUITestsWithXCUITest */;
+		};
 		DAF7DF9F2CE439110090B2A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				/Localized/Resources/Localizable.strings,
 				GitHubAPI/Client/GitHubAPIClientStub.swift,
 			);
 			target = DA9681AD2944C9F600805954 /* EngineerCodeCheckUnitTests */;
@@ -67,7 +84,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		DA34D24E2CE3572000BBF391 /* EngineerCodeCheckUnitTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EngineerCodeCheckUnitTests; sourceTree = "<group>"; };
 		DA34D25D2CE3572000BBF391 /* EngineerCodeCheckUITestsWithViewInspector */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EngineerCodeCheckUITestsWithViewInspector; sourceTree = "<group>"; };
-		DA34D29A2CE3572000BBF391 /* iOSEngineerCodeCheck */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (DA34D2CB2CE3572000BBF391 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, DAF7DF9F2CE439110090B2A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = iOSEngineerCodeCheck; sourceTree = "<group>"; };
+		DA34D29A2CE3572000BBF391 /* iOSEngineerCodeCheck */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (DA34D2CB2CE3572000BBF391 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, DAF7DF9F2CE439110090B2A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, DA8928DB2CE5C9E100276808 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, DA8928DC2CE5C9E100276808 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = iOSEngineerCodeCheck; sourceTree = "<group>"; };
 		DA34D2C92CE3572000BBF391 /* EngineerCodeCheckUITestsWithXCUITest */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EngineerCodeCheckUITestsWithXCUITest; sourceTree = "<group>"; };
 		DA34D2D02CE3572F00BBF391 /* .github */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = .github; sourceTree = "<group>"; };
 		DAF276FC2CE49F99005B8723 /* Docs */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Docs; sourceTree = "<group>"; };
@@ -80,6 +97,7 @@
 			files = (
 				DA1F58052CAAA6AE00BD59C9 /* Shimmer in Frameworks */,
 				DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */,
+				DABC0A032CE5BEC20082AB25 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA2544CB2CE5BA1200ECCF72 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +139,7 @@
 				DA34D24E2CE3572000BBF391 /* EngineerCodeCheckUnitTests */,
 				DA34D25D2CE3572000BBF391 /* EngineerCodeCheckUITestsWithViewInspector */,
 				DA34D2C92CE3572000BBF391 /* EngineerCodeCheckUITestsWithXCUITest */,
+				DA2543502CE58AA700ECCF72 /* Frameworks */,
 				BFD945DC244DC5E80012785A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,6 +153,13 @@
 				DA9681AE2944C9F600805954 /* EngineerCodeCheckUnitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DA2543502CE58AA700ECCF72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +176,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA2543522CE58ABD00ECCF72 /* PBXTargetDependency */,
 				DAB202932CA3A8BB00FE363E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -158,6 +186,7 @@
 			packageProductDependencies = (
 				DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */,
 				DA1F58042CAAA6AE00BD59C9 /* Shimmer */,
+				DABC0A022CE5BEC20082AB25 /* RswiftLibrary */,
 			);
 			productName = iOSEngineerCodeCheck;
 			productReference = BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */;
@@ -199,7 +228,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				DA798CE82CA3D18900A7ADDE /* PBXTargetDependency */,
+				DA89277C2CE5C8B500276808 /* PBXTargetDependency */,
 				DA5C0DEA29448FCA00E0D7B9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -263,7 +292,6 @@
 				};
 			};
 			buildConfigurationList = BFD945D6244DC5E80012785A /* Build configuration list for PBXProject "iOSEngineerCodeCheck" */;
-			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -276,7 +304,9 @@
 				DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				DA798CE92CA3E88700A7ADDE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				DA1F58032CAAA6AE00BD59C9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				DABC0A012CE5BEC20082AB25 /* XCRemoteSwiftPackageReference "R" */,
 			);
+			preferredProjectObjectVersion = 50;
 			productRefGroup = BFD945DC244DC5E80012785A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +382,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DA2543522CE58ABD00ECCF72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DA2543512CE58ABD00ECCF72 /* RswiftGenerateInternalResources */;
+		};
 		DA5C0DD62944698600E0D7B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BFD945DA244DC5E80012785A /* iOSEngineerCodeCheck */;
@@ -370,9 +404,9 @@
 			isa = PBXTargetDependency;
 			productRef = DA798CE52CA3D18600A7ADDE /* SwiftLintBuildToolPlugin */;
 		};
-		DA798CE82CA3D18900A7ADDE /* PBXTargetDependency */ = {
+		DA89277C2CE5C8B500276808 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = DA798CE72CA3D18900A7ADDE /* SwiftLintBuildToolPlugin */;
+			productRef = DA89277B2CE5C8B500276808 /* RswiftGenerateInternalResources */;
 		};
 		DA9681B32944C9F600805954 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -725,6 +759,14 @@
 				minimumVersion = 1.5.1;
 			};
 		};
+		DA25434D2CE58A8700ECCF72 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
 		DA798CE92CA3E88700A7ADDE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -749,6 +791,14 @@
 				minimumVersion = 0.10.0;
 			};
 		};
+		DABC0A012CE5BEC20082AB25 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -756,6 +806,15 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA1F58032CAAA6AE00BD59C9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		DA2543512CE58ABD00ECCF72 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		DA2544CA2CE5BA1200ECCF72 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA25434D2CE58A8700ECCF72 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
 		};
 		DA5C0DDD294469E000E0D7B9 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -772,20 +831,24 @@
 			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
-		DA798CE72CA3D18900A7ADDE /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DA798CE92CA3E88700A7ADDE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
 		};
+		DA89277B2CE5C8B500276808 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
 		DAB202922CA3A8BB00FE363E /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		DABC0A022CE5BEC20082AB25 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DABC0A012CE5BEC20082AB25 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

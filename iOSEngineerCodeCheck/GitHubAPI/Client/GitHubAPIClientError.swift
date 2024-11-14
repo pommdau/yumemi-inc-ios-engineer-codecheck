@@ -21,9 +21,9 @@ enum GitHubAPIClientError: Error {
     var message: String {
         switch self {
         case .connectionError:
-            return "通信エラー"
+            return R.string.localizable.gitHubAPIGitHubAPIClientErrorMessageConnectionError()
         case .responseParseError:
-            return "データの取得に失敗"
+            return R.string.localizable.gitHubAPIGitHubAPIClientErrorMessageResponseParseError()
         case .apiError(let gitHubAPIError):
             return gitHubAPIError.message
         }

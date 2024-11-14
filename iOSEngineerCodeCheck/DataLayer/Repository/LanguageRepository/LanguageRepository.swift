@@ -14,13 +14,12 @@ struct LanguageRepository {
     // MARK: - Properties
 
     static let shared: LanguageRepository = .init()
-    static let sourceFile = "github-lang-colors"
     private let languages: [Language]
 
     // MARK: - LifeCycle
 
     private init() {
-        guard let url = Bundle.main.url(forResource: Self.sourceFile, withExtension: "json"),
+        guard let url = R.file.githubLangColorsJson(),
               let data = try? Data(contentsOf: url),
               let json = try? JSONSerialization.jsonObject(with: data) as? [String: [String: String?]]  // color: null があるためString?としている
         else {
