@@ -82,7 +82,7 @@ struct RepoCell: View {
         HStack(spacing: 2) {
             Image(systemName: "star")
                 .accessibilityLabel(Text("Star Image"))
-            Text("\(IntegerFormatStyle<Int>().notation(.compactName).format(repo.starsCount))")
+            Text(String.compactName(repo.starsCount))
         }
         .foregroundStyle(.secondary)
     }
