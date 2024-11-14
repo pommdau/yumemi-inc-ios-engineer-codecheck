@@ -9,12 +9,19 @@
 import SwiftUI
 
 struct RepoListSkelton: View {
+    
+    let numberOfCells: Int
+        
     var body: some View {
         List {
-            ForEach(0..<10) { _ in
+            ForEach(0..<numberOfCells, id: \.self) { _ in
                 RepoCellSkelton()
             }
         }
+    }
+    
+    init(numberOfCells: Int = 6) {
+        self.numberOfCells = numberOfCells
     }
 }
 

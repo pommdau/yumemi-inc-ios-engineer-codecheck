@@ -9,38 +9,44 @@
 
 import SwiftUI
 
-struct LanguageRepository {
+struct LanguageStore {
 
     // MARK: - Properties
 
-    static let shared: LanguageRepository = .init()
+    static let shared: LanguageStore = .init()
     private let languages: [Language]
 
     // MARK: - LifeCycle
 
     private init() {
+        self.languages = Self.loadLanguages()
+    }
+    
+    // MARK: Helpers
+    
+    private static func loadLanguages() -> [Language] {
         guard let url = R.file.githubLangColorsJson(),
               let data = try? Data(contentsOf: url),
               let json = try? JSONSerialization.jsonObject(with: data) as? [String: [String: String?]]  // color: null があるためString?としている
         else {
-            fatalError("Language設定ファイルの読み込みに失敗しました")
+            assertionFailure("Language設定ファイルの読み込みに失敗しました")
+            return []
         }
 
-        self.languages = json.map { name, details in
+        let languages = json.map { name, details in
             let color = details["color"] as? String ?? "#000000"  // 未定義の場合は黒#000000とする
             return Language(name: name, hex: color)
         }
         .sorted(by: { first, second in
             first.name < second.name
         })
+        
+        return languages
     }
     
     // MARK: - Read
     
     func fetch(name: String) -> Language? {
-        guard let language = languages.first(where: { $0.name == name }) else {
-            return nil
-        }
-        return language
+        return languages.first(where: { $0.name == name })
     }
 }

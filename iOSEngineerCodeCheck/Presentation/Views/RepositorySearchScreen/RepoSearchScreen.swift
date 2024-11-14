@@ -12,16 +12,16 @@ import SwiftUI
 @MainActor
 struct RepoSearchScreen: View {
     @State private var viewModel: SearchResultViewModel<GitHubAPIClient> = .init()
-    @State private var searchSuggestionRepository: SearchSuggestionRepository = .init()
+    @State private var searchSuggestionRepository = SearchSuggestionStore.shared
     internal let inspection = Inspection<Self>()
-    
+        
     var body: some View {
         NavigationView {
             SearchResultView(viewModel: viewModel)
                 .navigationBarTitleDisplayMode(.inline)
                 .searchable(text: $viewModel.keyword, placement: .navigationBarDrawer, prompt: "検索")
                 .searchSuggestions {
-                    searchSuggestions()
+                    SearchSuggestionView()
                 }
                 .onSubmit(of: .search) {
                     searchSuggestionRepository.addHistory(viewModel.keyword)
@@ -31,38 +31,6 @@ struct RepoSearchScreen: View {
                 }
         }
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
-    }
-}
-
-// MARK: - Search Suggestions
-
-extension RepoSearchScreen {
-    @ViewBuilder
-    private func searchSuggestions() -> some View {
-        Section(R.string.localizable.generalSearch()) {
-            if searchSuggestionRepository.historySuggestions.isEmpty {
-                Text(R.string.localizable.repositorySearchScreenRepoSearchScreenNoHistory())
-                    .foregroundStyle(.secondary)
-            } else {
-                ForEach(searchSuggestionRepository.historySuggestions, id: \.self) { history in
-                    Label(history, systemImage: "clock")
-                        .searchCompletion(history)
-                        .foregroundStyle(.primary)
-                    
-                }
-                Button(R.string.localizable.repositorySearchScreenRepoSearchScreenClearHistory()) {
-                    searchSuggestionRepository.removeAllHistories()
-                }
-                .frame(alignment: .trailing)
-            }
-        }
-        Section(R.string.localizable.repositorySearchScreenRepoSearchScreenRecommendation()) {
-            ForEach(searchSuggestionRepository.recommendedSuggestions, id: \.self) { suggestion in
-                Label(suggestion, systemImage: "magnifyingglass")
-                    .searchCompletion(suggestion)
-                    .foregroundStyle(.primary)
-            }
-        }
     }
 }
 
