@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import HTTPTypes
 
 protocol GitHubAPIRequestProtocol {
     associatedtype Response: Decodable

@@ -11,6 +11,8 @@
 		DA2544CB2CE5BA1200ECCF72 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = DA2544CA2CE5BA1200ECCF72 /* RswiftLibrary */; };
 		DA5C0DDE294469E000E0D7B9 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = DA5C0DDD294469E000E0D7B9 /* ViewInspector */; };
 		DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */; };
+		DA892CE42CE7476F00276808 /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = DA892CE32CE7476F00276808 /* HTTPTypes */; };
+		DA892CE62CE7476F00276808 /* HTTPTypesFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = DA892CE52CE7476F00276808 /* HTTPTypesFoundation */; };
 		DABC0A032CE5BEC20082AB25 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = DABC0A022CE5BEC20082AB25 /* RswiftLibrary */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 			files = (
 				DA1F58052CAAA6AE00BD59C9 /* Shimmer in Frameworks */,
 				DA798CED2CA3E8A400A7ADDE /* SDWebImageSwiftUI in Frameworks */,
+				DA892CE62CE7476F00276808 /* HTTPTypesFoundation in Frameworks */,
+				DA892CE42CE7476F00276808 /* HTTPTypes in Frameworks */,
 				DABC0A032CE5BEC20082AB25 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +193,8 @@
 				DA798CEC2CA3E8A400A7ADDE /* SDWebImageSwiftUI */,
 				DA1F58042CAAA6AE00BD59C9 /* Shimmer */,
 				DABC0A022CE5BEC20082AB25 /* RswiftLibrary */,
+				DA892CE32CE7476F00276808 /* HTTPTypes */,
+				DA892CE52CE7476F00276808 /* HTTPTypesFoundation */,
 			);
 			productName = iOSEngineerCodeCheck;
 			productReference = BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */;
@@ -307,6 +313,7 @@
 				DA798CE92CA3E88700A7ADDE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				DA1F58032CAAA6AE00BD59C9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				DABC0A012CE5BEC20082AB25 /* XCRemoteSwiftPackageReference "R" */,
+				DA892CE22CE7476F00276808 /* XCRemoteSwiftPackageReference "swift-http-types" */,
 			);
 			preferredProjectObjectVersion = 50;
 			productRefGroup = BFD945DC244DC5E80012785A /* Products */;
@@ -777,6 +784,14 @@
 				minimumVersion = 3.1.2;
 			};
 		};
+		DA892CE22CE7476F00276808 /* XCRemoteSwiftPackageReference "swift-http-types" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-http-types";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.1;
+			};
+		};
 		DAB202912CA3A8B500FE363E /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint.git";
@@ -841,6 +856,16 @@
 		DA89277B2CE5C8B500276808 /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		DA892CE32CE7476F00276808 /* HTTPTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA892CE22CE7476F00276808 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypes;
+		};
+		DA892CE52CE7476F00276808 /* HTTPTypesFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA892CE22CE7476F00276808 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypesFoundation;
 		};
 		DAB202922CA3A8BB00FE363E /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
