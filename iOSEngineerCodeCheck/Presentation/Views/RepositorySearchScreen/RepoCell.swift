@@ -18,7 +18,7 @@ struct RepoCell: View {
         guard let languageName = repo.language else {
             return .clear
         }
-        return LanguageRepository.shared.fetch(name: languageName)?.color ?? .clear
+        return LanguageStore.shared.fetch(name: languageName)?.color ?? .clear
     }
 
     var body: some View {

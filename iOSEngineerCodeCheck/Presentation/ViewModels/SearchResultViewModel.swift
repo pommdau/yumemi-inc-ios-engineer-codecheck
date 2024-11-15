@@ -10,14 +10,18 @@ import Foundation
 
 @MainActor
 @Observable
-final class SearchResultViewModel<GitHubAPIClient>
-where GitHubAPIClient: GitHubAPIClientProtocol {
+final class SearchResultViewModel<GitHubAPIClient> where GitHubAPIClient: GitHubAPIClientProtocol {
+    
+    // MARK: - Properties
+            
     var keyword: String = ""
     private(set) var state: ViewState<[Repo]>
-    private(set) var task: Task<(), Never>?
+    private(set) var searchTask: Task<(), Never>?
+        
+    // MARK: - LifeCycle
     
-    init(repos: ViewState<[Repo]> = .idle([])) {
-        self.state = repos
+    init(state: ViewState<[Repo]> = .idle([])) {
+        self.state = state
     }
 }
 
@@ -26,8 +30,8 @@ where GitHubAPIClient: GitHubAPIClientProtocol {
 extension SearchResultViewModel {
 
     func cancelSearching() {
-        task?.cancel()
-        task = nil
+        searchTask?.cancel()
+        searchTask = nil
     }
 
     func searchButtonPressed() async {
@@ -35,7 +39,7 @@ extension SearchResultViewModel {
             return
         }
         state = .loading
-        task = Task {
+        searchTask = Task {
             do {
                 let repos = try await searchRepos(keyword: keyword)
                 self.state = .loaded(repos)

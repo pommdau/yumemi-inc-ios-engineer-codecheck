@@ -59,7 +59,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
     }
     
     func testSearchResultViewWhenLoading() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repos: .loading)
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(state: .loading)
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in
@@ -72,7 +72,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
     }
     
     func testSearchResultViewWhenReposExist() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repos: .loaded(Repo.sampleData))
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(state: .loaded(Repo.sampleData))
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in
@@ -89,7 +89,7 @@ final class EngineerCodeCheckUITests: XCTestCase {
     }
     
     func testSearchResultViewWhenRepoIsEmpty() throws {
-        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(repos: .loaded([]))
+        let viewModel: SearchResultViewModel<GitHubAPIClient> = .init(state: .loaded([]))
         let view = SearchResultView(viewModel: viewModel)
         
         let expectation = view.inspection.inspect { view in

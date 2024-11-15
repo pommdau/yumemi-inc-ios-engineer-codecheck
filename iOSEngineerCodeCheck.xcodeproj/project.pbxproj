@@ -52,6 +52,8 @@
 		DA34D2CB2CE3572000BBF391 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Domain/Entity/memo.md,
+				Domain/UseCase/memo.md,
 				GitHubAPI/Client/GitHubAPIClientStub.swift,
 				Resources/Info.plist,
 			);

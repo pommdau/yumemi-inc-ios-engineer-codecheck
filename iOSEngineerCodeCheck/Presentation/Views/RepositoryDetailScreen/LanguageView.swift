@@ -13,7 +13,7 @@ struct LanguageView: View {
     let languageName: String
     
     private var languageColor: Color {
-        LanguageRepository.shared.fetch(name: languageName)?.color ?? .clear
+        LanguageStore.shared.fetch(name: languageName)?.color ?? .clear
     }
 
     var body: some View {

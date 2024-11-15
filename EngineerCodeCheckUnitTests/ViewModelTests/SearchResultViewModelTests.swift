@@ -122,7 +122,7 @@ final class SearchResultViewModelTests: XCTestCase {
             .resume(returning: Repo.sampleData)
         GitHubAPIClientStub.shared.searchContinuation = nil
         await search
-        _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
+        _ = await sut.searchTask?.result  // searchButtonPressed()内のTask内の処理を待つ
 
         // 検索後の状態の確認
         switch sut.state {
@@ -147,7 +147,7 @@ final class SearchResultViewModelTests: XCTestCase {
             .resume(throwing: error)
         GitHubAPIClientStub.shared.searchContinuation = nil
         await search
-        _ = await sut.task?.result  // searchButtonPressed()内のTask内の処理を待つ
+        _ = await sut.searchTask?.result  // searchButtonPressed()内のTask内の処理を待つ
     }
     
     // MARK: 通信エラー

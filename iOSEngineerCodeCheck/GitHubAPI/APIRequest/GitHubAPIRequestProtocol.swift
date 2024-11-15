@@ -23,7 +23,8 @@ extension GitHubAPIRequestProtocol {
 
     var baseURL: URL {
         guard let baseURL = URL(string: "https://api.github.com") else {
-            fatalError("リポジトリ検索用のURLの作成に失敗しました")
+            assertionFailure("リポジトリ検索用のURLの作成に失敗しました")
+            return URL(fileURLWithPath: "")
         }
         return baseURL
     }

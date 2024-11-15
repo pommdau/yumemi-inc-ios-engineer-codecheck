@@ -8,18 +8,26 @@
 
 import SwiftUI
 
-struct SearchSuggestionRepository: SearchSuggestionRepositoryProtocol {
+struct SearchSuggestionStore {
     
     // MARK: - Property
-    
-    let maxHistoryCount = 5
+
+    private static let maxHistoryCount = 5
+    static let shared: SearchSuggestionStore = .init()
     let recommendedSuggestions = ["SwiftUI", "Swift", "Python", "Apple", "Qiita"]
     
-    // Warn: 複数存在するようになった場合はこのIdentifiedなキーにすること
+    // INFO: シングルトンでなくなった場合はIdentifiedなキーで保存すること
     @AppStorage("history-suggestions")
     var historySuggestions: [String] = []
-        
-    // MARK: - CRUD
+    
+    // MARK: - LifeCycle
+    
+    private init() {}
+}
+
+// MARK: - CRUD
+
+extension SearchSuggestionStore {
     
     // MARK: Create
     
@@ -38,7 +46,7 @@ struct SearchSuggestionRepository: SearchSuggestionRepositoryProtocol {
         historySuggestions.insert(keyword, at: 0)
         
         // 履歴の上限を超えた分を古い順に削除
-        while historySuggestions.count > maxHistoryCount {
+        while historySuggestions.count > Self.maxHistoryCount {
             historySuggestions.removeLast()
         }
     }
