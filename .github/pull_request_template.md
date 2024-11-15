@@ -1,14 +1,14 @@
+## Overview
+
+- TBD
+
 ## Issue
 
 - close #TBD
 
-## Overview
-
-TBD
-
 ## Details (Optional)
 
-TBD
+- N/A
 
 ## Checklist
 
@@ -17,4 +17,4 @@ TBD
 
 ## Reference(s) (Optional)
 
-- https://example.com
+- N/A
