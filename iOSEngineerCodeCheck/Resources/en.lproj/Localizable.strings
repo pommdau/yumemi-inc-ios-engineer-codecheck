@@ -23,5 +23,6 @@
 "RepositorySearchScreen.RepoSearchScreen.recommendation" = "おすすめ";
 
 /* GitHubAPIClient */
+"GitHubAPI.GitHubAPIClientError.messageInvalidRequest" = "APIリクエストの作成に失敗しました";
 "GitHubAPI.GitHubAPIClientError.messageConnectionError" = "通信エラー";
 "GitHubAPI.GitHubAPIClientError.messageResponseParseError" = "データの取得に失敗しました";

@@ -40,27 +40,27 @@ final actor GitHubAPIClient: GitHubAPIClientProtocol {
 }
 
 extension GitHubAPIClient {
-    /// すぐにAPI制限に引っかかってしまうため、必要なときになって初めて呼び出す工夫が必要
-    func fetchRepoDetails(_ repos: [Repo]) async throws -> [RepoDetail] {
-        try await withThrowingTaskGroup(of: RepoDetail.self) { group in
+    
+    func fetchRepoDetails(_ repo: Repo) async throws -> RepoDetails {
+        let response = try await request(with: GitHubAPIRequest.GetRepoDetails(userName: repo.owner.name, repoName: repo.name))
+        return response
+    }
+    
+    // すぐにAPI制限に引っかかってしまうため、必要なときになって初めて呼び出す工夫が必要
+    func fetchRepoDetails(_ repos: [Repo]) async throws -> [RepoDetails] {
+        try await withThrowingTaskGroup(of: RepoDetails.self) { group in
             for repo in repos {
                 group.addTask {
-                    try await self.fetchRepoDetail(userName: repo.owner.name,
-                                                   repoName: repo.name)
+                    try await self.fetchRepoDetails(repo)
                 }
             }
 
-            var repoDetailsList: [RepoDetail] = []
+            var repoDetailsList: [RepoDetails] = []
             for try await repoDetails in group {
                 repoDetailsList.append(repoDetails)
             }
             
             return repoDetailsList
         }
-    }
-
-    private func fetchRepoDetail(userName: String, repoName: String) async throws -> RepoDetail {
-        let response = try await request(with: GitHubAPIRequest.GetRepoDetails(userName: userName, repoName: repoName))
-        return response
     }
 }

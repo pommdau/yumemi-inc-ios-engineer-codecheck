@@ -13,34 +13,40 @@
  */
 
 import Foundation
+import HTTPTypes
 
 extension GitHubAPIRequest {
+    struct GetRepoDetails {
+        let userName: String
+        let repoName: String
+    }
+}
 
-    public struct GetRepoDetails: GitHubAPIRequestProtocol {
+// MARK: - GitHubAPIRequestProtocol
 
-        public typealias Response = RepoDetail
-        public let userName: String
-        public let repoName: String
-
-        public var method: HTTPMethod {
-            .get
-        }
-
-        public var path: String {
-            "/repos/\(userName)/\(repoName)"
-        }
-
-        public var queryItems: [URLQueryItem] {
-            []
-        }
-
-        public var header: [String: String] {
-            ["Accept": "application/vnd.github.v3+json"]
-        }
-
-        public var body: Data? {
-            nil
-        }
+extension GitHubAPIRequest.GetRepoDetails: GitHubAPIRequestProtocol {
+    
+    typealias Response = RepoDetails
+    
+    var method: HTTPTypes.HTTPRequest.Method {
+        .get
+    }
+    
+    var path: String {
+        "/repos/\(userName)/\(repoName)"
     }
 
+    var queryItems: [URLQueryItem] {
+        []
+    }
+
+    var header: HTTPTypes.HTTPFields {
+        var headerFields = HTTPTypes.HTTPFields()
+        headerFields[.accept] = "application/vnd.github.v3+json"
+        return headerFields
+    }
+
+    var body: Data? {
+        nil
+    }
 }

@@ -57,6 +57,7 @@
 				Domain/Entity/memo.md,
 				Domain/UseCase/memo.md,
 				GitHubAPI/Client/GitHubAPIClientStub.swift,
+				GitHubAPI/Client/URLSession/URLSessionStub.swift,
 				Resources/Info.plist,
 			);
 			target = BFD945DA244DC5E80012785A /* iOSEngineerCodeCheck */;
@@ -80,6 +81,7 @@
 			membershipExceptions = (
 				/Localized/Resources/Localizable.strings,
 				GitHubAPI/Client/GitHubAPIClientStub.swift,
+				GitHubAPI/Client/URLSession/URLSessionStub.swift,
 			);
 			target = DA9681AD2944C9F600805954 /* EngineerCodeCheckUnitTests */;
 		};
