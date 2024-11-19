@@ -3,8 +3,30 @@
 - 下記リポジトリを基底としています。
   - [株式会社ゆめみ iOS エンジニアコードチェック課題](https://github.com/yumemi-inc/ios-engineer-codecheck)
 
+## 技術スタック
+### 全般
+
+|区分||
+|---|---|
+|言語|Swift 5.9|
+|UIフレームワーク|SwiftUI|
+|iOSのバージョン|iOS 17.6以降|
+|アーキテクチャ|MVVM + Clean Architecture|
+|ライブラリ管理|SwiftPM|
+|テスト|XCTest / XCUITest / [ViewInspector](https://github.com/nalexn/ViewInspector)|
+|Linter|[SwiftLint](https://github.com/realm/SwiftLint)|
+
+### ライブラリ
+
+|名前|説明|
+|---|---|
+|[swift\-http\-types](https://github.com/apple/swift-http-types)|HTTP通信処理を型安全に扱う|
+|[R\.swift](https://github.com/mac-cain13/R.swift)|リソースのシンボル化|
+|[SwiftUI\-Shimmer](https://github.com/markiv/SwiftUI-Shimmer)|スケルトンスクリーンで利用|
+|[SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI)|SwiftUIのViewのUIテストで利用|
+
 ## 実装で工夫した点
-- TBD
+- (TBD)
 
 ## スクリーンショット
 
