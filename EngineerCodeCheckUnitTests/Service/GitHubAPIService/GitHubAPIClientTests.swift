@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import HTTPTypes
 @testable import iOSEngineerCodeCheck
 
 final class GitHubAPIClientTests: XCTestCase {
@@ -31,15 +32,13 @@ final class GitHubAPIClientTests: XCTestCase {
 
     func testSearchReposSuccess() async throws {
         // given
-        guard let data = SearchResponse<Repo>.sampleJSON.data(using: .utf8),
-              let url = URL(string: "https://api.github.com/search/repositories?q=Swift")
-        else {
+        guard let data = SearchResponse<Repo>.sampleJSON.data(using: .utf8) else {
             XCTFail("Stubデータの作成に失敗しました")
             return
         }
-        let urlSessionStub = StubURLSession(
+        let urlSessionStub = URLSessionStub(
             data: data,
-            response: HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+            response: HTTPResponse(status: 200)
         )
         sut = GitHubAPIClient(urlSession: urlSessionStub)
                 
@@ -56,7 +55,7 @@ final class GitHubAPIClientTests: XCTestCase {
     
     func testSearchReposFailByConnectionError() async throws {
         // given
-        let urlSessionStub = StubURLSession(
+        let urlSessionStub = URLSessionStub(
             error: URLError(.cannotConnectToHost)
         )
         sut = GitHubAPIClient(urlSession: urlSessionStub)
@@ -87,13 +86,9 @@ final class GitHubAPIClientTests: XCTestCase {
     func testSearchReposFailByResponseParseError() async throws {
         // given
         let data = Data("{}".utf8) // ダミーのデータを渡す
-        guard let url = URL(string: "https://api.github.com/search/repositories?q=Swift") else {
-            XCTFail("Stubデータの作成に失敗しました")
-            return
-        }
-        let urlSessionStub = StubURLSession(
+        let urlSessionStub = URLSessionStub(
             data: data,
-            response: HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+            response: HTTPResponse(status: 200)
         )
         sut = GitHubAPIClient(urlSession: urlSessionStub)
         
@@ -122,15 +117,13 @@ final class GitHubAPIClientTests: XCTestCase {
     
     func testSearchReposFailByGitHubAPIError() async throws {
         // given
-        guard let data = GitHubAPIError.sampleJSON.data(using: .utf8),
-              let url = URL(string: "https://api.github.com/search/repositories?q=Swift")
-        else {
+        guard let data = GitHubAPIError.sampleJSON.data(using: .utf8) else {
             XCTFail("Stubデータの作成に失敗しました")
             return
         }
-        let urlSessionStub = StubURLSession(
+        let urlSessionStub = URLSessionStub(
             data: data,
-            response: HTTPURLResponse(url: url, statusCode: 400, httpVersion: nil, headerFields: nil)
+            response: HTTPResponse(status: 400)
         )
         sut = GitHubAPIClient(urlSession: urlSessionStub)
         

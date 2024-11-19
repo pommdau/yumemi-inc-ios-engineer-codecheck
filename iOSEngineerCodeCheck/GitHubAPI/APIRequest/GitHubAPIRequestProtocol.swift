@@ -7,48 +7,59 @@
 //
 
 import Foundation
+import HTTPTypes
+import HTTPTypesFoundation
 
 protocol GitHubAPIRequestProtocol {
     associatedtype Response: Decodable
-
-    var baseURL: URL { get }
-    var path: String { get }  // baesURLからの相対パス
-    var method: HTTPMethod { get }
+    var method: HTTPRequest.Method { get }
+    var path: String { get } // e.g. "/search/repositories"
     var queryItems: [URLQueryItem] { get }
-    var header: [String: String] { get }
-    var body: Data? { get }  // HTTP bodyに設定するパラメータ
+    var header: HTTPFields { get }
+    var body: Data? { get }
 }
 
+// MARK: - 共通処理
+
 extension GitHubAPIRequestProtocol {
-
-    var baseURL: URL {
-        guard let baseURL = URL(string: "https://api.github.com") else {
-            assertionFailure("リポジトリ検索用のURLの作成に失敗しました")
-            return URL(fileURLWithPath: "")
-        }
-        return baseURL
+    
+    // e.g. "https"
+    private var scheme: String {
+        "https"
     }
-
-    func buildURLRequest() -> URLRequest {
-        let url = baseURL.appendingPathComponent(path)
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        var urlRequest = URLRequest(url: url)
-
-        // クエリ・ヘッダの設定
-        components?.queryItems = queryItems  // クエリの追加
-        for (key, value) in header {
-            urlRequest.addValue(value, forHTTPHeaderField: key)
-        }
-
-        // ボディの設定
-        if let body {
-            urlRequest.httpBody = body
-        }
-
-        urlRequest.url = components?.url  // URLComponents型からURL型を取得。これにより適切なエンコードを施したクエリ文字列が付与される
-        urlRequest.httpMethod = method.rawValue
-
-        return urlRequest
+    
+    // e.g. "www.example.com"
+    private var authority: String {
+        "api.github.com"
     }
-
+    
+    /// クエリパラメータを含まないURL
+    private var baseURL: URL? {
+        return URL(string: "\(scheme)://\(authority)")
+    }
+    
+    /// クエリパラメータを含めたURL
+    private var url: URL? {
+        guard
+            let baseURL,
+            var components = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: true)
+        else {
+            return nil
+        }
+        components.queryItems = queryItems
+        
+        return components.url
+    }
+    
+    func buildHTTPRequest() -> HTTPRequest? {
+        guard let url else {
+            return nil
+        }
+        
+        return HTTPRequest(
+            method: method,
+            url: url,
+            headerFields: header
+        )
+    }
 }

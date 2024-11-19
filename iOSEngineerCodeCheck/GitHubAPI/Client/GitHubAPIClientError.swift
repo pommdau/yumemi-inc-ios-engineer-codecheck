@@ -9,6 +9,9 @@
 import Foundation
 
 enum GitHubAPIClientError: Error {
+    // APIのリクエストの作成に失敗
+    case invalidRequest
+    
     // 通信に失敗
     case connectionError(Error)
 
@@ -20,6 +23,8 @@ enum GitHubAPIClientError: Error {
     
     var message: String {
         switch self {
+        case .invalidRequest:
+            return R.string.localizable.gitHubAPIGitHubAPIClientErrorMessageInvalidRequest()
         case .connectionError:
             return R.string.localizable.gitHubAPIGitHubAPIClientErrorMessageConnectionError()
         case .responseParseError:

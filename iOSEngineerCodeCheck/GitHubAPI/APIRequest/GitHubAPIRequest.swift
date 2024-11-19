@@ -8,6 +8,5 @@
 
 import Foundation
 
-enum GitHubAPIRequest {
-    // 実体はextensionで定義
-}
+// 実体はextensionで定義
+enum GitHubAPIRequest {}

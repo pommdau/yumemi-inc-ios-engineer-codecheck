@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import HTTPTypes
 
 protocol URLSessionProtocol {
-    func data(for request: URLRequest) async throws -> (Data, URLResponse)
+    func data(for request: HTTPRequest) async throws -> (Data, HTTPResponse)
+    func upload(for request: HTTPRequest, from bodyData: Data) async throws -> (Data, HTTPResponse)
 }
-
-extension URLSession: URLSessionProtocol { }

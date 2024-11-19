@@ -54,7 +54,7 @@ struct Repo: Identifiable, Codable {
         return URL(string: websitePath)
     }
 
-    mutating func update(_ detail: RepoDetail) {
+    mutating func update(_ detail: RepoDetails) {
         self.subscribersCount = detail.subscribersCount
     }
 }

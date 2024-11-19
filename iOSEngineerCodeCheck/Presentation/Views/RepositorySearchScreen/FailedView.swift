@@ -18,14 +18,7 @@ struct FailedView: View {
                 Text(R.string.localizable.repositorySearchScreenFailedViewTitle())
                     .padding(.bottom, 8)
                 if let serviceError = error as? GitHubAPIClientError {
-                    switch serviceError {
-                    case .connectionError:
-                        Text(serviceError.message)
-                    case .responseParseError:
-                        Text(serviceError.message)
-                    case .apiError:
-                        Text(serviceError.message)
-                    }
+                    Text(serviceError.message)
                 } else {
                     Text(error.localizedDescription)
                 }

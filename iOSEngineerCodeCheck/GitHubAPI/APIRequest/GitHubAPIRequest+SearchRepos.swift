@@ -7,34 +7,39 @@
 //
 
 import Foundation
+import HTTPTypes
 
 extension GitHubAPIRequest {
+    struct SearchRepos {
+        let keyword: String
+    }
+}
 
-    public struct SearchRepos: GitHubAPIRequestProtocol {
+// MARK: - GitHubAPIRequestProtocol
 
-        public typealias Response = SearchResponse<Repo>
-
-        public let keyword: String
-
-        public var method: HTTPMethod {
-            .get
-        }
-
-        public var path: String {
-            "/search/repositories"
-        }
-
-        public var queryItems: [URLQueryItem] {
-            [URLQueryItem(name: "q", value: keyword)]
-        }
-
-        public var header: [String: String] {
-            ["Accept": "application/vnd.github.v3+json"]
-        }
-
-        public var body: Data? {
-            nil
-        }
+extension GitHubAPIRequest.SearchRepos: GitHubAPIRequestProtocol {
+    
+    typealias Response = SearchResponse<Repo>
+    
+    var method: HTTPTypes.HTTPRequest.Method {
+        .get
+    }
+    
+    var path: String {
+        "/search/repositories"
     }
 
+    var queryItems: [URLQueryItem] {
+        [URLQueryItem(name: "q", value: keyword)]
+    }
+
+    var header: HTTPTypes.HTTPFields {
+        var headerFields = HTTPTypes.HTTPFields()
+        headerFields[.accept] = "application/vnd.github.v3+json"
+        return headerFields
+    }
+
+    var body: Data? {
+        nil
+    }
 }
