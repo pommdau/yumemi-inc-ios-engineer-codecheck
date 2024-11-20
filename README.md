@@ -23,7 +23,7 @@
 |[swift\-http\-types](https://github.com/apple/swift-http-types)|HTTP通信処理を型安全に扱う|
 |[R\.swift](https://github.com/mac-cain13/R.swift)|リソースのシンボル化|
 |[SwiftUI\-Shimmer](https://github.com/markiv/SwiftUI-Shimmer)|スケルトンスクリーンで利用|
-|[SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI)|SwiftUIのViewのUIテストで利用|
+|[SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI)|Webからの画像のダウンロード・表示およびそのキャッシュ管理|
 
 ## 実装で工夫した点
 - (TBD)
