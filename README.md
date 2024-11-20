@@ -11,7 +11,7 @@
 |言語|Swift 5.9|
 |UIフレームワーク|SwiftUI|
 |iOSのバージョン|iOS 17.6以降|
-|アーキテクチャ|MVVM + Clean Architecture|
+|アーキテクチャ|MVVM|
 |ライブラリ管理|SwiftPM|
 |テスト|XCTest / XCUITest / [ViewInspector](https://github.com/nalexn/ViewInspector)|
 |Linter|[SwiftLint](https://github.com/realm/SwiftLint)|
