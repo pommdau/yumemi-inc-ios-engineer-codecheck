@@ -1,2 +1,2 @@
 #  Memo
-- RepositoryとStoreの両方がいらない場合は、Store側のみを利用している
+- RepositoryとStoreの両方がいらないような場合は、Storeのみの実装を採用する
